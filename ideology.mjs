@@ -2,7 +2,7 @@
 // Coordinate order: D1 redistribution, D2 planning, D3 liberty, D4 checks,
 // D5 participation, D6 cultural change, D7 pluralism, D8 global cooperation,
 // D9 military restraint, D10 ecology. Every coordinate has equal weight.
-export const CLASSIFIER_VERSION = 'nearest-tradition-1.0';
+export const CLASSIFIER_VERSION = 'nearest-tradition-2.0';
 export const IDEOLOGIES = [
   {id:'social-liberal',name:'社会自由主义',point:[50,25,75,75,50,75,75,75,50,50],description:'重视个人自由与多元社会，在市场经济的基础上接受公共保障和机会平等。'},
   {id:'social-democratic',name:'社会民主主义',point:[75,50,75,75,50,75,75,75,50,75],description:'支持较强的再分配与公共服务，同时重视公民自由、权力约束和国际合作。'},
@@ -20,9 +20,9 @@ export const IDEOLOGIES = [
 
 export function closestIdeology(result) {
   const dimensions=Array.from({length:10},(_,i)=>result.dimensions.find(d=>d.id===`D${i+1}`));
-  const missing=dimensions.filter(d=>!d || !Number.isFinite(d.score) || d.answered<6);
+  const missing=dimensions.filter(d=>!d || !Number.isFinite(d.score) || (d.base_answered??d.answered)<6);
   if(missing.length) return {version:CLASSIFIER_VERSION,status:'insufficient',name:null,missing:missing.length,
-    explanation:`还有 ${missing.length} 个维度信息不足。每个维度至少需要6道有效答案，补充后才能总结最贴近的意识形态。`};
+    explanation:`还有 ${missing.length} 个维度信息不足。每个方面至少需要6道有效基础答案，补充后才能总结最贴近的意识形态。`};
   const candidates=IDEOLOGIES.map(p=>({...p,distance:Math.sqrt(dimensions.reduce((sum,d,i)=>sum+(d.score-p.point[i])**2,0)/10)}))
     .sort((a,b)=>a.distance-b.distance || a.id.localeCompare(b.id,'en'));
   const best=candidates[0], gap=candidates[1].distance-best.distance;
@@ -33,6 +33,7 @@ export function closestIdeology(result) {
   const total=dimensions.reduce((n,d)=>n+d.answered,0);
   const mixedCount=dimensions.filter(d=>d.counts.left>=2&&d.counts.right>=2).length;
   const caveats=['这是在12种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。'];
+  if(result.supplemental_offered)caveats.push(`本次已回答${result.supplemental_answers}/${result.supplemental_offered}道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。`);
   if(gap<3)caveats.push('与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。');
   if(best.distance>=25)caveats.push('即使是最近的一项，也与你的整体画像有明显距离，应优先参考逐维结果。');
   if(neutralCount>=total/2)caveats.push('至少一半有效答案为中立，当前总结可能反映尚未形成明确判断，不宜直接认作稳定的中间立场。');

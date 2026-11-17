@@ -1,0 +1,191 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>最贴近的意识形态：归纳规则 · 立场之间</title><link rel="stylesheet" href="../styles.css"><link rel="icon" href="../icon.svg"><meta name="description" content="立场之间的问卷方法、计分和思想传统参考说明"></head><body><a class="skip" href="#document">跳到正文</a><header class="site-header"><a class="brand" href="../"><span class="brand-mark">↔</span>立场之间</a><a href="../">返回问卷</a></header><main class="method-page" id="document"><nav class="method-nav" aria-label="方法文档"><a href="计分与解释规范.html">计分与补充题</a><a href="最贴近意识形态规则.html">思想传统参考</a><a href="真人试测与校准方案.html">试测计划</a></nav><h1>最贴近的意识形态：归纳规则</h1>
+<p>归纳规则版本：<code>nearest-tradition-1.0</code>。问卷与十维计分仍为<code>1.0.0-exploratory</code>，原有答案兼容。新增的是网页报告的总结层，未改动题目、方向键或维度分数；原始问卷ZIP及Python参考程序仍保留旧版多维报告，网页下载报告包含本总结。</p>
+<h2>如何选出一个名称</h2>
+<p>十个维度都至少有6道有效答案才进行归纳，缺失维度不插补。计算受测者十维分数到下表每个参考点的均方根距离，各维度等权；选距离最小的一项作为“最贴近的意识形态”。所有比较使用两位小数的维度分数。原有多标签条件规则另作局部思想传统对照，不参与本距离计算。</p>
+<p>参考坐标是设计者的理论性简化，不是从真实人群训练得到的聚类，更不代表某思想传统所有支持者都持有这些观点。比较只覆盖下表12种画像；“最贴近”仅在这些候选中成立，不等于唯一身份、最佳政治立场或客观分类。</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="可横向滚动的参考表格"><table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align: right;">D1</th>
+<th style="text-align: right;">D2</th>
+<th style="text-align: right;">D3</th>
+<th style="text-align: right;">D4</th>
+<th style="text-align: right;">D5</th>
+<th style="text-align: right;">D6</th>
+<th style="text-align: right;">D7</th>
+<th style="text-align: right;">D8</th>
+<th style="text-align: right;">D9</th>
+<th style="text-align: right;">D10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>社会自由主义</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>社会民主主义</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+</tr>
+<tr>
+<td>民主社会主义</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+</tr>
+<tr>
+<td>国家主导的社会主义</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>古典自由主义</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>自由意志主义</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr>
+<td>自由保守主义</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>社群保守主义</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>民族保守主义</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr>
+<td>技术官僚主义</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+</tr>
+<tr>
+<td>绿色政治</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">100</td>
+</tr>
+<tr>
+<td>中间主义</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table></div>
+<p>D1经济分配、D2经济协调、D3公民自由、D4权力约束、D5政治决策、D6文化变迁、D7公共认同、D8国家与世界、D9对外安全、D10生态与发展。端点含义见计分规范。50只是居中参考坐标，不表示该传统在该问题上没有意见。</p>
+<h2>展示与边界</h2>
+<ul>
+<li>展示一个名称、对应的概括，以及最接近的三个维度及参考点。它们表示距离接近，不是独立证明某身份的证据。</li>
+<li>差值至少20分的维度列为主要差异，最多列两个。没有达到阈值的差异不意味着观点完全吻合。</li>
+<li>第一、第二候选的距离差小于3分时，提示分类不稳定。完全同距时按稳定的英文ID字典序选一个，仅用于可复现；不宣称胜者更可信。</li>
+<li>最近参考画像仍相距至少25分时，明确提示总体距离明显，应优先阅读逐维结果。</li>
+<li>至少一半有效答案中立时，提示可能尚未形成明确判断；至少三个维度同时有至少两题左向及两题右向时，提示均值掩盖混合观点。不将这两类情况直接认作稳定的中间立场。</li>
+<li>上述阈值均为首版显示约定，未经实证校准；不输出匹配百分比、准确率、人口排名或统计置信度。</li>
+</ul>
+<p>修改参考点或归纳规则必须更新归纳版本及测试。未来应通过独立评阅者、认知访谈和真实样本检验这些候选的覆盖范围、误导风险与稳定性，不能仅凭程序测试就宣称分类准确。</p></main><footer class="site-footer">探索性问卷 · 尚未实证校准</footer></body></html>
