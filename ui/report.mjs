@@ -244,6 +244,7 @@ export function renderReport(ctx){
     const showDim=idx=>{
       const d=r.dimensions[idx];
       if(!d)return;
+      ctx.selectedDimIndex=idx;
       host.querySelectorAll('[data-dim-index]').forEach(el=>el.classList.toggle('is-selected',Number(el.dataset.dimIndex)===idx));
       const cfg=RADAR_MODES[ctx.radarMode]||RADAR_MODES.standard;
       const axisName=cfg.axisLabel(d,idx);
@@ -264,6 +265,7 @@ export function renderReport(ctx){
         readout.textContent=`${d.name}：${userStr}${lean}${refStr}`;
       }
     };
+    if(ctx.selectedDimIndex!==null)showDim(ctx.selectedDimIndex);
     host.querySelectorAll('[data-dim-index]').forEach(el=>{
       const idx=Number(el.dataset.dimIndex);
       el.addEventListener('mouseenter',()=>showDim(idx));
@@ -307,7 +309,7 @@ export function renderReport(ctx){
   $('#report-export').onclick=()=>download('political-values-report.md',markdownReport(r),'text/markdown;charset=utf-8');
   $('#answer-export').onclick=ctx.exportAnswers;
   $('#edit-answers').onclick=()=>{ctx.go('quiz',ctx.page);ctx.openOverview();};
-  $('#print-report').onclick=()=>{document.querySelectorAll('details').forEach(d=>d.open=true);window.print();};
+  $('#print-report').onclick=()=>{document.querySelectorAll('.compare-table-details, .ideology-summary details').forEach(d=>d.open=true);window.print();};
   $('#reset').onclick=ctx.confirmReset;
   ctx.bindRemember();
 }

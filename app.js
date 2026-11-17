@@ -25,6 +25,7 @@ const ctx={
   reportFilter:'all',
   radarCompareId:null,
   radarMode:'standard',
+  selectedDimIndex:null,
 
   activeIds:()=>ctx.pages.flatMap(p=>p.ids),
   count:()=>ctx.activeIds().filter(id=>ctx.answers[id]!=null).length,
@@ -89,6 +90,8 @@ function render(){
 
 function applyHashRoute(){
   if(!ctx.bank)return;
+  const modal=$('#modal');
+  if(modal?.open)modal.close();
   const hash=location.hash.replace(/^#\/?/,'');
   suppressHashSync=true;
   if(hash==='report')ctx.go('report',ctx.page,{push:false});

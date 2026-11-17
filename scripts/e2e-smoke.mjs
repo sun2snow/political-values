@@ -41,7 +41,7 @@ try{
   const secondDotActive=await page.locator('.page-dot').nth(1).evaluate(el=>el.classList.contains('is-current'));
   assert.equal(secondDotActive,true);
 
-  // Import synthetic answers triggering supplemental + report + 3 radar modes + item breakdown jump
+  // Import synthetic answers triggering supplemental + report + 3 radar modes + selected vertex persistence + item breakdown jump
   const bank=JSON.parse(readFileSync(new URL('../data.json',import.meta.url),'utf8'));
   const base=bank.items.filter(i=>i.status==='core');
   const targets=[25,25,75,75,50,75,75,50,75,25];
@@ -64,25 +64,53 @@ try{
   await page.click('#confirm-report');
   assert.equal(await page.evaluate(()=>location.hash),'#report');
 
-  // Test 3 radar modes + comparison table + item breakdown jump
+  // Test 3 radar modes & preserved vertex readout across mode switch
   await page.click('[data-radar-mode="autonomy"]');
   await page.locator('.radar-vertex[data-dim-index="0"]').click();
   assert.match(await page.textContent('#radar-readout'),/个人承担 \(反\)：图上位置/);
   await page.click('[data-radar-mode="intensity"]');
+  assert.match(await page.textContent('#radar-readout'),/经济分配：鲜明度/);
   assert.equal(await page.locator('.legend-dot').count(),3);
 
   await page.locator('.dim-items-details summary').first().click();
   await page.locator('[data-edit-qid="D1_01"]').click();
   assert.equal(await page.evaluate(()=>location.hash.startsWith('#quiz/')),true);
 
-  // Browser back returns to #report
+  // Modal open during browser Back must close automatically
+  await page.click('#overview');
+  assert.equal(await page.evaluate(()=>document.querySelector('#modal').open),true);
   await page.goBack();
   assert.equal(await page.evaluate(()=>location.hash),'#report');
+  assert.equal(await page.evaluate(()=>document.querySelector('#modal').open),false);
+
+  // Centrist clarification flow + localStorage persistence across reload
+  const neutral=Object.fromEntries(base.map(i=>[i.id,3]));
+  const neutralEnv={format:'political-values-answers',version:bank.version,answers:neutral,clarifications:{}};
+  await page.goto(`http://127.0.0.1:${port}/`,{waitUntil:'networkidle'});
+  await page.click('#import-home');
+  await page.fill('#answer-text',JSON.stringify(neutralEnv));
+  await page.click('#confirm-import');
+  await page.click('#remember');
+  await page.click('#preview-result');
+  assert.equal(await page.evaluate(()=>location.hash),'#quiz/clarify-0');
+  await page.click('#preview-result');
+  await page.click('#confirm-report');
+  assert.match(await page.textContent('#ideology-heading'),/暂不能确定最贴近的意识形态/);
+
+  await page.reload({waitUntil:'networkidle'});
+  assert.match(await page.textContent('.resume-card'),/80 \/ 106/);
 
   // Mobile 390x844 overflow check
   await page.setViewportSize({width:390,height:844});
+  await page.click('#existing-result');
+  await page.click('#preview-result');
+  await page.click('#confirm-report');
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
   assert.equal(overflow,false,'mobile 390x844 horizontal overflow');
+
+  // Verify docs HTML loads cleanly
+  await page.goto(`http://127.0.0.1:${port}/docs/%E6%9C%80%E8%B4%B4%E8%BF%91%E6%84%8F%E8%AF%86%E5%BD%A2%E6%80%81%E8%A7%84%E5%88%99.html`,{waitUntil:'networkidle'});
+  assert.match(await page.textContent('h1'),/最贴近的意识形态/);
 
   assert.deepEqual(errors,[],'unexpected browser console/page errors');
   console.log('E2E smoke checks passed!');

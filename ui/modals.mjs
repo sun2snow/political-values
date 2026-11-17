@@ -84,7 +84,7 @@ export function openImport(ctx){
     try{
       const imported=parseAnswers($('#answer-text').value,ctx.bank);
       ctx.answers=Object.fromEntries(Object.entries(imported).filter(([,v])=>v!==null));
-      ctx.page=0;ctx.radarCompareId=null;ctx.syncPages();modal.close();ctx.go('quiz',0);
+      ctx.page=0;ctx.radarCompareId=null;ctx.selectedDimIndex=null;ctx.syncPages();modal.close();ctx.go('quiz',0);
       toast(`已导入 ${ctx.count()} 道题的答案。`);
     }catch(err){$('#import-error').textContent=err.message;}
   };
@@ -96,7 +96,7 @@ export function confirmReset(ctx){
     <div class="actions"><button type="button" class="button secondary" id="backup">先导出答案</button><button type="button" class="button danger" id="confirm-reset">确认清除并重新开始</button></div>`);
   $('#backup').onclick=ctx.exportAnswers;
   $('#confirm-reset').onclick=()=>{
-    try{localStorage.removeItem(KEY);ctx.answers={};ctx.remember=false;ctx.saveError='';ctx.page=0;ctx.radarCompareId=null;modal.close();ctx.go('home');toast('本次答案和本地进度已清除。');}
+    try{localStorage.removeItem(KEY);ctx.answers={};ctx.remember=false;ctx.saveError='';ctx.page=0;ctx.radarCompareId=null;ctx.selectedDimIndex=null;modal.close();ctx.go('home');toast('本次答案和本地进度已清除。');}
     catch{toast('无法清除本地存档，请使用浏览器的网站数据设置。');}
   };
 }
