@@ -119,7 +119,9 @@ async function init(){
     pages.push({type:'feedback',short:'作答反馈',title:'最后，回看这次作答',description:'以下4题不改变政治立场分数，仅帮助理解本次作答状态；可以跳过。',ids:bank.feedback.map(q=>q.id)});
     try{const raw=localStorage.getItem(KEY);if(raw){const saved=JSON.parse(raw);if(saved.version!==bank.version)throw new Error('version');validateAnswers(saved.answers,bank);answers=Object.fromEntries(Object.entries(saved.answers).filter(([,v])=>v!==null));page=Number.isInteger(saved.page)&&saved.page>=0&&saved.page<pages.length?saved.page:0;remember=true;}}
     catch{saveError='本地进度无法读取或版本不匹配。旧数据未自动删除，请先备份已有答案。';}
-    $('#about-button').onclick=openAbout;renderHome();
+    $('#about-button').onclick=openAbout;
+    $('.brand').onclick=e=>{e.preventDefault();go('home');};
+    renderHome();
   }catch(err){main.innerHTML=`<div class="loading"><h1>问卷暂时无法载入</h1><p>${esc(err.message)}</p><button class="button" id="retry">重新加载</button><p><a href="docs/问卷.md">使用文字版问卷</a></p></div>`;$('#retry').onclick=()=>location.reload();}
 }
 init();
