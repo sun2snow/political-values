@@ -1,3 +1,4 @@
+import {closestMarkdown} from './ideology.mjs';
 // Match the reference scorer's ties-to-even rounding for bounded questionnaire scores.
 function roundScore(value) {
   const scaled=value*100, lower=Math.floor(scaled), fraction=scaled-lower;
@@ -78,7 +79,7 @@ export function describeDimension(d) {
 
 export function markdownReport(result) {
   const lines=['# 政治价值与政策取向报告','',`版本：${result.version}；有效核心作答：${result.scored_answers}/80。`,'',
-    '探索性结果，尚未实证校准。分数不是人口百分位、准确率或价值优劣，不能用于认定身份。','',
+    '探索性结果，尚未实证校准。分数不是人口百分位、准确率或价值优劣，不能用于认定身份。','',...closestMarkdown(result),
     '| 维度 | 0端 | 100端 | 分数 | 有效题数 |','|---|---|---|---:|---:|'];
   for (const d of result.dimensions) lines.push(`| ${d.name} | ${d.low} | ${d.high} | ${d.score===null?'信息不足':d.score.toFixed(1)} | ${d.answered}/8 |`);
   lines.push('','分数≤35、≥65是未经校准的解释阈值，不是天然政治阵营边界。左右仅代表本维度端点。','');

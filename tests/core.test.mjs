@@ -32,3 +32,40 @@ test('download report includes caveats, missingness and scenario choices',()=>{
   assert.match(report,/信息不足/);assert.match(report,/条件变化后选择不同/);assert.match(report,/未经校准/);
   assert.doesNotMatch(report,/undefined|NaN/);
 });
+
+test('each reference profile is recognized from actual answer choices',async()=>{
+  const {IDEOLOGIES,closestIdeology}=await import('../ideology.mjs');
+  for(const p of IDEOLOGIES){
+    const answers=Object.fromEntries(bank.items.map(i=>[i.id,3+(p.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));
+    const result=score(answers,bank),closest=closestIdeology(result);
+    assert.equal(closest.id,p.id);assert.equal(closest.distance,0);
+    assert.match(markdownReport(result),new RegExp(p.name));
+  }
+});
+test('single summary requires valid scores on all ten dimensions',async()=>{
+  const {closestIdeology}=await import('../ideology.mjs');
+  assert.equal(closestIdeology(score({},bank)).status,'insufficient');
+  const answers=Object.fromEntries(bank.items.map(i=>[i.id,3]));
+  delete answers.D1_01;delete answers.D1_02;
+  assert.equal(closestIdeology(score(answers,bank)).status,'matched');
+  delete answers.D1_03;
+  const c=closestIdeology(score(answers,bank));assert.equal(c.status,'insufficient');assert.equal(c.missing,1);
+});
+test('neutral and mixed averages get distinct caveats; dimensional ordering is immaterial',async()=>{
+  const {closestIdeology}=await import('../ideology.mjs');
+  const neutral=score(Object.fromEntries(bank.items.map(i=>[i.id,3])),bank);
+  const mixed=score(Object.fromEntries(bank.items.map(i=>[i.id,5])),bank);
+  assert.match(closestIdeology(neutral).caveats.join(''),/中立/);
+  assert.match(closestIdeology(mixed).caveats.join(''),/双向选择/);
+  assert.deepEqual(closestIdeology({...neutral,dimensions:[...neutral.dimensions].reverse()}),closestIdeology(neutral));
+});
+test('equal nearest distances select one reproducibly and disclose ambiguity',async()=>{
+  const {closestIdeology}=await import('../ideology.mjs');
+  const result=score(Object.fromEntries(bank.items.map(i=>[i.id,3])),bank);
+  // Midpoint between centrist and technocratic references.
+  result.dimensions.find(d=>d.id==='D5').score=37.5;
+  result.dimensions.find(d=>d.id==='D8').score=62.5;
+  result.dimensions.find(d=>d.id==='D10').score=62.5;
+  const c=closestIdeology(result);assert.equal(c.id,'centrist');assert.equal(c.gap,0);
+  assert.match(c.caveats.join(''),/不稳定/);
+});
