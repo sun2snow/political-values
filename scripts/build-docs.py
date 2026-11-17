@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parent.parent
 b=json.loads((ROOT/'data.json').read_text())
 lookup={q['id']:q for q in b['items']+b['scenarios']+b['feedback']}
 intro=['# 政治价值与政策取向问卷 v2','',
-'基础96题，按回答情况最多追加40题。基础部分预计25—35分钟，补充题最多另需约15分钟，实际时间尚待试测。没有标准答案，可以跳过或修改。',
+'基础96题，按回答情况最多追加40道补充题及10道澄清题。基础部分预计25—35分钟，按需题最多另需约20分钟，实际时间尚待试测。没有标准答案，可以跳过或修改。',
 '新版用更常用的词和短句，但尚未通过初中学历参与者的阅读测试。不要把结果当作身份认定。',
 '## 立场题选项','',
 '1＝非常不同意；2＝比较不同意；3＝既不赞同也不反对；4＝比较同意；5＝非常同意；U＝不了解／无法判断；Q＝题意不清；空白＝跳过。','']
@@ -19,6 +19,7 @@ for n,iid in enumerate(b['administration_order'],1):
 intro+=['## 按需补充题','','只有触发对应方面时才需要作答，每方面4题，可以跳过。具体规则见[计分说明](计分与解释规范.html)。','']
 for q in b['items']:
     if q['status']=='supplemental':intro += [f'### {q["id"]} {q["text"]}','']
+intro+=['',(ROOT/'docs/澄清题.md').read_text()]
 (ROOT/'docs/问卷.md').write_text('\n'.join(intro))
 review=['# 新版题目覆盖与阅读自查','','本版逐题改用常用词，将较长条件分成句子，并为部分术语增加就地解释。这里是设计者自查，不是阅读水平或测量效度的验证。','',
 '| 方面 | 基础题 | 补充题 |','|---|---|---|']
@@ -46,7 +47,7 @@ p=ROOT/'legacy/v1/styles.css';s=p.read_text();marker='.method-page{';new=(ROOT/'
 if marker not in s:p.write_text(s+'\n'+tail)
 # Download contains the same v2 bank, scoring modules and readable docs as the website.
 with zipfile.ZipFile(ROOT/'questionnaire-v2.zip','w',zipfile.ZIP_DEFLATED) as z:
-    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','README.md','styles.css','icon.svg','scripts/score-cli.mjs']:
+    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','clarification.mjs','flow.mjs','README.md','styles.css','icon.svg','scripts/score-cli.mjs']:
         z.write(ROOT/name,name)
     for path in (ROOT/'docs').iterdir():
         if path.is_file():z.write(path,path.relative_to(ROOT))

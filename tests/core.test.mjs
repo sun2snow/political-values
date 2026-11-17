@@ -69,7 +69,7 @@ test('follow-up answers cannot create more follow-ups or rescue missing baseline
 test('skipped extras remain optional and do not change the average',()=>{
   const ans={...uniform(0),...scattered(),D1_09:'U',D1_10:'Q',D1_11:null};const r=score(ans,bank);
   assert.equal(r.dimensions[0].score,50);assert.equal(r.supplemental_answers,0);assert.equal(r.supplemental_offered,4);
-  assert.equal(closestIdeology(r).status,'matched');assert.match(closestIdeology(r).caveats.join(''),/0\/4/);
+  assert.equal(closestIdeology(r).status,'undetermined');assert.match(closestIdeology(r).caveats.join(''),/0\/4/);
 });
 test('versioned export/import preserves all answers including inactive extras; v1 is rejected',()=>{
   const ans={...uniform(1),D1_09:3,S01:'C',F01:2};
@@ -87,7 +87,7 @@ test('scenario and feedback answers do not change scores or follow-up selection'
   assert.deepEqual(before.dimensions,after.dimensions);assert.deepEqual(before.adaptive,after.adaptive);
 });
 test('reference centroids retain their closest ideology with simplified questions',()=>{
-  for(const p of IDEOLOGIES){const ans=Object.fromEntries(base.map(i=>[i.id,3+(p.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));assert.equal(closestIdeology(score(ans,bank)).id,p.id);}
+  for(const p of IDEOLOGIES){const ans=Object.fromEntries(base.map(i=>[i.id,3+(p.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));if(p.id==='centrist')for(let n=1;n<=10;n++)ans[`C_D${n}`]='compromise';assert.equal(closestIdeology(score(ans,bank)).id,p.id);}
 });
 test('HTML methods and questionnaire are rendered; UI does not link to raw Markdown',()=>{
   const app=readFileSync(new URL('../app.js',import.meta.url),'utf8');assert.doesNotMatch(app,/href="[^"]+\.md"/);
@@ -96,4 +96,64 @@ test('HTML methods and questionnaire are rendered; UI does not link to raw Markd
   for(const q of bank.items)assert.ok(question.includes(q.text),q.id);
   assert.ok(existsSync(new URL('../legacy/v1/index.html',import.meta.url)));
   assert.doesNotMatch(question,/C不是默认最佳答案/);
+});
+
+test('centrist clarification separates identical averages without changing political scores',()=>{
+  const neutral=uniform(0), mixed=Object.fromEntries(base.map(i=>[i.id,5]));
+  const clarity=Object.fromEntries(Array.from({length:10},(_,i)=>[`C_D${i+1}`,'compromise']));
+  assert.deepEqual(score(neutral,bank).dimensions.map(d=>d.score),score(mixed,bank).dimensions.map(d=>d.score));
+  assert.equal(closestIdeology(score(neutral,bank)).status,'undetermined');
+  assert.equal(closestIdeology(score({...neutral,...clarity},bank)).id,'centrist');
+  assert.equal(closestIdeology(score({...mixed,...clarity},bank)).status,'mixed');
+  assert.deepEqual(score(neutral,bank).dimensions,score({...neutral,...clarity},bank).dimensions);
+  assert.match(markdownReport(score({...mixed,...clarity},bank)),/混合立场，暂不归为单一意识形态/);
+  assert.match(markdownReport(score(neutral,bank)),/暂不能确定最贴近的意识形态/);
+});
+test('clarification threshold boundaries and uncertainty do not become compromise',()=>{
+  const neutral=score(uniform(0),bank);
+  const make=values=>({...neutral,clarifications:Object.fromEntries(values.map((v,i)=>[`C_D${i+1}`,v]))});
+  const c=(values)=>closestIdeology(make(values));
+  assert.equal(c([...Array(6).fill('compromise'),'first','second']).id,'centrist');
+  assert.equal(c([...Array(6).fill('compromise'),'first']).status,'undetermined');
+  assert.equal(c([...Array(5).fill('compromise'),'first','unsure','unrepresented']).status,'undetermined');
+  assert.equal(c([...Array(6).fill('compromise'),...Array(3).fill('first')]).status,'undetermined');
+  assert.equal(c(Array(3).fill('conditional')).status,'undetermined');
+  assert.equal(c(Array(4).fill('conditional')).status,'mixed');
+  for(const value of ['unsure','unrepresented'])assert.equal(c(Array(10).fill(value)).status,'undetermined');
+  const exact=make(Array(10).fill('compromise'));
+  exact.dimensions=exact.dimensions.map((d,i)=>({...d,score:i<4?35:i<8?65:50}));
+  assert.equal(closestIdeology(exact).id,'centrist');
+  exact.dimensions[0].score=34.99;exact.dimensions[1].score=34.99;
+  assert.equal(closestIdeology(exact).id,'centrist'); // Eight inside the inclusive band.
+  exact.dimensions[2].score=34.99;assert.equal(closestIdeology(exact).status,'undetermined');
+  const both=make(Array(10).fill('compromise'));
+  both.dimensions=both.dimensions.map((d,i)=>({...d,counts:{...d.counts,left:i<2?2:0,right:i<2?2:0}}));
+  assert.equal(closestIdeology(both).id,'centrist');
+  both.dimensions[2].counts={...both.dimensions[2].counts,left:2,right:2};
+  assert.equal(closestIdeology(both).status,'mixed');
+});
+test('version 2 import and separate clarification export roundtrip',()=>{
+  const answers={...uniform(0),C_D1:'compromise',C_D2:'conditional',C_D3:null};
+  const envelope=exportAnswers(answers,bank);
+  assert.equal(envelope.version,'2.1.0-exploratory');assert.equal(envelope.answers.C_D1,undefined);
+  assert.deepEqual(envelope.clarifications,{C_D1:'compromise',C_D2:'conditional',C_D3:null});
+  assert.deepEqual(parseAnswers(JSON.stringify(envelope),bank),answers);
+  assert.deepEqual(parseAnswers(JSON.stringify({format:envelope.format,version:'2.0.0-exploratory',answers:uniform(0)}),bank),uniform(0));
+  for(const value of [3,'U','Q',true,{},['compromise'],'__proto__'])assert.throws(()=>validateAnswers({C_D1:value},bank));
+  assert.throws(()=>validateAnswers({C_D11:'compromise'},bank));
+  for(const clarifications of [[],false,{D1_01:3},{C_D11:'compromise'}])assert.throws(()=>parseAnswers(JSON.stringify({...envelope,clarifications}),bank));
+});
+test('clarification pages are conditional and inactive answers survive reactivation',async()=>{
+  const {questionnairePages}=await import('../flow.mjs');
+  const answers={...uniform(0),C_D1:'compromise'};
+  assert.equal(questionnairePages(answers,bank).filter(p=>p.type==='clarification').flatMap(p=>p.ids).length,10);
+  const other=IDEOLOGIES.find(p=>p.id==='classical-liberal');
+  const directional=Object.fromEntries(base.map(i=>[i.id,3+(other.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));
+  Object.assign(answers,directional);
+  assert.equal(questionnairePages(answers,bank).filter(p=>p.type==='clarification').length,0);
+  assert.equal(closestIdeology(score(answers,bank)).id,'classical-liberal');
+  assert.equal(closestIdeology(score(answers,bank)).clarificationRequired,false);
+  assert.equal(exportAnswers(answers,bank).clarifications.C_D1,'compromise');
+  Object.assign(answers,uniform(0));assert.equal(questionnairePages(answers,bank).length,14);
+  assert.equal(closestIdeology(score(answers,bank)).clarification.counts.compromise,1);
 });

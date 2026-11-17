@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 root=Path(__file__).resolve().parent.parent
 b=json.loads((root/'legacy/v1/data.json').read_text())
-b['version']='2.0.0-exploratory'
+b['version']='2.1.0-exploratory'
 b['adaptive']={'version':'dispersion-1.0','minimum_base_answers':6,'variance_threshold':1.5,'minimum_each_direction':2,'items_per_dimension':4,'maximum_extra_items':40}
 b['estimated_minutes']=[25,35]
 b['extra_estimated_minutes']=[0,15]

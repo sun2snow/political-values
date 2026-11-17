@@ -1,8 +1,9 @@
+import {CLARIFICATIONS,CLARIFICATION_OPTIONS} from './clarification.mjs';
 // Editorial reference profiles, NOT fitted population clusters or identity diagnoses.
 // Coordinate order: D1 redistribution, D2 planning, D3 liberty, D4 checks,
 // D5 participation, D6 cultural change, D7 pluralism, D8 global cooperation,
 // D9 military restraint, D10 ecology. Every coordinate has equal weight.
-export const CLASSIFIER_VERSION = 'nearest-tradition-2.0';
+export const CLASSIFIER_VERSION = 'nearest-tradition-2.1';
 export const IDEOLOGIES = [
   {id:'social-liberal',name:'社会自由主义',point:[50,25,75,75,50,75,75,75,50,50],description:'重视个人自由与多元社会，在市场经济的基础上接受公共保障和机会平等。'},
   {id:'social-democratic',name:'社会民主主义',point:[75,50,75,75,50,75,75,75,50,75],description:'支持较强的再分配与公共服务，同时重视公民自由、权力约束和国际合作。'},
@@ -18,7 +19,7 @@ export const IDEOLOGIES = [
   {id:'centrist',name:'中间主义',point:[50,50,50,50,50,50,50,50,50,50],description:'在这组议题上整体接近各端点之间的位置，可能倾向折中，也可能保留较多条件性判断。'},
 ];
 
-export function closestIdeology(result) {
+export function preliminaryIdeology(result) {
   const dimensions=Array.from({length:10},(_,i)=>result.dimensions.find(d=>d.id===`D${i+1}`));
   const missing=dimensions.filter(d=>!d || !Number.isFinite(d.score) || (d.base_answered??d.answered)<6);
   if(missing.length) return {version:CLASSIFIER_VERSION,status:'insufficient',name:null,missing:missing.length,
@@ -42,10 +43,46 @@ export function closestIdeology(result) {
     distance:best.distance,gap,supporting,contrasts,caveats};
 }
 
+export function closestIdeology(result) {
+  const initial=preliminaryIdeology(result);
+  if(initial.id!=='centrist')return {...initial,clarificationRequired:false};
+  const responses=result.clarifications??{};
+  const counts=Object.fromEntries(Object.keys(CLARIFICATION_OPTIONS).map(k=>[k,0]));
+  for(const q of CLARIFICATIONS)if(Object.hasOwn(counts,responses[q.id]))counts[responses[q.id]]++;
+  const completed=Object.values(counts).reduce((a,b)=>a+b,0);
+  const middle=result.dimensions.filter(d=>d.score>=35&&d.score<=65).length;
+  const mixedDimensions=result.dimensions.filter(d=>d.counts.left>=2&&d.counts.right>=2).map(d=>({id:d.id,name:d.name}));
+  const conditionalDimensions=CLARIFICATIONS.filter(q=>responses[q.id]==='conditional').map(q=>({id:q.id.slice(2),name:q.name}));
+  const stats={completed,middle,mixedDimensions,conditionalDimensions,counts};
+  const shared={version:CLASSIFIER_VERSION,clarificationRequired:true,clarification:stats,
+    caveats:[...initial.caveats.map((t,i)=>i===0?'初步比较覆盖12种预设参考画像；接近中间参考点本身不能证明主张折中。参考点尚未实证校准。':t),'澄清题只辅助区分折中、混合和不确定，不改变十维分数；这些判断阈值尚未实证校准。']};
+  if(middle>=8 && mixedDimensions.length<=2 && completed>=8 && counts.compromise>=6 && counts.first+counts.second<=2)
+    return {...initial,...shared,caveats:shared.caveats.map(t=>t.startsWith('至少一半有效答案为中立')?'基础与补充答案中至少一半为中立；本次另结合明确支持折中的澄清答案作参考性归纳，不认定稳定身份。':t),reasonCodes:['centrist_confirmed'],description:'本组分数多数接近中间，且你在澄清题中多次明确支持折中做法，因此暂以中间主义概括。'};
+  if(mixedDimensions.length>=3 || counts.conditional>=4){
+    const names=[...new Set([...mixedDimensions,...conditionalDimensions].map(d=>d.name))];
+    return {...shared,status:'mixed',id:null,name:'混合立场，暂不归为单一意识形态',
+      reasonCodes:[...(mixedDimensions.length>=3?['bidirectional_dimensions']:[]),...(counts.conditional>=4?['conditional_preferences']:[])],
+      description:`这些方面存在不同取向：${names.join('、')}。平均分接近中间，并不等于主张折中。“混合立场”是作答特征，不是新增的思想传统。`};
+  }
+  const reasons=[];
+  if(completed<8)reasons.push(['clarification_incomplete','澄清题完成不足8道']);
+  if(counts.unsure||counts.unrepresented)reasons.push(['clarification_uncertain','部分问题尚未想清楚，或选项不能表达你的想法']);
+  if(middle<8||counts.first+counts.second>2)reasons.push(['direction_not_confirmed','原分数分布或明确单向选择不支持整体折中的概括']);
+  if(counts.compromise<6)reasons.push(['compromise_not_confirmed','明确支持折中的澄清答案不足6道']);
+  return {...shared,status:'undetermined',id:null,name:'暂不能确定最贴近的意识形态',reasonCodes:reasons.map(r=>r[0]),
+    description:reasons.map(r=>r[1]).join('；')+'。保留十维结果，不自动改判为其他思想传统。'};
+}
+export function clarificationSummary(result,c=closestIdeology(result)){
+  if(!c.clarificationRequired)return [];
+  return [`已完成 ${c.clarification.completed}/10 道澄清题；这些答案不改变分数。`,
+    ...CLARIFICATIONS.map(q=>`${q.name}：${CLARIFICATION_OPTIONS[result.clarifications?.[q.id]]??'未作答'}`)];
+}
+
 export function closestMarkdown(result) {
   const c=closestIdeology(result);
   if(c.status==='insufficient')return ['## 最贴近的意识形态','','暂不能总结：'+c.explanation,''];
+  if(c.status!=='matched')return ['## 最贴近的意识形态','',`**${c.name}**`,'',c.description,'',...c.caveats.map(t=>'- '+t),'',...clarificationSummary(result,c).map(t=>'- '+t),'',`归纳规则版本：${c.version}。`,''];
   return ['## 最贴近的意识形态','',`**${c.name}（参考性总结）**`, '',c.description,'',
     '较接近的维度：'+c.supporting.map(d=>`${d.name} ${d.score.toFixed(1)}（参考点 ${d.target}）`).join('、')+'。',
-    c.contrasts.length?'主要差异：'+c.contrasts.map(d=>`${d.name} ${d.score.toFixed(1)}，参考点为 ${d.target}`).join('；')+'。':'没有维度与该参考点相差20分或以上；这不表示所有具体观点都一致。','',...c.caveats.map(t=>'- '+t),'',`归纳规则版本：${c.version}。`,''];
+    c.contrasts.length?'主要差异：'+c.contrasts.map(d=>`${d.name} ${d.score.toFixed(1)}，参考点为 ${d.target}`).join('；')+'。':'没有维度与该参考点相差20分或以上；这不表示所有具体观点都一致。','',...c.caveats.map(t=>'- '+t),'',...clarificationSummary(result,c).map(t=>'- '+t),'',`归纳规则版本：${c.version}。`,''];
 }

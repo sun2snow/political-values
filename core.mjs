@@ -1,3 +1,4 @@
+import {CLARIFICATIONS,CLARIFICATION_OPTIONS} from './clarification.mjs';
 import {adaptivePlan} from './adaptive.mjs';
 import {closestMarkdown} from './ideology.mjs';
 // Match the reference scorer's ties-to-even rounding for bounded questionnaire scores.
@@ -12,10 +13,10 @@ export function validateAnswers(answers, bank) {
   const scenes = new Set(bank.scenarios.map(i => i.id));
   const feedback = new Set(bank.feedback.map(i => i.id));
   for (const [key, value] of Object.entries(answers)) {
-    if (!core.has(key) && !scenes.has(key) && !feedback.has(key)) throw new Error(`未知或未启用的题目编号：${key}`);
+    if (!core.has(key) && !scenes.has(key) && !feedback.has(key) && !CLARIFICATIONS.some(q=>q.id===key)) throw new Error(`未知或未启用的题目编号：${key}`);
     if (value === null) continue;
     const numeric = Number.isInteger(value) && value >= 1 && value <= 5;
-    const valid = core.has(key) ? numeric || ['U','Q'].includes(value) : scenes.has(key) ? ['A','B','C','U'].includes(value) : numeric;
+    const valid = CLARIFICATIONS.some(q=>q.id===key) ? typeof value==='string' && Object.hasOwn(CLARIFICATION_OPTIONS,value) : core.has(key) ? numeric || ['U','Q'].includes(value) : scenes.has(key) ? ['A','B','C','U'].includes(value) : numeric;
     if (!valid) throw new Error(`${key} 的答案格式无效。`);
   }
   return answers;
@@ -24,17 +25,20 @@ export function validateAnswers(answers, bank) {
 // Require a versioned envelope: rewritten v2 questions must not silently reuse v1 answers.
 export function exportAnswers(answers,bank){
   validateAnswers(answers,bank);
-  return {format:'political-values-answers',version:bank.version,answers};
+  return {format:'political-values-answers',version:bank.version,answers:Object.fromEntries(Object.entries(answers).filter(([id])=>!id.startsWith('C_'))),clarifications:Object.fromEntries(Object.entries(answers).filter(([id])=>id.startsWith('C_')))};
 }
 export function parseAnswers(text, bank) {
   if(typeof text!=='string' || text.length>100000)throw new Error('答案文件过大。');
   const parsed=JSON.parse(text);
-  if(!parsed || parsed.format!=='political-values-answers' || parsed.version!==bank.version || !parsed.answers)
+  if(!parsed || parsed.format!=='political-values-answers' || ![bank.version,'2.0.0-exploratory'].includes(parsed.version) || !parsed.answers)
     throw new Error('这不是当前新版的答案文件。旧版答案请到“旧版问卷”入口继续使用，不要直接套用到新版题目。');
   // All accepted nested data is a flat answer map, so global duplicate-key rejection is safe.
   const keys=[...text.matchAll(/"((?:\\.|[^"\\])*)"\s*:/g)].map(m=>JSON.parse(`"${m[1]}"`));
   if(new Set(keys).size!==keys.length)throw new Error('答案包含重复编号。');
-  return validateAnswers(parsed.answers,bank);
+  if(typeof parsed.answers!=='object' || Array.isArray(parsed.answers) || Object.keys(parsed.answers).some(id=>id.startsWith('C_')))throw new Error('基础答案字段格式无效。');
+  const clarification=parsed.version==='2.0.0-exploratory'?{}:(parsed.clarifications??{});
+  if(!clarification || typeof clarification!=='object' || Array.isArray(clarification) || Object.keys(clarification).some(id=>!CLARIFICATIONS.some(q=>q.id===id)))throw new Error('澄清答案字段格式无效。');
+  return validateAnswers({...parsed.answers,...clarification},bank);
 }
 
 export function score(answers, bank) {
@@ -83,7 +87,7 @@ export function score(answers, bank) {
     pairs.push({theme:a.theme,ids:[a.id,b.id],status:!complete?'信息不足':a.choice===b.choice?'两种条件下选择相同':'条件变化后选择不同'});
   }
   const feedback = bank.feedback.map(f => ({id:f.id,question:f.text,answer:answers[f.id]??null,text:f.options[answers[f.id]]??null}));
-  return {version:bank.version,validated:false,dimensions,profiles,scenarios,scenario_pairs:pairs,feedback,scored_answers:dimensions.reduce((sum,d)=>sum+d.base_answered,0),supplemental_answers:dimensions.reduce((sum,d)=>sum+d.supplemental_answered,0),supplemental_offered:activeExtras.size,adaptive:plan};
+  return {version:bank.version,clarifications:Object.fromEntries(CLARIFICATIONS.filter(q=>answers[q.id]!=null).map(q=>[q.id,answers[q.id]])),validated:false,dimensions,profiles,scenarios,scenario_pairs:pairs,feedback,scored_answers:dimensions.reduce((sum,d)=>sum+d.base_answered,0),supplemental_answers:dimensions.reduce((sum,d)=>sum+d.supplemental_answered,0),supplemental_offered:activeExtras.size,adaptive:plan};
 }
 
 export function describeDimension(d) {
