@@ -18,7 +18,7 @@ v2相对v1改写了题意，使用独立存储键和带版本的答案文件。v
 - `python3 scripts/revise-bank.py`：从已审阅的文字源重建v2题库。
 - `python3 scripts/build-docs.py`：重建HTML文档和下载包；需要Python Markdown包（仅构建时使用，网页运行不需要依赖）。
 
-正式题库为data.json；补充规则为adaptive.mjs；计分为core.mjs；单一总结为ideology.mjs。修改题目或规则需要升版本并验证。更多说明见[计分及加题规则](docs/计分与解释规范.html)和[归纳方法](docs/最贴近意识形态规则.html)。
+正式题库为data.json；补充规则为adaptive.mjs；计分为core.mjs；单一总结为ideology.mjs；前端视图与交互拆分为app.js与ui/*.mjs，支持三视角十维雷达图、24种参考画像图谱弹窗、各维度逐题作答明细与跳转修改、键盘快捷作答、浅色/深色外观切换、URL Hash视图导航及未保存离开提醒。修改题目或规则需要升版本并验证。更多说明见[计分及加题规则](docs/计分与解释规范.html)和[归纳方法](docs/最贴近意识形态规则.html)。
 
 
 ## v2.1：澄清中间位置

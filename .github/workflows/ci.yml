@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run unit and consistency tests
+        run: node --test tests/*.test.mjs
+      - name: Run browser E2E smoke test
+        run: |
+          npm install --no-save playwright
+          npx playwright install chromium
+          node scripts/e2e-smoke.mjs

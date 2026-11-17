@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {readFileSync,existsSync} from 'node:fs';
+import {readFileSync,existsSync,readdirSync} from 'node:fs';
+import {inflateRawSync} from 'node:zlib';
 import {score,parseAnswers,validateAnswers,exportAnswers,markdownReport} from '../core.mjs';
 import {adaptivePlan,activeQuestionIds,createPages} from '../adaptive.mjs';
 import {closestIdeology,IDEOLOGIES} from '../ideology.mjs';
@@ -184,4 +185,35 @@ test('catalog expansion preserves original reference coordinates and distances',
   const before=score(answers,bank),c=closestIdeology(before);assert.equal(c.id,'eco-socialist');assert.equal(c.distance,0);
   // Concrete neighboring answer: one moderately changed item still matches the new profile.
   answers.D1_01=4;assert.equal(closestIdeology(score(answers,bank)).id,'eco-socialist');
+});
+
+test('UI modules avoid raw Markdown links, inline style attributes, and stay synced with zip bundle',()=>{
+  const uiFiles=['../index.html','../app.js',...readdirSync(new URL('../ui/',import.meta.url)).filter(f=>f.endsWith('.mjs')).map(f=>`../ui/${f}`)];
+  for(const rel of uiFiles){
+    const text=readFileSync(new URL(rel,import.meta.url),'utf8');
+    assert.doesNotMatch(text,/href="[^"]+\.md"/,rel);
+    assert.doesNotMatch(text,/\sstyle="/,rel);
+  }
+  const zip=readFileSync(new URL('../questionnaire-v2.zip',import.meta.url));
+  const entries=new Map();
+  for(let i=zip.length-22;i>=0;i--){
+    if(zip.readUInt32LE(i)===0x06054b50){
+      let off=zip.readUInt32LE(i+16), count=zip.readUInt16LE(i+10);
+      for(let n=0;n<count;n++){
+        assert.equal(zip.readUInt32LE(off),0x02014b50);
+        const method=zip.readUInt16LE(off+10), csize=zip.readUInt32LE(off+20);
+        const nlen=zip.readUInt16LE(off+28), elen=zip.readUInt16LE(off+30), clen=zip.readUInt16LE(off+32);
+        const lhoff=zip.readUInt32LE(off+42);
+        const name=zip.subarray(off+46,off+46+nlen).toString('utf8');
+        const ln=zip.readUInt16LE(lhoff+26), le=zip.readUInt16LE(lhoff+28);
+        const raw=zip.subarray(lhoff+30+ln+le,lhoff+30+ln+le+csize);
+        entries.set(name,method===8?inflateRawSync(raw):raw);
+        off+=46+nlen+elen+clen;
+      }
+      break;
+    }
+  }
+  for(const file of ['styles.css','data.json','core.mjs','adaptive.mjs','ideology.mjs','ideology-profiles.mjs','clarification.mjs','flow.mjs']){
+    assert.deepEqual(entries.get(file),readFileSync(new URL(`../${file}`,import.meta.url)),`${file} in questionnaire-v2.zip`);
+  }
 });
