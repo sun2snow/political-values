@@ -98,6 +98,9 @@ try{
   assert.match(await page.textContent('#ideology-heading'),/暂不能确定最贴近的意识形态/);
 
   await page.reload({waitUntil:'networkidle'});
+  assert.equal(await page.evaluate(()=>location.hash),'#report');
+  assert.match(await page.textContent('#ideology-heading'),/暂不能确定最贴近的意识形态/);
+  await page.goto(`http://127.0.0.1:${port}/`,{waitUntil:'networkidle'});
   assert.match(await page.textContent('.resume-card'),/80 \/ 106/);
 
   // Mobile 390x844 overflow check
