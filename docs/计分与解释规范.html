@@ -25,7 +25,7 @@
 <h2>旧版答案怎样处理</h2>
 <p>相对v1，v2使用单独的本地进度。v1进度不自动搬到新版，也不会被新版覆盖。v1答案文件与没有版本的答案对象，请到<a href="../legacy/v1/">旧版问卷</a>使用。</p>
 <p>新版导出的JSON包含format、version、answers和clarifications。支持当前v2.1及v2.0答案文件。核心题和补充题接受整数1—5、U、Q或null；情境题接受A/B/C/U或null；反馈题接受整数1—5或null。未知编号、错误类型、重复编号及不符的版本会被拒绝。</p>
-<p><a href="最贴近意识形态规则.html">查看最贴近意识形态的方法与12种参考画像</a></p>
+<p><a href="最贴近意识形态规则.html">查看最贴近意识形态的方法与24种参考画像</a></p>
 <h2>v2.1澄清与兼容</h2>
 <p>额外10道澄清题不计分。只有初步最近画像为中间主义时使用，完整阈值见<a href="最贴近意识形态规则.html">归纳方法</a>。最多96+40+10=146题。</p>
 <p>导出格式仍为 <code>political-values-answers</code>，版本为 <code>2.1.0-exploratory</code>；<code>answers</code> 保存基础、补充、情境与反馈答案，独立的 <code>clarifications</code> 对象保存 <code>C_D1</code>—<code>C_D10</code>，取值见<a href="澄清题.html">澄清题</a>，空值或缺失表示跳过。导入v2.0文件时保留原答案，澄清题留空；v1继续使用旧入口。当前浏览器v2进度原地兼容，澄清答案只在主动勾选保存后保存在设备中。</p></main><footer class="site-footer">探索性问卷 · 尚未实证校准</footer></body></html>

@@ -157,3 +157,31 @@ test('clarification pages are conditional and inactive answers survive reactivat
   Object.assign(answers,uniform(0));assert.equal(questionnairePages(answers,bank).length,14);
   assert.equal(closestIdeology(score(answers,bank)).clarification.counts.compromise,1);
 });
+
+test('expanded catalog has distinct, complete profiles and synchronized readable docs',()=>{
+  assert.equal(IDEOLOGIES.length,24);
+  assert.equal(new Set(IDEOLOGIES.map(p=>p.id)).size,24);
+  assert.equal(new Set(IDEOLOGIES.map(p=>p.name)).size,24);
+  assert.equal(new Set(IDEOLOGIES.map(p=>JSON.stringify(p.point))).size,24);
+  const doc=readFileSync(new URL('../docs/最贴近意识形态规则.html',import.meta.url),'utf8');
+  for(const p of IDEOLOGIES){
+    assert.equal(p.point.length,10);assert.ok(p.point.every(v=>Number.isFinite(v)&&v>=0&&v<=100));
+    assert.ok(p.family&&p.description&&p.limitation);
+    for(const text of [p.name,p.description,p.limitation])assert.ok(doc.includes(text),text);
+    const answers=Object.fromEntries(base.map(i=>[i.id,3+(p.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));
+    for(let n=1;n<=10;n++)answers[`C_D${n}`]='compromise';
+    const r=score(answers,bank),c=closestIdeology(r);
+    assert.equal(c.id,p.id);assert.equal(c.limitation,p.limitation);assert.match(c.version,/2\.2$/);
+    assert.ok(markdownReport(r).includes(p.limitation));assert.match(c.caveats.join(''),/24种/);
+  }
+  assert.doesNotMatch(doc,/12种预设|下表12种|下面12种/);
+});
+test('catalog expansion preserves original reference coordinates and distances',async()=>{
+  const {IDEOLOGIES:original}=await import('../legacy/v1/ideology.mjs');
+  for(const p of original){assert.deepEqual(IDEOLOGIES.find(x=>x.id===p.id).point,p.point);}
+  const centroid=IDEOLOGIES.find(p=>p.id==='eco-socialist');
+  const answers=Object.fromEntries(base.map(i=>[i.id,3+(centroid.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));
+  const before=score(answers,bank),c=closestIdeology(before);assert.equal(c.id,'eco-socialist');assert.equal(c.distance,0);
+  // Concrete neighboring answer: one moderately changed item still matches the new profile.
+  answers.D1_01=4;assert.equal(closestIdeology(score(answers,bank)).id,'eco-socialist');
+});

@@ -32,6 +32,17 @@ for q in b['items']:
     notes += [f'## {q["id"]} · {"基础" if q["status"]=="core" else "补充"} · {"+" if q["direction"]==1 else "−"}',q['text'],'',q.get('help',''),'',q['review_decision'],'']
 (ROOT/'docs/题库与逐题审查.md').write_text('\n'.join(notes))
 (ROOT/'docs/item-bank.json').write_text(json.dumps(b,ensure_ascii=False,indent=2)+'\n')
+# Generate both the coordinate table and all profile explanations from the runtime catalog.
+profiles=json.loads((ROOT/'ideology-profiles.mjs').read_text().split('export const IDEOLOGIES = ',1)[1].strip().removesuffix(';'))
+catalog=['| 名称 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9 | D10 |','|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+for p in profiles:catalog.append('| '+p['name']+' | '+' | '.join(map(str,p['point']))+' |')
+catalog+=['','## 全部参考画像：含义与边界','']
+for family in dict.fromkeys(p['family'] for p in profiles):
+    catalog += ['### '+family,'']
+    for p in profiles:
+        if p['family']==family:catalog += ['#### '+p['name'],'',p['description'],'','解释边界：'+p['limitation'],'']
+path=ROOT/'docs/最贴近意识形态规则.md'
+s=path.read_text();s=re.sub(r'<!-- REFERENCE_CATALOG_START -->.*?<!-- REFERENCE_CATALOG_END -->','<!-- REFERENCE_CATALOG_START -->\n'+'\n'.join(catalog)+'\n<!-- REFERENCE_CATALOG_END -->',s,flags=re.S);path.write_text(s)
 # Static HTML: no runtime Markdown dependency or unsafe HTML passthrough from visitors.
 for folder,home in [(ROOT/'docs','../'),(ROOT/'legacy/v1/docs','../')]:
     for src in folder.glob('*.md'):
@@ -47,7 +58,7 @@ p=ROOT/'legacy/v1/styles.css';s=p.read_text();marker='.method-page{';new=(ROOT/'
 if marker not in s:p.write_text(s+'\n'+tail)
 # Download contains the same v2 bank, scoring modules and readable docs as the website.
 with zipfile.ZipFile(ROOT/'questionnaire-v2.zip','w',zipfile.ZIP_DEFLATED) as z:
-    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','clarification.mjs','flow.mjs','README.md','styles.css','icon.svg','scripts/score-cli.mjs']:
+    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','ideology-profiles.mjs','clarification.mjs','flow.mjs','README.md','styles.css','icon.svg','scripts/score-cli.mjs']:
         z.write(ROOT/name,name)
     for path in (ROOT/'docs').iterdir():
         if path.is_file():z.write(path,path.relative_to(ROOT))
