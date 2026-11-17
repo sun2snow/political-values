@@ -130,4 +130,4 @@ async function init(){
     renderHome();
   }catch(err){main.innerHTML=`<div class="loading"><h1>问卷暂时无法载入</h1><p>${esc(err.message)}</p><button class="button" id="retry">重新加载</button><p><a href="docs/问卷.html">使用文字版问卷</a></p></div>`;$('#retry').onclick=()=>location.reload();}
 }
-init();
+if(window.self===window.top)init();

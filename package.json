@@ -1,0 +1,14 @@
+{
+  "name": "political-values",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node scripts/e2e-smoke.mjs",
+    "test:audit": "node --test tests/audit.browser.mjs",
+    "build": "node scripts/build-site.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.65.1"
+  }
+}

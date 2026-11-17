@@ -1,6 +1,6 @@
 import {IDEOLOGIES, CLASSIFIER_VERSION} from '../ideology.mjs';
 import {parseAnswers, score} from '../core.mjs';
-import {$, esc, KEY, applyDynamicStyles, showModal, toast} from './shared.mjs';
+import {$, esc, applyDynamicStyles, showModal, toast} from './shared.mjs';
 
 export function openOverview(ctx){
   const modal=$('#modal'), content=$('#modal-content');
@@ -95,9 +95,12 @@ export function confirmReset(ctx){
   showModal('清除本次答案',`<p>这会清除当前页面的答案及此网站在本浏览器保存的进度。已经下载的文件不会被删除。清除后无法从本页恢复。</p>
     <div class="actions"><button type="button" class="button secondary" id="backup">先导出答案</button><button type="button" class="button danger" id="confirm-reset">确认清除并重新开始</button></div>`);
   $('#backup').onclick=ctx.exportAnswers;
-  $('#confirm-reset').onclick=()=>{
-    try{localStorage.removeItem(KEY);ctx.answers={};ctx.remember=false;ctx.saveError='';ctx.page=0;ctx.radarCompareId=null;ctx.selectedDimIndex=null;modal.close();ctx.go('home');toast('本次答案和本地进度已清除。');}
-    catch{toast('无法清除本地存档，请使用浏览器的网站数据设置。');}
+  $('#confirm-reset').onclick=async()=>{
+    const button=$('#confirm-reset');button.disabled=true;
+    const pending=ctx.clearProgress();
+    modal.close();ctx.go('home');
+    const deleted=await pending;
+    toast(deleted?'本次答案和本地进度已清除。':ctx.saveError);
   };
 }
 

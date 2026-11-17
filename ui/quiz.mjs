@@ -196,8 +196,10 @@ export function renderQuiz(ctx){
 
 export function handleQuizKeydown(ctx, e){
   if(ctx.view!=='quiz' || $('#modal').open)return;
-  const tag=document.activeElement?.tagName;
-  if(['INPUT','TEXTAREA','SELECT'].includes(tag) && document.activeElement.type!=='radio')return;
+  const focus=document.activeElement;
+  if(e.isComposing||focus?.isContentEditable||!focus?.closest('#questions fieldset[data-qid]'))return;
+  const tag=focus.tagName;
+  if(['INPUT','TEXTAREA','SELECT'].includes(tag) && focus.type!=='radio')return;
   if(e.metaKey || e.ctrlKey || e.altKey)return;
   const p=ctx.pages?.[ctx.page];
   if(!p || !ctx.activeQid || !p.ids.includes(ctx.activeQid))return;

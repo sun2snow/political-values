@@ -94,7 +94,7 @@ function dimensionCardMarkup(ctx, d){
   const wOther=((d.counts.unknown+d.counts.unclear+d.counts.skipped)/tot*100).toFixed(2);
   const showBase=d.supplemental_offered && d.base_score!==null && d.score!==null && Math.abs(d.base_score-d.score)>=0.05;
 
-  return `<article class="dimension">
+  return `<article class="dimension" data-dimension-id="${esc(d.id)}">
     <div>
       <div class="dimension-head">
         <div class="dimension-title-wrap">
@@ -143,7 +143,11 @@ export function renderReport(ctx){
   const extremeCount=r.dimensions.filter(d=>d.band==='low'||d.band==='high').length;
   const mixedCount=r.dimensions.filter(d=>d.supplemental_offered>0||(d.counts.left>=2&&d.counts.right>=2)).length;
   const middleCount=r.dimensions.filter(d=>d.band==='middle').length;
-  const shownDims=filteredDimensions(ctx.reportFilter, r.dimensions);
+  const updateDimensionFilter=()=>{
+    const visible=new Set(filteredDimensions(ctx.reportFilter,r.dimensions).map(d=>d.id));
+    document.querySelectorAll('#dimensions-grid .dimension').forEach(card=>{card.hidden=!visible.has(card.dataset.dimensionId);});
+    const empty=$('#dimension-filter-empty');if(empty)empty.hidden=visible.size>0;
+  };
 
   ctx.main.innerHTML=`<div class="report">
     <p class="eyebrow">Your views, in perspective</p>
@@ -181,7 +185,8 @@ export function renderReport(ctx){
         <button type="button" class="filter-tab ${ctx.reportFilter==='mixed'?'active':''}" data-filter="mixed">双向 / 已补充 (${mixedCount})</button>
       </div>
       <div class="dimensions-grid" id="dimensions-grid">
-        ${shownDims.length?shownDims.map(d=>dimensionCardMarkup(ctx,d)).join(''):'<div class="notice-box">当前筛选条件下没有维度，请切换上方标签查看。</div>'}
+        ${r.dimensions.map(d=>dimensionCardMarkup(ctx,d)).join('')}
+        <div id="dimension-filter-empty" class="notice-box" hidden>当前筛选条件下没有维度，请切换上方标签查看。</div>
       </div>
       <p class="fine">≤35 与 ≥65 仅是首版解释阈值，未经实证校准。中间分数可能来自中立，也可能来自不同议题方向相反；小幅分差不宜作实质解释。</p>
     </section>
@@ -228,13 +233,19 @@ export function renderReport(ctx){
   </div>`;
 
   applyDynamicStyles();
+  updateDimensionFilter();
 
   const updateRadarCard=()=>{
+    const focus=document.activeElement;
+    const modeFocus=focus?.dataset.radarMode;
+    const compareFocus=focus?.id==='radar-compare';
     const card=$('#radar-card');
     const comp=IDEOLOGIES.find(p=>p.id===ctx.radarCompareId)||null;
     card.innerHTML=radarCardMarkup(r, comp, ctx.radarCompareId, ctx.radarMode);
     document.querySelectorAll('[data-compare-id]').forEach(btn=>btn.classList.toggle('active',btn.dataset.compareId===ctx.radarCompareId));
     bindRadarEvents();
+    if(modeFocus)card.querySelector(`[data-radar-mode="${modeFocus}"]`)?.focus({preventScroll:true});
+    else if(compareFocus)$('#radar-compare')?.focus({preventScroll:true});
   };
 
   const bindRadarEvents=()=>{
@@ -290,9 +301,7 @@ export function renderReport(ctx){
   document.querySelectorAll('.filter-tab').forEach(btn=>btn.addEventListener('click',()=>{
     ctx.reportFilter=btn.dataset.filter;
     document.querySelectorAll('.filter-tab').forEach(t=>t.classList.toggle('active',t.dataset.filter===ctx.reportFilter));
-    const list=filteredDimensions(ctx.reportFilter, r.dimensions);
-    $('#dimensions-grid').innerHTML=list.length?list.map(d=>dimensionCardMarkup(ctx,d)).join(''):'<div class="notice-box">当前筛选条件下没有维度，请切换上方标签查看。</div>';
-    applyDynamicStyles();
+    updateDimensionFilter();
   }));
 
   $('#dimensions-grid').addEventListener('click',e=>{

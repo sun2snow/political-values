@@ -50,7 +50,8 @@ for folder,home in [(ROOT/'docs','../'),(ROOT/'legacy/v1/docs','../')]:
         body=markdown.markdown(src.read_text(),extensions=['tables','fenced_code','sane_lists'])
         body=re.sub(r'<table>(.*?)</table>',r'<div class="table-scroll" tabindex="0" role="region" aria-label="可横向滚动的参考表格"><table>\1</table></div>',body,flags=re.S)
         body=re.sub(r'href="([^"#]+)\.md([#][^"]*)?"',lambda m:f'href="{m[1]}.html{m[2] or ""}"',body)
-        doc=f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · 立场之间</title><link rel="stylesheet" href="{home}styles.css"><link rel="icon" href="{home}icon.svg"><meta name="description" content="立场之间的问卷方法、计分和思想传统参考说明"></head><body><a class="skip" href="#document">跳到正文</a><header class="site-header"><a class="brand" href="{home}"><span class="brand-mark">↔</span>立场之间</a><a href="{home}">返回问卷</a></header><main class="method-page" id="document"><nav class="method-nav" aria-label="方法文档"><a href="计分与解释规范.html">计分与补充题</a><a href="最贴近意识形态规则.html">思想传统参考</a><a href="真人试测与校准方案.html">试测计划</a></nav>{body}</main><footer class="site-footer">探索性问卷 · 尚未实证校准</footer></body></html>'''
+        security_src='../security.js' if folder==ROOT/'docs' else '../../../security.js'
+        doc=f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} · 立场之间</title><script src="{security_src}"></script><link rel="stylesheet" href="{home}styles.css"><link rel="icon" href="{home}icon.svg"><meta name="description" content="立场之间的问卷方法、计分和思想传统参考说明"></head><body><a class="skip" href="#document">跳到正文</a><header class="site-header"><a class="brand" href="{home}"><span class="brand-mark">↔</span>立场之间</a><a href="{home}">返回问卷</a></header><main class="method-page" id="document"><nav class="method-nav" aria-label="方法文档"><a href="计分与解释规范.html">计分与补充题</a><a href="最贴近意识形态规则.html">思想传统参考</a><a href="真人试测与校准方案.html">试测计划</a></nav>{body}</main><footer class="site-footer">探索性问卷 · 尚未实证校准</footer></body></html>'''
         src.with_suffix('.html').write_text(doc)
 # Old entry points also receive readable pages, without changing their questions or storage.
 p=ROOT/'legacy/v1/app.js';s=p.read_text();s=re.sub(r'href="(docs/[^"\n]+)\.md"',r'href="\1.html"',s);p.write_text(s)
@@ -58,7 +59,7 @@ p=ROOT/'legacy/v1/styles.css';s=p.read_text();marker='.method-page{';new=(ROOT/'
 if marker not in s:p.write_text(s+'\n'+tail)
 # Download contains the same v2 bank, scoring modules and readable docs as the website.
 with zipfile.ZipFile(ROOT/'questionnaire-v2.zip','w',zipfile.ZIP_DEFLATED) as z:
-    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','ideology-profiles.mjs','clarification.mjs','flow.mjs','README.md','styles.css','icon.svg','scripts/score-cli.mjs']:
+    for name in ['data.json','core.mjs','adaptive.mjs','ideology.mjs','ideology-profiles.mjs','clarification.mjs','flow.mjs','README.md','styles.css','icon.svg','security.js','scripts/score-cli.mjs']:
         z.write(ROOT/name,name)
     for path in (ROOT/'docs').iterdir():
         if path.is_file():z.write(path,path.relative_to(ROOT))

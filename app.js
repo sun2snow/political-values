@@ -1,7 +1,8 @@
 import {CLARIFICATIONS} from './clarification.mjs';
 import {questionnairePages} from './flow.mjs';
 import {validateAnswers, exportAnswers as answerEnvelope} from './core.mjs';
-import {$, esc, KEY, toast, download} from './ui/shared.mjs';
+import {$, esc, toast, download} from './ui/shared.mjs';
+import {ProgressStore} from './ui/storage.mjs';
 import {renderHome} from './ui/home.mjs';
 import {renderQuiz, handleQuizKeydown} from './ui/quiz.mjs';
 import {renderReport} from './ui/report.mjs';
@@ -9,6 +10,7 @@ import {openOverview, openProfilesModal, openImport, openAbout, confirmReport, c
 
 const main=$('#main');
 let suppressHashSync=false;
+let store;
 
 const ctx={
   main,
@@ -41,18 +43,23 @@ const ctx={
 
   persist(){
     if(!ctx.remember)return;
-    try{localStorage.setItem(KEY,JSON.stringify({version:ctx.bank.version,answers:ctx.answers,page:ctx.page,view:ctx.view}));ctx.saveError='';}
-    catch{ctx.saveError='此浏览器无法保存进度。请导出答案，关闭页面前自行保留。';toast(ctx.saveError);}
+    return store.save({version:ctx.bank.version,answers:ctx.answers,page:ctx.page,view:ctx.view});
   },
 
-  saveStatus(){return ctx.saveError || (ctx.remember?'进度保存在此浏览器的本地存储中':'当前仅在本页保留，刷新后会丢失');},
+  saveStatus(){return ctx.saveError || (ctx.remember?(store.isSaved(ctx.answers)?'进度保存在此浏览器的本地存储中':'正在保存，请勿关闭页面…'):'当前仅在本页保留，刷新后会丢失');},
 
-  setRemember(value){
+  async setRemember(value){
     ctx.remember=value;
-    if(value)ctx.persist();
-    else{try{localStorage.removeItem(KEY);ctx.saveError='';}catch{ctx.saveError='无法移除本地存档，请使用浏览器网站数据设置清除。';toast(ctx.saveError);}}
-    const status=$('#save-status');
-    if(status){status.textContent=ctx.saveStatus();status.className=`fine ${ctx.saveError?'save-warning':''}`;}
+    if(value){store.enabled=true;store.error='';await ctx.persist();}
+    else await store.clear();
+    updateSaveUI();
+  },
+
+  async clearProgress(){
+    // Always clear memory, even if the browser refuses storage operations.
+    ctx.answers={};ctx.remember=false;ctx.page=0;ctx.activeQid=null;
+    ctx.radarCompareId=null;ctx.selectedDimIndex=null;
+    return store.clear();
   },
 
   bindRemember(){$('#remember')?.addEventListener('change',e=>ctx.setRemember(e.target.checked));},
@@ -82,6 +89,14 @@ const ctx={
   confirmReset:()=>confirmReset(ctx),
 };
 
+function updateSaveUI(){
+  ctx.remember=store.enabled;ctx.saveError=store.error;
+  const checkbox=$('#remember');if(checkbox)checkbox.checked=ctx.remember;
+  const status=$('#save-status');
+  if(status){status.textContent=ctx.saveStatus();status.className=`fine ${ctx.saveError?'save-warning':''}`;}
+}
+store=new ProgressStore({onChange:updateSaveUI});
+
 function render(){
   if(ctx.view==='quiz')renderQuiz(ctx);
   else if(ctx.view==='report')renderReport(ctx);
@@ -90,6 +105,8 @@ function render(){
 
 function applyHashRoute(){
   if(!ctx.bank)return;
+  // Document anchors are not application routes.
+  if(location.hash==='#main')return;
   const modal=$('#modal');
   if(modal?.open)modal.close();
   const hash=location.hash.replace(/^#\/?/,'');
@@ -133,7 +150,7 @@ async function init(){
     ctx.questions=Object.fromEntries([...ctx.bank.items,...ctx.bank.scenarios,...ctx.bank.feedback,...CLARIFICATIONS].map(q=>[q.id,q]));
     ctx.syncPages();
     try{
-      const raw=localStorage.getItem(KEY);
+      const raw=store.load();
       if(raw){
         const saved=JSON.parse(raw);
         if(![ctx.bank.version,'2.0.0-exploratory'].includes(saved.version))throw new Error('version');
@@ -141,9 +158,9 @@ async function init(){
         ctx.answers=Object.fromEntries(Object.entries(saved.answers).filter(([,v])=>v!==null));
         ctx.syncPages();
         ctx.page=Number.isInteger(saved.page)&&saved.page>=0&&saved.page<ctx.pages.length?saved.page:0;
-        ctx.remember=true;
+        store.accept(ctx.answers);ctx.remember=true;
       }
-    }catch{ctx.saveError='本地进度无法读取或版本不匹配。旧数据未自动删除，请先备份已有答案。';}
+    }catch{store.error=ctx.saveError='本地进度无法读取或版本不匹配。旧数据未自动删除，请先备份已有答案。';}
     try{ctx.legacyAvailable=!!localStorage.getItem('political-values-v1-local');}catch{}
 
     $('#about-button').onclick=()=>openAbout(ctx);
@@ -153,7 +170,17 @@ async function init(){
     document.addEventListener('keydown',e=>handleQuizKeydown(ctx,e));
     window.addEventListener('hashchange',applyHashRoute);
     window.addEventListener('beforeunload',e=>{
-      if(ctx.count()>0 && !ctx.remember){e.preventDefault();e.returnValue='';}
+      if(Object.values(ctx.answers).some(v=>v!=null)&&!store.isSaved(ctx.answers)){e.preventDefault();e.returnValue='';}
+    });
+    window.addEventListener('storage',e=>{
+      try{
+        const change=store.externalChange(e);
+        if(change==='deleted'){
+          ctx.answers={};ctx.activeQid=null;ctx.radarCompareId=null;ctx.selectedDimIndex=null;
+          ctx.syncPages();render();
+        }
+        if(change)toast(ctx.saveError);
+      }catch{store.fail('无法核对本地存档，已停止自动保存。请导出本页答案。');}
     });
 
     if(location.hash && location.hash!=='#home')applyHashRoute();
@@ -163,4 +190,4 @@ async function init(){
     $('#retry').onclick=()=>location.reload();
   }
 }
-init();
+if(window.self===window.top)init();
