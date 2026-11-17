@@ -13,11 +13,26 @@
 </head>
 <body>
   <a class="skip" href="#main">跳到主要内容</a>
-  <header class="site-header"><a href="./" class="brand" aria-label="立场之间首页"><span class="brand-mark" aria-hidden="true">↔</span>立场之间<span class="brand-en">VALUES / VIEWS</span></a><button id="about-button" class="text-button">方法与隐私</button></header>
+  <header class="site-header">
+    <a href="./" class="brand" aria-label="立场之间首页">
+      <span class="brand-mark" aria-hidden="true">↔</span>
+      <span class="brand-text">立场之间<span class="brand-en">VALUES / VIEWS</span></span>
+    </a>
+    <nav class="header-nav" aria-label="站点导航">
+      <button id="profiles-button" class="text-button" type="button">24种参考画像</button>
+      <button id="about-button" class="text-button" type="button">方法与隐私</button>
+    </nav>
+  </header>
   <main id="main" tabindex="-1"><div class="loading" role="status">正在载入问卷…</div></main>
   <div id="notice" class="toast" role="status" aria-live="polite"></div>
-  <footer class="site-footer"><span>没有标准立场，只有值得理解的取舍。</span><span>探索版 v2.1 · 非诊断工具</span></footer>
-  <dialog id="modal" aria-labelledby="modal-title"><div id="modal-content"></div><form method="dialog"><button class="button secondary">关闭</button></form></dialog>
+  <footer class="site-footer">
+    <span>没有标准立场，只有值得理解的取舍。</span>
+    <span>探索版 v2.1 · 纯本地计分 · 非诊断工具</span>
+  </footer>
+  <dialog id="modal" aria-labelledby="modal-title">
+    <div id="modal-content"></div>
+    <form method="dialog" class="modal-close-bar"><button class="button secondary">关闭</button></form>
+  </dialog>
   <noscript><p class="noscript">本测试需要 JavaScript 在本地计算结果。你也可以下载 <a href="docs/问卷.html">文字问卷</a> 和 <a href="docs/计分与解释规范.html">计分说明</a>。</p></noscript>
 </body>
 </html>
