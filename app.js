@@ -121,7 +121,7 @@ async function init(){
     questions=Object.fromEntries([...bank.items,...bank.scenarios,...bank.feedback].map(q=>[q.id,q]));
     pages=[];
     for(let i=0;i<8;i++)pages.push({type:'core',short:`核心 ${i*10+1}–${i*10+10}`,title:`价值与政策 · 第 ${Math.floor(i/2)+1} 组`,description:'选择你对每个主张的认可程度。3表示既不赞同也不反对；不确定时请选择“无法判断”，不必勉强中立。',ids:bank.administration_order.slice(i*10,i*10+10)});
-    for(let i=0;i<3;i++)pages.push({type:'scenario',short:`情境 ${i*4+1}–${i*4+4}`,title:`把观点放进情境 · ${i+1} / 3`,description:'接受题目给定条件，选择更接近你的方案。各选项都有代价，C不是默认最佳答案；条件改变时可以改变选择。',ids:bank.scenarios.slice(i*4,i*4+4).map(q=>q.id)});
+    for(let i=0;i<3;i++)pages.push({type:'scenario',short:`情境 ${i*4+1}–${i*4+4}`,title:`把观点放进情境 · ${i+1} / 3`,description:'接受题目给定条件，选择更接近你的方案。各选项都有代价；条件改变时可以改变选择。',ids:bank.scenarios.slice(i*4,i*4+4).map(q=>q.id)});
     pages.push({type:'feedback',short:'作答反馈',title:'最后，回看这次作答',description:'以下4题不改变政治立场分数，仅帮助理解本次作答状态；可以跳过。',ids:bank.feedback.map(q=>q.id)});
     try{const raw=localStorage.getItem(KEY);if(raw){const saved=JSON.parse(raw);if(saved.version!==bank.version)throw new Error('version');validateAnswers(saved.answers,bank);answers=Object.fromEntries(Object.entries(saved.answers).filter(([,v])=>v!==null));page=Number.isInteger(saved.page)&&saved.page>=0&&saved.page<pages.length?saved.page:0;remember=true;}}
     catch{saveError='本地进度无法读取或版本不匹配。旧数据未自动删除，请先备份已有答案。';}
