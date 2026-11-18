@@ -4,3 +4,19 @@ node_modules/
 _site/
 test-results/
 playwright-report/
+
+# Local settings and private answer exports
+.env
+.env.local
+.env.*.local
+/political-values-*-answers.json
+/political-values-original.txt
+
+# Retired website assets (retain local backups, not new commits)
+/questionnaire-v1.zip
+/legacy/v1/questionnaire-v1.zip
+/legacy/v2.1/questionnaire-v2.1.zip
+/legacy/v1/app.js
+/legacy/v1/styles.css
+/legacy/v1/icon.svg
+/legacy/v1/docs/*.html
