@@ -1,0 +1,344 @@
+{
+  "candidates": [
+    "gpt-5.6-luna",
+    "gemini-3.5-flash-lite",
+    "grok-4.7-build-fast"
+  ],
+  "sources": [
+    [
+      "Stanford Encyclopedia of Philosophy: Liberalism",
+      "https://plato.stanford.edu/entries/liberalism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Libertarianism",
+      "https://plato.stanford.edu/entries/libertarianism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Socialism（包括市场社会主义）",
+      "https://plato.stanford.edu/entries/socialism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Conservatism",
+      "https://plato.stanford.edu/entries/conservatism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Communitarianism",
+      "https://plato.stanford.edu/entries/communitarianism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Nationalism",
+      "https://plato.stanford.edu/entries/nationalism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Democracy",
+      "https://plato.stanford.edu/entries/democracy/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Cosmopolitanism",
+      "https://plato.stanford.edu/entries/cosmopolitanism/"
+    ],
+    [
+      "Global Young Greens: Global Greens Charter",
+      "https://globalyounggreens.org/the-global-greens-charter/"
+    ],
+    [
+      "Capitalism Nature Socialism: An Ecosocialist Manifesto",
+      "https://cnsjournal.org/an-ecosocialist-manifesto/"
+    ],
+    [
+      "World Bank: The East Asian Miracle",
+      "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/975081468244550798"
+    ]
+  ],
+  "personas": {
+    "social-liberal": [
+      "相信言论、结社、个人选择和多元生活方式应受宪政保护。承认竞争市场和私人企业的作用，但贫困和歧视会让名义上的自由失去实际意义，因此支持公共教育、社会保险和反歧视制度。国家有理由纠正市场失灵，但并不应普遍接管企业。",
+      {
+        "market": 4,
+        "civil": 5,
+        "ownership": 2,
+        "pluralism": 5
+      }
+    ],
+    "social-democratic": [
+      "保留私营企业与竞争，用累进税、普惠公共服务、集体谈判和社会保险降低不平等。改革通过选举和议会推进；工作场所中的工会权利与公共监督很重要。保护公民自由，愿意参与跨国合作。不同于以社会所有制普遍替换私有制。",
+      {
+        "redistribution": 5,
+        "ownership": 2,
+        "civil": 5,
+        "global": 4
+      }
+    ],
+    "democratic-socialist": [
+      "仅靠事后再分配不足以矫正资本集中；重要生产资产应转向民主管理的社会所有、合作社或公共机构。支持强公共服务和劳动者参与。经济民主必须伴随多党竞争、独立监督和政治自由，不用一党统治取代民主。",
+      {
+        "redistribution": 5,
+        "ownership": 5,
+        "civil": 5,
+        "direct": 4
+      }
+    ],
+    "state-socialist": [
+      "在这一路线中，国家主导关键产业、投资和分配，用公有制和计划保障基本需要、缩小差距。统一协调和政府执行能力优先于分散否决；不把竞争市场或地方自治视作主要组织机制。",
+      {
+        "redistribution": 5,
+        "ownership": 5,
+        "market": 1,
+        "local": 1,
+        "industry": 5
+      }
+    ],
+    "classical-liberal": [
+      "个人自由、私人财产权、契约、公平竞争和法治是基本原则。政府的角色应受到宪法限制，通常不应替市场决定产量和投资。保护异议和监督，常由代议制度作决定；不会为所有问题持续举行全民表决。可以接受有限的公共职能。",
+      {
+        "market": 5,
+        "ownership": 1,
+        "civil": 5,
+        "checks": 5,
+        "direct": 2
+      }
+    ],
+    "libertarian": [
+      "采用市场自由意志主义取向。把不受强制、私人财产权、志愿交易以及生活方式的个人选择放在首位。国家只做很有限的事，反对大规模再分配、经济规划和不必要的军事介入。保护异议与私人生活，不因多数人的道德偏好而例外。",
+      {
+        "redistribution": 1,
+        "market": 5,
+        "ownership": 1,
+        "civil": 5,
+        "restraint": 5
+      }
+    ],
+    "liberal-conservative": [
+      "支持市场经济、私人财产、法治和限制行政权力的宪政安排。相信家庭、历史形成的制度和共同习俗有价值，改革应谨慎渐进。偏向通过有制衡的代议制度办事，不热衷持续的直接表决。",
+      {
+        "market": 5,
+        "civil": 4,
+        "checks": 5,
+        "tradition": 4,
+        "direct": 2
+      }
+    ],
+    "communitarian-conservative": [
+      "个人也负有来自家庭、社区和代际传承的责任。公共政策应培育共同生活所需的习惯；可以用社会保障保护家庭和共同体团结，而不是把一切都交给市场。对本国共同体负有优先义务，但不主张贬低不同背景的人。",
+      {
+        "redistribution": 4,
+        "tradition": 5,
+        "global": 2
+      }
+    ],
+    "national-conservative": [
+      "本国自决、文化连续性和社会秩序优先。谨慎对待限制本国选择的超国家安排，认可国内治理能力和国防威慑。经济手段服从国家和社会目标，不必一律放任或计划。此角色不代表任何国家、政党或对其他民族的态度。",
+      {
+        "tradition": 5,
+        "global": 1,
+        "restraint": 2
+      }
+    ],
+    "technocratic": [
+      "以可检验的证据、专业能力和长期绩效安排公共政策。政治过程可以确定总体目标并问责，但具体复杂决策通常授权给专业机构；反对把技术判断交给即时民意。支持以跨国合作处理复杂风险，也重视环境风险的长期评估。",
+      {
+        "experts": 5,
+        "direct": 1,
+        "global": 4,
+        "ecology": 4
+      }
+    ],
+    "green": [
+      "把生态承载力和代际责任放在中心，同时重视社会公平、基层参与、多样性、非暴力与跨国合作。追求经济活动符合生态界限，不把全面转向公有制视为绿色政治的必要条件。",
+      {
+        "ecology": 5,
+        "direct": 5,
+        "global": 4,
+        "restraint": 5,
+        "pluralism": 5
+      }
+    ],
+    "market-socialist": [
+      "接受竞争、价格和消费者选择，但希望让工人合作社、社会基金及其他社会所有形式替代私人资本控制。支持公共保障、经济民主和公民自由；国家不应给所有商品定价或给所有企业下达产量指令。",
+      {
+        "market": 4,
+        "ownership": 5,
+        "redistribution": 4,
+        "civil": 5,
+        "local": 4
+      }
+    ],
+    "libertarian-socialist": [
+      "反对资本集中也反对中央机关支配，重视劳动者自主管理、合作社、地方自治及其联邦式合作。希望以平等、公民自由和直接参与取代等级支配。支持共享资源和普遍保障，但不以国家集权实现。",
+      {
+        "ownership": 5,
+        "local": 5,
+        "civil": 5,
+        "direct": 5,
+        "checks": 5
+      }
+    ],
+    "eco-socialist": [
+      "生态破坏与追求资本扩张、资源和权力集中有关。要在民主参与下改变所有权和生产目标，用社会所有和公共协调保证公平转型，给生产设生态上限，而不只是给污染定价。重视劳动者和社区在转型中的实际权力。",
+      {
+        "ownership": 5,
+        "ecology": 5,
+        "redistribution": 5,
+        "direct": 4,
+        "market": 2
+      }
+    ],
+    "conservative-social-democratic": [
+      "这是描述性的政策组合。赞成劳工保护、再分配和普惠福利，也支持选举和对政府权力的监督。在婚姻、家庭制度与习俗上较谨慎，倾向延续已经形成的做法。不要把这种立场解读为反对所有改革。",
+      {
+        "redistribution": 5,
+        "tradition": 4,
+        "checks": 4
+      }
+    ],
+    "paleoconservative": [
+      "采用偏市场、主张对外克制的一支传统保守取向。重视祖辈传下来的制度、生活方式、地域共同体和本国自主。对大规模行政干预与海外军事干预都谨慎；支持维持防御能力，但反对把本国制度强加给别人。",
+      {
+        "tradition": 5,
+        "market": 4,
+        "global": 1,
+        "restraint": 5
+      }
+    ],
+    "national-liberal": [
+      "此处采用兼顾自由制度与本国自主的描述性取向。支持竞争市场、财产权、言论自由、宪政制衡，也认为本国利益、共同公民文化和可靠国防应优先。跨国合作可以有，但不应经常凌驾于本国民意。",
+      {
+        "market": 5,
+        "civil": 5,
+        "checks": 4,
+        "global": 2
+      }
+    ],
+    "green-conservative": [
+      "把土地、水、自然和地方生活当作必须交给后代的遗产。在延续传统和有约束的治理下保护自然，倾向稳定、渐进但真正有效的环境政策。不把环保等同于推翻市场或文化制度。",
+      {
+        "ecology": 5,
+        "tradition": 5,
+        "checks": 4,
+        "ownership": 2
+      }
+    ],
+    "green-liberal": [
+      "同时重视个人自由、竞争市场和保护环境。污染成本应由制造者承担，可通过环境税、交易额度、公共标准和国际协调实现。保护表达与个人选择，不要求把大部分企业改为公有。",
+      {
+        "ecology": 5,
+        "market": 4,
+        "ownership": 2,
+        "civil": 5,
+        "global": 4
+      }
+    ],
+    "developmentalist": [
+      "采用偏集中协调的一种发展型国家取向。政府以产业金融、长期投资和与企业的协调推动技术升级；私营企业仍能竞争并承担经营风险。重视本国就业和发展、行政执行能力，对会迅速牺牲收入的环境限制谨慎。",
+      {
+        "industry": 5,
+        "ownership": 2,
+        "experts": 4,
+        "ecology": 2
+      }
+    ],
+    "authoritarian-market": [
+      "这是描述性的组合：大部分日常经济由私人投资和市场竞争推动，反对大幅再分配；政治上更看重长期稳定、治安和行政权集中，对可能制约决定的制度与政治活动较不支持，文化上倾向传统。",
+      {
+        "market": 5,
+        "redistribution": 1,
+        "civil": 1,
+        "checks": 1,
+        "tradition": 4
+      }
+    ],
+    "participatory-democracy": [
+      "公共权威来自普通公民的实际参与。支持公民大会、参与式预算和其他有实权的方式；专业意见可以提供信息，却不能替代公共决定。表达自由、公开审议和独立监督是参与的前提。并不把某种企业所有制或文化政策当成必要前提。",
+      {
+        "direct": 5,
+        "experts": 1,
+        "civil": 5,
+        "checks": 5
+      }
+    ],
+    "cosmopolitan-liberal": [
+      "人人的权利和尊严不应因国籍而异。赞成文化多元、个人自由，以及能处理跨国问题的国际合作与规则；国家仍可存在。保护法治和选择自由，市场是可用的工具而非唯一价值。",
+      {
+        "civil": 5,
+        "global": 5,
+        "pluralism": 5,
+        "market": 4
+      }
+    ],
+    "centrist": [
+      "采用明确支持折中的一支中间取向，并非没有偏好。竞争市场和必要保障可以并行；安全措施应有限且有程序保护；代表与公众参与可各司其职；文化延续与个人选择、当期就业与长期环境义务也可兼顾。通常会明确支持有实质内容的折中方案，而非机械各打一板或只说视情况而定。",
+      {
+        "redistribution": 3,
+        "market": 3,
+        "direct": 3,
+        "tradition": 3,
+        "compromise": 5
+      }
+    ]
+  },
+  "probes": [
+    [
+      "redistribution",
+      "高收入者应承担更高税负，以资助面向所有人的医疗、教育和基本生活保障。"
+    ],
+    [
+      "market",
+      "除非确有公共利益理由，普通商品的产量、价格和投资方向应该由竞争市场决定。"
+    ],
+    [
+      "ownership",
+      "大型企业的所有权和最终控制权应逐步从私人资本转到劳动者或公共机构。"
+    ],
+    [
+      "civil",
+      "即使会降低应对安全风险的速度，也应保护和平异议，并让独立法院审查政府限制。"
+    ],
+    [
+      "checks",
+      "即使政策执行更慢，也应让法院和独立机构能阻止行政当局越权。"
+    ],
+    [
+      "direct",
+      "应让公民大会、公投或参与式预算对不少公共事务拥有实际决定权。"
+    ],
+    [
+      "tradition",
+      "改变家庭制度和公共礼仪时，应优先维护沿袭已久的做法，即使部分人希望自行选择。"
+    ],
+    [
+      "global",
+      "在共同问题上，本国应该接受对各国一体适用、也会约束本国的国际规则。"
+    ],
+    [
+      "ecology",
+      "即便短期收入因此受损，也应遵守保护后代和生态系统所需的长期上限。"
+    ],
+    [
+      "experts",
+      "专业性很强的公共政策，应由受授权的专家而不是普通公民直接决定。"
+    ],
+    [
+      "local",
+      "许多经济和公共事务应交给自治的地方共同体与劳动者组织，而不是中央机关。"
+    ],
+    [
+      "compromise",
+      "当两边都有实际理由时，即使纯粹方案更符合一方原则，我通常也支持能兼顾两边的政策方案。"
+    ],
+    [
+      "restraint",
+      "即使本国具备军事优势，也应优先采用外交和非军事手段处理大部分对外争端。"
+    ],
+    [
+      "pluralism",
+      "不同文化和生活方式应有平等的公共参与空间，不必以接受占主导地位的传统为前提。"
+    ],
+    [
+      "industry",
+      "政府应主动协调长期投资，把公共资源集中到关系本国发展的重点产业。"
+    ]
+  ],
+  "method": "Probe MAE on prespecified independent anchors; lowest error wins per role, stable candidate-order tiebreak. Every stage and role starts fresh. No score keys or reference coordinates in inference. Three unprompted control runs.",
+  "baseRequestItems": 96,
+  "bankVersion": "2.2.0-exploratory"
+}

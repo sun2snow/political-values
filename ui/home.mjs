@@ -18,7 +18,7 @@ export function renderHome(ctx){
   const answered=ctx.count(), all=ctx.total(), pct=all?Math.round(answered/all*100):0;
   ctx.main.innerHTML=`<section class="hero">
     <div>
-      <p class="eyebrow">A map of your political values · 探索版 v2.1</p>
+      <p class="eyebrow">A map of your political values · 探索版 ${ctx.versionLabel}</p>
       <h1>理解立场，<br>从看见<em>取舍</em>开始。</h1>
       <p class="lead">关于公平、自由、传统与共同生活，你如何作出选择？从十个独立视角探索政治价值，认识那些无法被一个简单标签概括的自己。</p>
       <div class="metrics">
@@ -39,7 +39,6 @@ export function renderHome(ctx){
         <button class="button secondary" id="import-home">导入已有答案</button>
       </div>`}
       ${rememberMarkup(ctx.remember, ctx.saveStatus(), ctx.saveError)}
-      ${ctx.legacyAvailable?'<p class="notice-box">检测到旧版（v1）进度。新版题目已改写，旧答案不会自动套用。<a href="legacy/v1/">继续旧版问卷 ↗</a></p>':''}
     </div>
     ${homeGraphic()}
   </section>
@@ -51,11 +50,11 @@ export function renderHome(ctx){
   <div class="load-tools">
     <div class="notice-box">请按自己的真实看法作答，没有标准答案。所有题目均可跳题、暂停或修改。“中立”与“无法判断”是不同的选择。基础题完成后，如果某个方面的选择分散度较大，会增加4道可跳过的补充题；初步画像接近中间时，另有10道可跳过的澄清题，不改变分数。</div>
     <div class="tool-links">
-      <a href="questionnaire-v2.zip" download>下载新版问卷与方法文档 ↗</a>
+      <a href="questionnaire-v2.zip" download>下载 ${ctx.versionLabel} 问卷与方法文档 ↗</a>
       <span class="sep" aria-hidden="true">·</span>
       <button type="button" class="text-button" id="home-profiles-btn">浏览 24 种参考画像</button>
       <span class="sep" aria-hidden="true">·</span>
-      <a href="legacy/v1/">使用旧版问卷 (v1)</a>
+      <a href="legacy/v1/">旧版停用与存档说明</a>
     </div>
   </div>`;
   applyDynamicStyles();

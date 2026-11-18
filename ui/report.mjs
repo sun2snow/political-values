@@ -1,11 +1,18 @@
-import {closestIdeology, clarificationSummary, IDEOLOGIES} from '../ideology.mjs';
+import {ideologyPresentation, clarificationSummary, IDEOLOGIES} from '../ideology.mjs';
 import {score, describeDimension, markdownReport} from '../core.mjs';
 import {$, esc, coreOptions, applyDynamicStyles, download, rememberMarkup} from './shared.mjs';
-import {RADAR_MODES, radarCardMarkup, rankedIdeologies} from './radar.mjs';
+import {RADAR_MODES, radarCardMarkup} from './radar.mjs';
 import {scrollToQuestion} from './quiz.mjs';
 
-function closestMarkup(ctx, result, ranked){
-  const c=closestIdeology(result);
+function candidateMarkup(p,selected){
+  const active=selected===p.id;
+  return `<article class="candidate-card"><div class="candidate-heading"><h3>${esc(p.name)}</h3><span>距离 ${p.distance.toFixed(2)}</span></div>
+    <p>${esc(p.description)}</p><p class="fine">解释边界：${esc(p.limitation)}</p>
+    <button type="button" class="nearest-chip ${active?'active':''}" data-compare-id="${esc(p.id)}" aria-label="在雷达图对照${esc(p.name)}" aria-pressed="${active}">在雷达图对照</button></article>`;
+}
+
+function closestMarkup(result, display, selected){
+  const {conclusion:c,ranked}=display;
   if(c.status==='insufficient')return `<section class="ideology-summary" aria-labelledby="ideology-heading">
     <div><p class="eyebrow">YOUR CLOSEST TRADITION</p><h2 id="ideology-heading">最贴近的意识形态</h2><p>${esc(c.explanation)}</p></div>
     <p class="fine">请先完成每个维度至少6道有效基础题，系统才能生成十维距离对照。</p>
@@ -13,9 +20,28 @@ function closestMarkup(ctx, result, ranked){
 
   const clarificationHtml=clarificationSummary(result,c);
   const top3Html=ranked.length?`<div class="nearest-strip">
-    <span class="nearest-strip-label">十维几何距离最近的参考画像（点击可在右图对照）：</span>
-    <div class="nearest-chips">${ranked.slice(0,3).map((item,idx)=>`<button type="button" class="nearest-chip ${ctx.radarCompareId===item.id?'active':''}" data-compare-id="${item.id}">${idx+1}. ${esc(item.name)} <small>距离 ${item.distance.toFixed(1)}</small></button>`).join('')}</div>
+    <span class="nearest-strip-label">十维几何距离最近的参考画像（可选作雷达图对照）：</span>
+    <div class="nearest-chips">${ranked.slice(0,3).map((item,idx)=>`<button type="button" class="nearest-chip ${selected===item.id?'active':''}" data-compare-id="${esc(item.id)}" aria-pressed="${selected===item.id}">${idx+1}. ${esc(item.name)} <small>距离 ${item.distance.toFixed(1)}</small></button>`).join('')}</div>
   </div>`:'';
+
+  if(display.heading)return `<section class="ideology-summary" aria-labelledby="ideology-heading">
+    <div>
+      <span class="pill amber">参考对照</span>
+      <h2 id="ideology-heading">${esc(display.heading)}</h2>
+      <p>${esc(display.explanation)}</p>
+      <div class="candidate-list">${display.candidates.map(p=>candidateMarkup(p,selected)).join('')}</div>
+      ${display.additional.length?`<details><summary>还有 ${display.additional.length} 个距离接近的参考画像</summary><div class="candidate-list">${display.additional.map(p=>candidateMarkup(p,selected)).join('')}</div></details>`:''}
+      <h3 class="candidate-differences">候选画像主要分歧</h3>
+      <p class="fine">下表只列上方候选参考点差异最大的维度。距离不是匹配概率。</p>
+      <div class="table-scroll candidate-table" tabindex="0" role="region" aria-label="候选画像的参考分数对照">
+        <table class="compare-table" aria-label="候选画像主要分歧"><thead><tr><th scope="col">维度</th><th scope="col">你的分数</th>${display.candidates.map(p=>`<th scope="col">${esc(p.name)}</th>`).join('')}</tr></thead>
+          <tbody>${display.differences.map(d=>`<tr><th scope="row">${esc(d.name)}</th><td>${d.score.toFixed(1)}</td>${d.points.map(p=>`<td>${p}</td>`).join('')}</tr>`).join('')}</tbody></table>
+      </div>
+      ${clarificationHtml.length?`<details><summary>澄清题记录（${c.clarification.completed}/10）</summary>${clarificationHtml.map(t=>`<p>${esc(t)}</p>`).join('')}</details>`:''}
+      ${c.caveats.slice(1).map(t=>`<p class="fine">${esc(t)}</p>`).join('')}
+    </div>
+    <a class="fine" href="docs/最贴近意识形态规则.html" target="_blank" rel="noopener">查看归纳方法与全部参考画像 ↗</a>
+  </section>`;
 
   if(c.status!=='matched')return `<section class="ideology-summary" aria-labelledby="ideology-heading">
     <div>
@@ -134,12 +160,10 @@ function filteredDimensions(filter, dimensions){
 }
 
 export function renderReport(ctx){
-  const r=score(ctx.answers,ctx.bank), profiles=r.profiles.filter(p=>p.triggered), ranked=rankedIdeologies(r);
-  const closest=closestIdeology(r);
-  if(ctx.radarCompareId===null){
-    ctx.radarCompareId=closest.id || ranked[0]?.id || 'none';
-  }
-  const compareProfile=IDEOLOGIES.find(p=>p.id===ctx.radarCompareId) || null;
+  const r=score(ctx.answers,ctx.bank), profiles=r.profiles.filter(p=>p.triggered);
+  const display=ideologyPresentation(r);
+  let selected=ctx.radarCompareId??(display.kind==='matched'?display.conclusion.id:'none');
+  const compareProfile=IDEOLOGIES.find(p=>p.id===selected) || null;
   const extremeCount=r.dimensions.filter(d=>d.band==='low'||d.band==='high').length;
   const mixedCount=r.dimensions.filter(d=>d.supplemental_offered>0||(d.counts.left>=2&&d.counts.right>=2)).length;
   const middleCount=r.dimensions.filter(d=>d.band==='middle').length;
@@ -167,8 +191,8 @@ export function renderReport(ctx){
     <div class="notice-box">探索版，尚未经过真人样本校准。分数不是人口百分位、准确率或价值优劣。每个方面至少需要 6 道有效基础答案；低于门槛不显示分数。图中左右仅代表该维度的端点，不等于传统政治左右派。</div>
 
     <div class="report-hero-grid">
-      ${closestMarkup(ctx, r, ranked)}
-      <section class="radar-card" id="radar-card" aria-label="十维立场雷达图">${radarCardMarkup(r, compareProfile, ctx.radarCompareId, ctx.radarMode)}</section>
+      ${closestMarkup(r, display, selected)}
+      <section class="radar-card" id="radar-card" aria-label="十维立场雷达图">${radarCardMarkup(r, compareProfile, selected, ctx.radarMode)}</section>
     </div>
 
     <section class="report-section" aria-label="十个维度的详细画像">
@@ -240,9 +264,12 @@ export function renderReport(ctx){
     const modeFocus=focus?.dataset.radarMode;
     const compareFocus=focus?.id==='radar-compare';
     const card=$('#radar-card');
-    const comp=IDEOLOGIES.find(p=>p.id===ctx.radarCompareId)||null;
-    card.innerHTML=radarCardMarkup(r, comp, ctx.radarCompareId, ctx.radarMode);
-    document.querySelectorAll('[data-compare-id]').forEach(btn=>btn.classList.toggle('active',btn.dataset.compareId===ctx.radarCompareId));
+    const comp=IDEOLOGIES.find(p=>p.id===selected)||null;
+    card.innerHTML=radarCardMarkup(r, comp, selected, ctx.radarMode);
+    document.querySelectorAll('[data-compare-id]').forEach(btn=>{
+      const active=btn.dataset.compareId===selected;
+      btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active));
+    });
     bindRadarEvents();
     if(modeFocus)card.querySelector(`[data-radar-mode="${modeFocus}"]`)?.focus({preventScroll:true});
     else if(compareFocus)$('#radar-compare')?.focus({preventScroll:true});
@@ -251,7 +278,7 @@ export function renderReport(ctx){
   const bindRadarEvents=()=>{
     const host=$('#radar-svg-host');
     const readout=$('#radar-readout');
-    const comp=IDEOLOGIES.find(p=>p.id===ctx.radarCompareId)||null;
+    const comp=IDEOLOGIES.find(p=>p.id===selected)||null;
     const showDim=idx=>{
       const d=r.dimensions[idx];
       if(!d)return;
@@ -284,7 +311,7 @@ export function renderReport(ctx){
       el.addEventListener('click',()=>showDim(idx));
     });
     $('#radar-compare')?.addEventListener('change',e=>{
-      ctx.radarCompareId=e.target.value;
+      selected=ctx.radarCompareId=e.target.value;
       updateRadarCard();
     });
     document.querySelectorAll('[data-radar-mode]').forEach(btn=>btn.addEventListener('click',()=>{
@@ -295,7 +322,7 @@ export function renderReport(ctx){
   bindRadarEvents();
 
   document.querySelectorAll('[data-compare-id]').forEach(btn=>btn.addEventListener('click',()=>{
-    ctx.radarCompareId=btn.dataset.compareId;
+    selected=ctx.radarCompareId=btn.dataset.compareId;
     updateRadarCard();
   }));
   document.querySelectorAll('.filter-tab').forEach(btn=>btn.addEventListener('click',()=>{

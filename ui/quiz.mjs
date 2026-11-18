@@ -70,6 +70,7 @@ export function scrollToQuestion(ctx, qid){
   const el=document.getElementById(`q-wrap-${qid}`);
   if(!el)return;
   setActiveQuestion(ctx, qid);
+  el.focus({preventScroll:true});
   const top=el.getBoundingClientRect().top+window.scrollY-132;
   window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
 }
@@ -210,7 +211,6 @@ export function handleQuizKeydown(ctx, e){
     const nextIdx=Math.max(0,Math.min(p.ids.length-1,cur+(key==='J'?1:-1)));
     const targetId=p.ids[nextIdx];
     scrollToQuestion(ctx, targetId);
-    document.getElementById(`q-wrap-${targetId}`)?.focus({preventScroll:true});
     return;
   }
   const q=ctx.questions[ctx.activeQid];

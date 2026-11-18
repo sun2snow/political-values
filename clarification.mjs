@@ -24,6 +24,16 @@ export const CLARIFICATIONS=endpoints.map(([name,first,second],i)=>({
  text:`${name}：回看刚才的回答，在下面这组取舍中，哪种描述更接近你的想法？`,
  help:`前一种：${first}。后一种：${second}。`,options:CLARIFICATION_OPTIONS,
 }));
+export function clarificationsFor(bank){
+  if(bank?.version!=='2.2.0-exploratory')return CLARIFICATIONS;
+  const revised=new Set(['D2','D5','D6','D9']);
+  return CLARIFICATIONS.map(q=>{
+    const id=q.id.slice(2);
+    if(!revised.has(id))return q;
+    const {low,high}=bank.dimensions.find(d=>d.id===id);
+    return {...q,help:`前一种：${low}。后一种：${high}。`};
+  });
+}
 export function clarificationPages(){return [0,1].map(i=>({
  id:`clarify-${i}`,type:'clarification',short:`澄清 ${i*5+1}–${i*5+5}`,
  title:`再分清一点：折中还是不同取向？ · ${i+1} / 2`,

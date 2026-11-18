@@ -177,4 +177,5 @@ b['feedback'][0]['text']='总的来说，这些题目容易看懂吗？'
 b['feedback'][1]['text']='这次答题时，你有多认真？'
 b['feedback'][2]['text']='答完这些题，你有多累？'
 b['feedback'][3]['text']='有多少题的选项，不能很好地表达你的想法？'
-(root/'data.json').write_text(json.dumps(b,ensure_ascii=False,indent=2)+'\n')
+# This historical generator must not overwrite the v2.2 questionnaire.
+(root/'legacy/v2.1/data.json').write_text(json.dumps(b,ensure_ascii=False,indent=2)+'\n')

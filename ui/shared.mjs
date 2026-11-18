@@ -1,6 +1,5 @@
 export const $ = s => document.querySelector(s);
 export const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export const KEY = 'political-values-v2-local';
 export const coreOptions = {'1':'非常不同意','2':'比较不同意','3':'既不赞同也不反对','4':'比较同意','5':'非常同意','U':'不了解／无法判断','Q':'题意不清'};
 
 let toastTimer;
@@ -36,5 +35,5 @@ export function download(name, text, type){
 }
 
 export function rememberMarkup(remember, saveStatusText, saveError){
-  return `<label class="local-option"><input id="remember" type="checkbox" ${remember?'checked':''}><span>在此浏览器保存进度<span class="fine">（共用设备建议关闭）</span></span></label><p id="save-status" class="fine ${saveError?'save-warning':''}">${esc(saveStatusText)}</p>`;
+  return `<label class="local-option"><input id="remember" type="checkbox" ${remember?'checked':''}><span>在此浏览器保存进度<span class="fine">（共用设备建议关闭）</span></span></label><p id="save-status" class="fine ${saveError?'save-warning':''}">${esc(saveStatusText)}</p><button type="button" class="text-button" id="retry-remove" hidden>重试删除本地存档</button><div id="protected-record" hidden><button type="button" class="text-button" id="backup-raw">下载原始存档（含原始答案）</button> <button type="button" class="text-button" id="replace-raw">用本页答案替换原始存档…</button></div>`;
 }

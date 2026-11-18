@@ -822,6 +822,17 @@ kbd{
   border-top:1px solid var(--summary-block-border);
 }
 .nearest-strip-label{font-size:12px;font-weight:600;color:var(--ink-soft);margin-bottom:8px;display:block}
+.candidate-list{display:grid;gap:10px;margin-block:14px}
+.candidate-card{border:1px solid var(--summary-block-border);background:var(--paper);border-radius:12px;padding:12px 14px}
+.candidate-heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.candidate-heading h3{margin:0;font-size:16px}
+.candidate-heading span{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.candidate-card p{margin:0 0 6px;font-size:13px}
+.candidate-differences{margin:18px 0 6px;font-size:16px}
+.candidate-table{margin-block:8px 14px}
+.candidate-table .compare-table{margin:0;font-size:12px}
+.candidate-table th{min-width:4.5em}
+.report-hero-grid>*{min-width:0}
 .nearest-chips{display:flex;flex-wrap:wrap;gap:8px}
 .nearest-chip{
   border:1px solid var(--green-border);
@@ -1311,7 +1322,7 @@ dialog input[type=file]{max-width:100%;font-size:13px;margin:8px 0 14px}
   body{background:white;color:var(--ink);font-size:12px}
   .dimension[hidden]{display:flex!important}
   #dimension-filter-empty{display:none!important}
-  .site-header,.site-footer,.report-actions,.quiz-top,.toast,dialog,.skip,#about-button,#profiles-button,#theme-button,.filter-tabs,.radar-select,.radar-mode-tabs,.nearest-strip,.dim-item-jump{display:none!important}
+  .site-header,.site-footer,.report-actions,.quiz-top,.toast,dialog,.skip,#about-button,#profiles-button,#theme-button,.filter-tabs,.radar-select,.radar-mode-tabs,.nearest-strip,.candidate-card [data-compare-id],.dim-item-jump{display:none!important}
   .report{padding:0;max-width:none}
   .report-hero-grid,.dimensions-grid,.scenario-grid,.profiles-grid,.feedback-grid{grid-template-columns:1fr}
   .dimension,.profile-card,.scenario-card,.ideology-summary,.radar-card,details{break-inside:avoid;box-shadow:none}

@@ -1,0 +1,6792 @@
+{
+  "started": "2026-11-18T00:12:07.387Z",
+  "version": "2.1.0-exploratory",
+  "candidates": [
+    "gpt-5.6-luna",
+    "gemini-3.5-flash-lite",
+    "grok-4.7-build-fast"
+  ],
+  "sources": [
+    [
+      "Stanford Encyclopedia of Philosophy: Liberalism",
+      "https://plato.stanford.edu/entries/liberalism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Libertarianism",
+      "https://plato.stanford.edu/entries/libertarianism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Socialism（包括市场社会主义）",
+      "https://plato.stanford.edu/entries/socialism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Conservatism",
+      "https://plato.stanford.edu/entries/conservatism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Communitarianism",
+      "https://plato.stanford.edu/entries/communitarianism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Nationalism",
+      "https://plato.stanford.edu/entries/nationalism/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Democracy",
+      "https://plato.stanford.edu/entries/democracy/"
+    ],
+    [
+      "Stanford Encyclopedia of Philosophy: Cosmopolitanism",
+      "https://plato.stanford.edu/entries/cosmopolitanism/"
+    ],
+    [
+      "Global Young Greens: Global Greens Charter",
+      "https://globalyounggreens.org/the-global-greens-charter/"
+    ],
+    [
+      "Capitalism Nature Socialism: An Ecosocialist Manifesto",
+      "https://cnsjournal.org/an-ecosocialist-manifesto/"
+    ],
+    [
+      "World Bank: The East Asian Miracle",
+      "https://documents.worldbank.org/en/publication/documents-reports/documentdetail/975081468244550798"
+    ]
+  ],
+  "baselines": {
+    "gemini-3.5-flash-lite": {
+      "probe": {
+        "redistribution": 4,
+        "market": 4,
+        "ownership": 2,
+        "civil": 4,
+        "checks": 4,
+        "direct": 4,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 4,
+        "experts": 4,
+        "local": 3,
+        "compromise": 4,
+        "restraint": 4,
+        "pluralism": 4,
+        "industry": 3
+      },
+      "full": {
+        "model": "gemini-3.5-flash-lite",
+        "role": null,
+        "scores": [
+          62.5,
+          37.5,
+          71.88,
+          71.88,
+          62.5,
+          68.75,
+          68.75,
+          53.12,
+          71.88,
+          68.75
+        ],
+        "actual": {
+          "version": "nearest-tradition-2.2",
+          "status": "matched",
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "description": "支持较强的再分配与公共服务，同时重视公民自由、权力约束和国际合作。",
+          "family": "社会主义与公共保障",
+          "limitation": "支持公共保障也可能来自其他思想；本问卷不能单凭税收态度确认社会民主主义身份。",
+          "distance": 12.5015003099628,
+          "gap": 0.6090873961623515,
+          "supporting": [
+            {
+              "id": "D3",
+              "name": "个人权利",
+              "score": 71.88,
+              "target": 75,
+              "difference": 3.1200000000000045
+            },
+            {
+              "id": "D4",
+              "name": "权力监督",
+              "score": 71.88,
+              "target": 75,
+              "difference": 3.1200000000000045
+            },
+            {
+              "id": "D6",
+              "name": "传统与生活",
+              "score": 68.75,
+              "target": 75,
+              "difference": 6.25
+            }
+          ],
+          "contrasts": [
+            {
+              "id": "D8",
+              "name": "国家与世界",
+              "score": 53.12,
+              "target": 75,
+              "difference": 21.880000000000003
+            },
+            {
+              "id": "D9",
+              "name": "对外安全",
+              "score": 71.88,
+              "target": 50,
+              "difference": 21.879999999999995
+            }
+          ],
+          "caveats": [
+            "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+            "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+          ],
+          "clarificationRequired": false
+        },
+        "preliminary": "social-democratic",
+        "targetRank": null,
+        "targetDistance": null,
+        "top3": [
+          {
+            "id": "social-democratic",
+            "name": "社会民主主义",
+            "distance": 12.5015003099628
+          },
+          {
+            "id": "market-socialist",
+            "name": "市场社会主义",
+            "distance": 13.110587706125152
+          },
+          {
+            "id": "social-liberal",
+            "name": "社会自由主义",
+            "distance": 13.694433540676298
+          }
+        ],
+        "effectiveBase": 80,
+        "supplemental": 0,
+        "clarificationCount": 0,
+        "answers": {
+          "format": "political-values-answers",
+          "version": "2.1.0-exploratory",
+          "answers": {
+            "D1_01": 3,
+            "D2_02": 4,
+            "D3_01": 4,
+            "D4_02": 2,
+            "D5_01": 3,
+            "D6_02": 3,
+            "D7_01": 4,
+            "D8_02": 3,
+            "D9_01": 4,
+            "D10_02": 3,
+            "D1_02": 3,
+            "D2_01": 3,
+            "D3_02": 2,
+            "D4_01": 4,
+            "D5_02": 3,
+            "D6_01": 4,
+            "D7_02": 2,
+            "D8_01": 3,
+            "D9_02": 2,
+            "D10_01": 4,
+            "D4_03": 4,
+            "D5_04": 3,
+            "D6_03": 4,
+            "D7_04": 2,
+            "D8_03": 3,
+            "D9_04": 2,
+            "D10_03": 4,
+            "D1_04": 3,
+            "D2_03": 3,
+            "D3_04": 2,
+            "D4_04": 3,
+            "D5_03": 4,
+            "D6_04": 2,
+            "D7_03": 4,
+            "D8_04": 3,
+            "D9_03": 4,
+            "D10_04": 2,
+            "D1_03": 4,
+            "D2_04": 4,
+            "D3_03": 4,
+            "D7_05": 4,
+            "D8_06": 3,
+            "D9_05": 4,
+            "D10_06": 3,
+            "D1_05": 4,
+            "D2_06": 4,
+            "D3_05": 4,
+            "D4_06": 2,
+            "D5_05": 4,
+            "D6_06": 2,
+            "D7_06": 3,
+            "D8_05": 3,
+            "D9_06": 2,
+            "D10_05": 4,
+            "D1_06": 3,
+            "D2_05": 3,
+            "D3_06": 2,
+            "D4_05": 4,
+            "D5_06": 3,
+            "D6_05": 4,
+            "D10_07": 4,
+            "D1_08": 2,
+            "D2_07": 3,
+            "D3_08": 3,
+            "D4_07": 4,
+            "D5_08": 2,
+            "D6_07": 4,
+            "D7_08": 3,
+            "D8_07": 3,
+            "D9_08": 2,
+            "D10_08": 2,
+            "D1_07": 4,
+            "D2_08": 4,
+            "D3_07": 4,
+            "D4_08": 2,
+            "D5_07": 4,
+            "D6_08": 3,
+            "D7_07": 4,
+            "D8_08": 2,
+            "D9_07": 3,
+            "S01": "B",
+            "S02": "B",
+            "S03": "A",
+            "S04": "C",
+            "S05": "B",
+            "S06": "C",
+            "S07": "C",
+            "S08": "A",
+            "S09": "A",
+            "S10": "C",
+            "S11": "B",
+            "S12": "A",
+            "F01": 2,
+            "F02": 5,
+            "F03": 2,
+            "F04": 2
+          },
+          "clarifications": {}
+        }
+      }
+    },
+    "gpt-5.6-luna": {
+      "probe": {
+        "redistribution": 5,
+        "market": 4,
+        "ownership": 2,
+        "civil": 5,
+        "checks": 5,
+        "direct": 4,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 5,
+        "experts": 4,
+        "local": 3,
+        "compromise": 4,
+        "restraint": 5,
+        "pluralism": 5,
+        "industry": 3
+      },
+      "full": {
+        "model": "gpt-5.6-luna",
+        "role": null,
+        "scores": [
+          78.12,
+          46.88,
+          84.38,
+          87.5,
+          50,
+          78.12,
+          81.25,
+          65.62,
+          71.88,
+          78.12
+        ],
+        "actual": {
+          "version": "nearest-tradition-2.2",
+          "status": "matched",
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "description": "支持较强的再分配与公共服务，同时重视公民自由、权力约束和国际合作。",
+          "family": "社会主义与公共保障",
+          "limitation": "支持公共保障也可能来自其他思想；本问卷不能单凭税收态度确认社会民主主义身份。",
+          "distance": 9.428432001133592,
+          "gap": 2.8758489611981766,
+          "supporting": [
+            {
+              "id": "D5",
+              "name": "公众参与",
+              "score": 50,
+              "target": 50,
+              "difference": 0
+            },
+            {
+              "id": "D2",
+              "name": "经济管理",
+              "score": 46.88,
+              "target": 50,
+              "difference": 3.1199999999999974
+            },
+            {
+              "id": "D1",
+              "name": "经济分配",
+              "score": 78.12,
+              "target": 75,
+              "difference": 3.1200000000000045
+            }
+          ],
+          "contrasts": [
+            {
+              "id": "D9",
+              "name": "对外安全",
+              "score": 71.88,
+              "target": 50,
+              "difference": 21.879999999999995
+            }
+          ],
+          "caveats": [
+            "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+            "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+          ],
+          "clarificationRequired": false
+        },
+        "preliminary": "social-democratic",
+        "targetRank": null,
+        "targetDistance": null,
+        "top3": [
+          {
+            "id": "social-democratic",
+            "name": "社会民主主义",
+            "distance": 9.428432001133592
+          },
+          {
+            "id": "green",
+            "name": "绿色政治",
+            "distance": 12.304280962331768
+          },
+          {
+            "id": "democratic-socialist",
+            "name": "民主社会主义",
+            "distance": 13.51278394706287
+          }
+        ],
+        "effectiveBase": 80,
+        "supplemental": 0,
+        "clarificationCount": 0,
+        "answers": {
+          "format": "political-values-answers",
+          "version": "2.1.0-exploratory",
+          "answers": {
+            "D1_01": 5,
+            "D2_02": 4,
+            "D3_01": 5,
+            "D4_02": 1,
+            "D5_01": 3,
+            "D6_02": 2,
+            "D7_01": 5,
+            "D8_02": 3,
+            "D9_01": 4,
+            "D10_02": 2,
+            "D1_02": 2,
+            "D2_01": 4,
+            "D3_02": 2,
+            "D4_01": 5,
+            "D5_02": 4,
+            "D6_01": 5,
+            "D7_02": 2,
+            "D8_01": 4,
+            "D9_02": 2,
+            "D10_01": 4,
+            "D4_03": 5,
+            "D5_04": 4,
+            "D6_03": 4,
+            "D7_04": 2,
+            "D8_03": 4,
+            "D9_04": 2,
+            "D10_03": 5,
+            "D1_04": 2,
+            "D2_03": 4,
+            "D3_04": 1,
+            "D4_04": 2,
+            "D5_03": 4,
+            "D6_04": 2,
+            "D7_03": 5,
+            "D8_04": 2,
+            "D9_03": 4,
+            "D10_04": 2,
+            "D1_03": 5,
+            "D2_04": 4,
+            "D3_03": 5,
+            "D7_05": 4,
+            "D8_06": 3,
+            "D9_05": 4,
+            "D10_06": 3,
+            "D1_05": 4,
+            "D2_06": 4,
+            "D3_05": 5,
+            "D4_06": 2,
+            "D5_05": 4,
+            "D6_06": 3,
+            "D7_06": 2,
+            "D8_05": 4,
+            "D9_06": 3,
+            "D10_05": 5,
+            "D1_06": 4,
+            "D2_05": 3,
+            "D3_06": 2,
+            "D4_05": 5,
+            "D5_06": 4,
+            "D6_05": 5,
+            "D10_07": 5,
+            "D1_08": 2,
+            "D2_07": 4,
+            "D3_08": 4,
+            "D4_07": 4,
+            "D5_08": 3,
+            "D6_07": 5,
+            "D7_08": 3,
+            "D8_07": 4,
+            "D9_08": 2,
+            "D10_08": 3,
+            "D1_07": 5,
+            "D2_08": 4,
+            "D3_07": 5,
+            "D4_08": 2,
+            "D5_07": 4,
+            "D6_08": 3,
+            "D7_07": 5,
+            "D8_08": 3,
+            "D9_07": 4,
+            "S01": "C",
+            "S02": "B",
+            "S03": "A",
+            "S04": "C",
+            "S05": "C",
+            "S06": "A",
+            "S07": "B",
+            "S08": "A",
+            "S09": "A",
+            "S10": "C",
+            "S11": "B",
+            "S12": "C",
+            "F01": 2,
+            "F02": 5,
+            "F03": 4,
+            "F04": 2
+          },
+          "clarifications": {}
+        }
+      }
+    },
+    "grok-4.7-build-fast": {
+      "probe": {
+        "redistribution": 4,
+        "market": 4,
+        "ownership": 2,
+        "civil": 5,
+        "checks": 5,
+        "direct": 3,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 4,
+        "experts": 4,
+        "local": 3,
+        "compromise": 4,
+        "restraint": 5,
+        "pluralism": 4,
+        "industry": 3
+      },
+      "full": {
+        "model": "grok-4.7-build-fast",
+        "role": null,
+        "error": "基础题未返回有效完整答案"
+      }
+    }
+  },
+  "pilot": {
+    "social-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 4,
+          "experts": 2,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      }
+    },
+    "social-democratic": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "democratic-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "state-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 1,
+          "ownership": 5,
+          "civil": 3,
+          "checks": 3,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 1,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 1,
+          "ownership": 5,
+          "civil": 2,
+          "checks": 1,
+          "direct": 1,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 5,
+          "experts": 5,
+          "local": 1,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 3,
+          "global": 3,
+          "ecology": 4,
+          "experts": 4,
+          "local": 1,
+          "compromise": 2,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "classical-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 4,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "libertarian": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 2,
+          "ecology": 3,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 4,
+          "compromise": 2,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 2,
+          "experts": 2,
+          "local": 2,
+          "compromise": 2,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "liberal-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 3,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "communitarian-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 4,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.6666666666666666,
+          "agreement": 0.8333333333333334,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 5,
+          "global": 3,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 5,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.6666666666666666,
+          "agreement": 0.8333333333333334,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 3,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 3
+        }
+      }
+    },
+    "national-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 4,
+          "compromise": 3,
+          "restraint": 2,
+          "pluralism": 2,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 1,
+          "agreement": 0.75,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 2,
+          "checks": 3,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 1,
+          "agreement": 0.75,
+          "n": 3
+        }
+      }
+    },
+    "technocratic": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      }
+    },
+    "green": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 2,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "market-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 2,
+          "local": 5,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.6,
+          "agreement": 0.85,
+          "n": 5
+        }
+      }
+    },
+    "libertarian-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 1,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "eco-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 4,
+          "direct": 5,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 2,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "conservative-social-democratic": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 3,
+          "ownership": 4,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 4,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 3,
+          "local": 3,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      }
+    },
+    "paleoconservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 4,
+          "checks": 4,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 4,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 2,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      }
+    },
+    "national-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 2,
+          "ecology": 3,
+          "experts": 2,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "green-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 5,
+          "ownership": 1,
+          "civil": 4,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 5,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      }
+    },
+    "green-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 3,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.6,
+          "agreement": 0.85,
+          "n": 5
+        }
+      }
+    },
+    "developmentalist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 3,
+          "global": 2,
+          "ecology": 2,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 1,
+          "civil": 3,
+          "checks": 3,
+          "direct": 2,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 2,
+          "experts": 5,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 1,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 3,
+          "global": 2,
+          "ecology": 2,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "authoritarian-market": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 5,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 5,
+          "local": 1,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 1,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 3,
+          "experts": 4,
+          "local": 1,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      }
+    },
+    "participatory-democracy": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 1,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 3,
+          "experts": 1,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 3,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 3,
+          "experts": 1,
+          "local": 4,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "cosmopolitan-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 4,
+          "experts": 3,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "centrist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 5,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 4,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 1,
+          "agreement": 0.75,
+          "n": 5
+        }
+      }
+    }
+  },
+  "runs": {
+    "social-democratic": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "social-democratic",
+      "scores": [
+        90.62,
+        78.12,
+        96.88,
+        96.88,
+        84.38,
+        90.62,
+        84.38,
+        90.62,
+        90.62,
+        90.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "libertarian-socialist",
+        "name": "自由意志社会主义",
+        "description": "重视经济平等和共同管理，同时强烈反对权力集中，希望普通人直接参与决定。",
+        "family": "社会主义与公共保障",
+        "limitation": "这里的共同管理不等于中央政府控制；问卷尚不能充分区分合作社、地方自治和无政府主义等路线。",
+        "distance": 12.574156035297163,
+        "gap": 2.798202274344204,
+        "supporting": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 96.88,
+            "target": 100,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 96.88,
+            "target": 100,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "libertarian-socialist",
+      "targetRank": 5,
+      "targetDistance": 23.757302035374302,
+      "top3": [
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 12.574156035297163
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 15.372358309641367
+        },
+        {
+          "id": "eco-socialist",
+          "name": "生态社会主义",
+          "distance": 15.874803935797125
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 2,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 2,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 2,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 2,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 5,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 1,
+          "D9_03": 5,
+          "D10_04": 1,
+          "D1_03": 5,
+          "D2_04": 2,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 3,
+          "D3_05": 5,
+          "D4_06": 1,
+          "D5_05": 5,
+          "D6_06": 1,
+          "D7_06": 2,
+          "D8_05": 5,
+          "D9_06": 1,
+          "D10_05": 5,
+          "D1_06": 3,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 2,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 1,
+          "D2_07": 5,
+          "D3_08": 2,
+          "D4_07": 5,
+          "D5_08": 2,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 5,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 2,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 3,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "A",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "A",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 0.5,
+        "agreement": 0.875,
+        "n": 4
+      }
+    },
+    "classical-liberal": {
+      "model": "gpt-5.6-luna",
+      "role": "classical-liberal",
+      "scores": [
+        43.75,
+        18.75,
+        84.38,
+        87.5,
+        43.75,
+        87.5,
+        78.12,
+        50,
+        78.12,
+        78.12
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green-liberal",
+        "name": "绿色自由主义",
+        "description": "同时重视个人自由、市场作用与生态保护，倾向用公共规则和国际合作处理环境问题。",
+        "family": "生态政治",
+        "limitation": "问卷不能细分碳税、排放交易等环境工具；这一名称不意味着反对所有政府干预。",
+        "distance": 12.809664710678419,
+        "gap": 3.7247693588626376,
+        "supporting": [
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 43.75,
+            "target": 50,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 50,
+            "target": 75,
+            "difference": 25
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 78.12,
+            "target": 100,
+            "difference": 21.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "3 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green-liberal",
+      "targetRank": 7,
+      "targetDistance": 21.828593862179947,
+      "top3": [
+        {
+          "id": "green-liberal",
+          "name": "绿色自由主义",
+          "distance": 12.809664710678419
+        },
+        {
+          "id": "social-liberal",
+          "name": "社会自由主义",
+          "distance": 16.534434069541057
+        },
+        {
+          "id": "libertarian",
+          "name": "自由意志主义",
+          "distance": 19.160832706330904
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 2,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 2,
+          "D7_01": 5,
+          "D8_02": 4,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 4,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 2,
+          "D8_01": 4,
+          "D9_02": 1,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 4,
+          "D2_03": 2,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 4,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 4,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 4,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 2,
+          "D1_05": 4,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 3,
+          "D7_06": 2,
+          "D8_05": 4,
+          "D9_06": 4,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 2,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 4,
+          "D2_07": 2,
+          "D3_08": 4,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 4,
+          "D1_07": 4,
+          "D2_08": 5,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 2,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 4,
+          "D9_07": 4,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 0.8,
+        "agreement": 0.8,
+        "n": 5
+      }
+    },
+    "national-conservative": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "national-conservative",
+      "scores": [
+        56.25,
+        43.75,
+        75,
+        62.5,
+        53.12,
+        40.62,
+        34.38,
+        18.75,
+        43.75,
+        56.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "communitarian-conservative",
+        "name": "社群保守主义",
+        "description": "重视家庭、传统与共同体责任，愿意以公共保障支持社会团结，同时优先考虑本国共同体。",
+        "family": "保守主义与共同体",
+        "limitation": "共同体责任不必然意味着排斥其他文化，本画像不能确定你对具体群体的态度。",
+        "distance": 12.770143695354411,
+        "gap": 1.7204246164820844,
+        "supporting": [
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 53.12,
+            "target": 50,
+            "difference": 3.1199999999999974
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 43.75,
+            "target": 50,
+            "difference": 6.25
+          },
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 18.75,
+            "target": 25,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 75,
+            "target": 50,
+            "difference": 25
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。",
+          "5 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "communitarian-conservative",
+      "targetRank": 10,
+      "targetDistance": 21.80771812913951,
+      "top3": [
+        {
+          "id": "communitarian-conservative",
+          "name": "社群保守主义",
+          "distance": 12.770143695354411
+        },
+        {
+          "id": "national-liberal",
+          "name": "民族自由主义",
+          "distance": 14.490568311836496
+        },
+        {
+          "id": "centrist",
+          "name": "中间主义",
+          "distance": 15.019206703418128
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 4,
+          "D3_01": 4,
+          "D4_02": 2,
+          "D5_01": 3,
+          "D6_02": 4,
+          "D7_01": 2,
+          "D8_02": 5,
+          "D9_01": 4,
+          "D10_02": 4,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 4,
+          "D5_02": 3,
+          "D6_01": 2,
+          "D7_02": 4,
+          "D8_01": 2,
+          "D9_02": 5,
+          "D10_01": 3,
+          "D4_03": 4,
+          "D5_04": 3,
+          "D6_03": 4,
+          "D7_04": 4,
+          "D8_03": 2,
+          "D9_04": 3,
+          "D10_03": 4,
+          "D1_04": 4,
+          "D2_03": 4,
+          "D3_04": 2,
+          "D4_04": 5,
+          "D5_03": 4,
+          "D6_04": 4,
+          "D7_03": 4,
+          "D8_04": 4,
+          "D9_03": 3,
+          "D10_04": 2,
+          "D1_03": 4,
+          "D2_04": 4,
+          "D3_03": 4,
+          "D7_05": 2,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 4,
+          "D1_05": 3,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 3,
+          "D6_06": 4,
+          "D7_06": 4,
+          "D8_05": 2,
+          "D9_06": 4,
+          "D10_05": 3,
+          "D1_06": 4,
+          "D2_05": 3,
+          "D3_06": 2,
+          "D4_05": 4,
+          "D5_06": 3,
+          "D6_05": 3,
+          "D10_07": 4,
+          "D1_08": 3,
+          "D2_07": 3,
+          "D3_08": 3,
+          "D4_07": 4,
+          "D5_08": 3,
+          "D6_07": 4,
+          "D7_08": 4,
+          "D8_07": 2,
+          "D9_08": 4,
+          "D10_08": 2,
+          "D1_07": 4,
+          "D2_08": 4,
+          "D3_07": 4,
+          "D4_08": 3,
+          "D5_07": 3,
+          "D6_08": 4,
+          "D7_07": 3,
+          "D8_08": 5,
+          "D9_07": 3,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "A",
+          "S08": "A",
+          "S09": "C",
+          "S10": "B",
+          "S11": "B",
+          "S12": "A",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 1
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.3333333333333333,
+        "agreement": 0.9166666666666666,
+        "n": 3
+      },
+      "baselineFit": {
+        "mae": 2.6666666666666665,
+        "agreement": 0.33333333333333337,
+        "n": 3
+      }
+    },
+    "libertarian": {
+      "model": "gpt-5.6-luna",
+      "role": "libertarian",
+      "scores": [
+        6.25,
+        0,
+        96.88,
+        96.88,
+        28.12,
+        96.88,
+        90.62,
+        31.25,
+        93.75,
+        31.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "libertarian",
+        "name": "自由意志主义",
+        "description": "突出个人自主与市场自由，主张较少再分配和国家干预，并倾向克制使用对外武力。",
+        "family": "自由主义与个人自主",
+        "limitation": "这里采用偏市场自由的一种画像，不代表所有自由意志主义分支。",
+        "distance": 19.69180540224791,
+        "gap": 9.305904852184248,
+        "supporting": [
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 31.25,
+            "target": 25,
+            "difference": 6.25
+          },
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 90.62,
+            "target": 75,
+            "difference": 15.620000000000005
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 6.25,
+            "target": 25,
+            "difference": 18.75
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 0,
+            "target": 25,
+            "difference": 25
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 28.12,
+            "target": 50,
+            "difference": 21.88
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "libertarian",
+      "targetRank": 1,
+      "targetDistance": 19.69180540224791,
+      "top3": [
+        {
+          "id": "libertarian",
+          "name": "自由意志主义",
+          "distance": 19.69180540224791
+        },
+        {
+          "id": "classical-liberal",
+          "name": "古典自由主义",
+          "distance": 28.997710254432157
+        },
+        {
+          "id": "social-liberal",
+          "name": "社会自由主义",
+          "distance": 29.79542246721801
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 1,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 3,
+          "D9_01": 5,
+          "D10_02": 2,
+          "D1_02": 5,
+          "D2_01": 1,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 4,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 1,
+          "D9_02": 1,
+          "D10_01": 2,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 4,
+          "D9_04": 1,
+          "D10_03": 2,
+          "D1_04": 5,
+          "D2_03": 1,
+          "D3_04": 1,
+          "D4_04": 1,
+          "D5_03": 3,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 5,
+          "D9_03": 5,
+          "D10_04": 4,
+          "D1_03": 2,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 4,
+          "D1_05": 1,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 1,
+          "D5_05": 3,
+          "D6_06": 2,
+          "D7_06": 1,
+          "D8_05": 3,
+          "D9_06": 2,
+          "D10_05": 3,
+          "D1_06": 5,
+          "D2_05": 1,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 5,
+          "D10_07": 2,
+          "D1_08": 5,
+          "D2_07": 1,
+          "D3_08": 2,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 2,
+          "D9_08": 1,
+          "D10_08": 5,
+          "D1_07": 2,
+          "D2_08": 5,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 2,
+          "D6_08": 1,
+          "D7_07": 5,
+          "D8_08": 4,
+          "D9_07": 5,
+          "S01": "B",
+          "S02": "B",
+          "S03": "B",
+          "S04": "B",
+          "S05": "A",
+          "S06": "A",
+          "S07": "B",
+          "S08": "B",
+          "S09": "A",
+          "S10": "B",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1.2,
+        "agreement": 0.7,
+        "n": 5
+      }
+    },
+    "social-liberal": {
+      "model": "gpt-5.6-luna",
+      "role": "social-liberal",
+      "scores": [
+        84.38,
+        41.67,
+        90.62,
+        93.75,
+        53.12,
+        90.62,
+        90.62,
+        87.5,
+        93.75,
+        90.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 15.21650518351701,
+        "gap": 2.5286921949287997,
+        "supporting": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 41.67,
+            "target": 50,
+            "difference": 8.329999999999998
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 84.38,
+            "target": 75,
+            "difference": 9.379999999999995
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 90.62,
+            "target": 100,
+            "difference": 9.379999999999995
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 53.12,
+            "target": 75,
+            "difference": 21.880000000000003
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 8,
+      "targetDistance": 25.046796801187973,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 15.21650518351701
+        },
+        {
+          "id": "green-liberal",
+          "name": "绿色自由主义",
+          "distance": 17.74519737844581
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 18.742786078915803
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 4,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 4,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 3,
+          "D7_06": 2,
+          "D8_05": 5,
+          "D9_06": 3,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 4,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 4,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 3,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 5,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 4,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 5,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 3,
+          "F04": 2,
+          "D2_09": 4,
+          "D2_10": 4,
+          "D2_11": 4,
+          "D2_12": 4
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      }
+    },
+    "liberal-conservative": {
+      "model": "gpt-5.6-luna",
+      "role": "liberal-conservative",
+      "scores": [
+        65.62,
+        18.75,
+        81.25,
+        87.5,
+        37.5,
+        59.38,
+        62.5,
+        46.88,
+        75,
+        71.88
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green-liberal",
+        "name": "绿色自由主义",
+        "description": "同时重视个人自由、市场作用与生态保护，倾向用公共规则和国际合作处理环境问题。",
+        "family": "生态政治",
+        "limitation": "问卷不能细分碳税、排放交易等环境工具；这一名称不意味着反对所有政府干预。",
+        "distance": 16.175019629045277,
+        "gap": 0.9402151049570584,
+        "supporting": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 18.75,
+            "target": 25,
+            "difference": 6.25
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 71.88,
+            "target": 100,
+            "difference": 28.120000000000005
+          },
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 46.88,
+            "target": 75,
+            "difference": 28.119999999999997
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。",
+          "3 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green-liberal",
+      "targetRank": 14,
+      "targetDistance": 25.23353443336862,
+      "top3": [
+        {
+          "id": "green-liberal",
+          "name": "绿色自由主义",
+          "distance": 16.175019629045277
+        },
+        {
+          "id": "social-liberal",
+          "name": "社会自由主义",
+          "distance": 17.115234734002335
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 18.005034295996214
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 4,
+          "D7_01": 4,
+          "D8_02": 4,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 2,
+          "D2_01": 3,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 3,
+          "D6_01": 4,
+          "D7_02": 3,
+          "D8_01": 4,
+          "D9_02": 2,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 4,
+          "D7_04": 3,
+          "D8_03": 4,
+          "D9_04": 2,
+          "D10_03": 5,
+          "D1_04": 4,
+          "D2_03": 2,
+          "D3_04": 2,
+          "D4_04": 2,
+          "D5_03": 3,
+          "D6_04": 3,
+          "D7_03": 5,
+          "D8_04": 4,
+          "D9_03": 5,
+          "D10_04": 3,
+          "D1_03": 5,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 2,
+          "D1_05": 4,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 4,
+          "D7_06": 3,
+          "D8_05": 3,
+          "D9_06": 3,
+          "D10_05": 4,
+          "D1_06": 4,
+          "D2_05": 2,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 4,
+          "D1_08": 2,
+          "D2_07": 2,
+          "D3_08": 4,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 3,
+          "D1_07": 4,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 2,
+          "D6_08": 4,
+          "D7_07": 4,
+          "D8_08": 4,
+          "D9_07": 4,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 3,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.2,
+        "agreement": 0.95,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1.2,
+        "agreement": 0.7,
+        "n": 5
+      }
+    },
+    "democratic-socialist": {
+      "model": "gpt-5.6-luna",
+      "role": "democratic-socialist",
+      "scores": [
+        93.75,
+        84.38,
+        90.62,
+        93.75,
+        68.75,
+        87.5,
+        90.62,
+        81.25,
+        96.88,
+        93.75
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "eco-socialist",
+        "name": "生态社会主义",
+        "description": "把生态保护与经济平等结合起来，倾向通过公共安排改变生产和分配，同时重视民主参与。",
+        "family": "生态政治",
+        "limitation": "比一般绿色政治更强调经济结构变革；问卷没有直接检验是否支持超越资本主义，因此只能作参考。",
+        "distance": 13.692151401441631,
+        "gap": 1.6171598175518618,
+        "supporting": [
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 93.75,
+            "target": 100,
+            "difference": 6.25
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 68.75,
+            "target": 75,
+            "difference": 6.25
+          },
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "eco-socialist",
+      "targetRank": 2,
+      "targetDistance": 15.309311218993493,
+      "top3": [
+        {
+          "id": "eco-socialist",
+          "name": "生态社会主义",
+          "distance": 13.692151401441631
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 15.309311218993493
+        },
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 16.771255468807336
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 2,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 5,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 2,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 4,
+          "D9_05": 5,
+          "D10_06": 1,
+          "D1_05": 5,
+          "D2_06": 2,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 2,
+          "D8_05": 5,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 2,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 1,
+          "D2_07": 5,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 3,
+          "D6_07": 5,
+          "D7_08": 3,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 3,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 5,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "A",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 0.75,
+        "agreement": 0.8125,
+        "n": 4
+      }
+    },
+    "state-socialist": {
+      "model": "gpt-5.6-luna",
+      "role": "state-socialist",
+      "scores": [
+        90.62,
+        96.88,
+        84.38,
+        81.25,
+        28.12,
+        84.38,
+        75,
+        84.38,
+        90.62,
+        90.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "eco-socialist",
+        "name": "生态社会主义",
+        "description": "把生态保护与经济平等结合起来，倾向通过公共安排改变生产和分配，同时重视民主参与。",
+        "family": "生态政治",
+        "limitation": "比一般绿色政治更强调经济结构变革；问卷没有直接检验是否支持超越资本主义，因此只能作参考。",
+        "distance": 17.118521256230046,
+        "gap": 2.146570749779162,
+        "supporting": [
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 96.88,
+            "target": 100,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 28.12,
+            "target": 75,
+            "difference": 46.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "eco-socialist",
+      "targetRank": 14,
+      "targetDistance": 37.028958532478335,
+      "top3": [
+        {
+          "id": "eco-socialist",
+          "name": "生态社会主义",
+          "distance": 17.118521256230046
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 19.26509200600921
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 22.62175435283479
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 1,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 4,
+          "D6_01": 5,
+          "D7_02": 2,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 1,
+          "D2_03": 5,
+          "D3_04": 1,
+          "D4_04": 5,
+          "D5_03": 2,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 1,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 2,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 3,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 1,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 4,
+          "D7_06": 4,
+          "D8_05": 4,
+          "D9_06": 3,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 1,
+          "D2_07": 5,
+          "D3_08": 5,
+          "D4_07": 5,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 5,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 1,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 2,
+          "D6_08": 3,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 5,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "A",
+          "S05": "C",
+          "S06": "A",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "B",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2,
+          "D7_09": 4,
+          "D7_10": 2,
+          "D7_11": 4,
+          "D7_12": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 2,
+        "agreement": 0.5,
+        "n": 5
+      }
+    },
+    "green": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "green",
+      "scores": [
+        81.25,
+        62.5,
+        96.88,
+        96.88,
+        78.12,
+        81.25,
+        84.38,
+        75,
+        90.62,
+        96.88
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 12.422887748023804,
+        "gap": 1.7763568394002505e-15,
+        "supporting": [
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 96.88,
+            "target": 100,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          },
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 1,
+      "targetDistance": 12.422887748023804,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 12.422887748023804
+        },
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 12.422887748023806
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 14.185490474424913
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 3,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 2,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 4,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 2,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 5,
+          "D6_04": 2,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 1,
+          "D1_03": 5,
+          "D2_04": 3,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 3,
+          "D3_05": 5,
+          "D4_06": 1,
+          "D5_05": 5,
+          "D6_06": 2,
+          "D7_06": 2,
+          "D8_05": 4,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 3,
+          "D2_05": 4,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 3,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 4,
+          "D3_08": 2,
+          "D4_07": 5,
+          "D5_08": 2,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 1,
+          "D1_07": 5,
+          "D2_08": 3,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 4,
+          "D6_08": 4,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "B",
+          "S02": "C",
+          "S03": "A",
+          "S04": "A",
+          "S05": "B",
+          "S06": "C",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.2,
+        "agreement": 0.95,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 0.8,
+        "agreement": 0.8,
+        "n": 5
+      }
+    },
+    "technocratic": {
+      "model": "gpt-5.6-luna",
+      "role": "technocratic",
+      "scores": [
+        71.88,
+        46.88,
+        84.38,
+        84.38,
+        28.12,
+        87.5,
+        75,
+        81.25,
+        84.38,
+        81.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "social-democratic",
+        "name": "社会民主主义",
+        "description": "支持较强的再分配与公共服务，同时重视公民自由、权力约束和国际合作。",
+        "family": "社会主义与公共保障",
+        "limitation": "支持公共保障也可能来自其他思想；本问卷不能单凭税收态度确认社会民主主义身份。",
+        "distance": 14.458670063321867,
+        "gap": 0.5314313372691224,
+        "supporting": [
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 46.88,
+            "target": 50,
+            "difference": 3.1199999999999974
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 71.88,
+            "target": 75,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 84.38,
+            "target": 50,
+            "difference": 34.379999999999995
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 28.12,
+            "target": 50,
+            "difference": 21.88
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "social-democratic",
+      "targetRank": 7,
+      "targetDistance": 24.80631250307066,
+      "top3": [
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 14.458670063321867
+        },
+        {
+          "id": "green-liberal",
+          "name": "绿色自由主义",
+          "distance": 14.990101400590989
+        },
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 17.40123961101622
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 1,
+          "D7_01": 4,
+          "D8_02": 2,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 5,
+          "D6_01": 5,
+          "D7_02": 2,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 2,
+          "D4_04": 3,
+          "D5_03": 3,
+          "D6_04": 2,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 3,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 2,
+          "D9_05": 4,
+          "D10_06": 3,
+          "D1_05": 4,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 3,
+          "D7_06": 2,
+          "D8_05": 4,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 3,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 4,
+          "D3_08": 3,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 4,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 2,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "A",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.75,
+        "agreement": 0.8125,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1.25,
+        "agreement": 0.6875,
+        "n": 4
+      }
+    },
+    "green-conservative": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "green-conservative",
+      "scores": [
+        71.88,
+        53.12,
+        75,
+        71.88,
+        62.5,
+        62.5,
+        68.75,
+        68.75,
+        75,
+        75
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "democratic-socialist",
+        "name": "民主社会主义",
+        "description": "倾向以公共或社会控制的经济安排促进平等，并强调民主参与和公民权利。",
+        "family": "社会主义与公共保障",
+        "limitation": "民主社会主义还涉及生产资料所有权与社会组织形式，本问卷没有充分覆盖这些分歧。",
+        "distance": 9.427768558890275,
+        "gap": 0.7939152554330775,
+        "supporting": [
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 53.12,
+            "target": 75,
+            "difference": 21.880000000000003
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "democratic-socialist",
+      "targetRank": 14,
+      "targetDistance": 22.943034236996642,
+      "top3": [
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 9.427768558890275
+        },
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 10.221683814323352
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 10.221683814323352
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 4,
+          "D3_01": 4,
+          "D4_02": 2,
+          "D5_01": 3,
+          "D6_02": 3,
+          "D7_01": 4,
+          "D8_02": 3,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 4,
+          "D5_02": 3,
+          "D6_01": 4,
+          "D7_02": 2,
+          "D8_01": 4,
+          "D9_02": 2,
+          "D10_01": 4,
+          "D4_03": 4,
+          "D5_04": 3,
+          "D6_03": 4,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 2,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 2,
+          "D4_04": 3,
+          "D5_03": 4,
+          "D6_04": 3,
+          "D7_03": 4,
+          "D8_04": 2,
+          "D9_03": 4,
+          "D10_04": 2,
+          "D1_03": 4,
+          "D2_04": 3,
+          "D3_03": 4,
+          "D7_05": 4,
+          "D8_06": 3,
+          "D9_05": 4,
+          "D10_06": 3,
+          "D1_05": 4,
+          "D2_06": 3,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 3,
+          "D7_06": 3,
+          "D8_05": 4,
+          "D9_06": 2,
+          "D10_05": 4,
+          "D1_06": 3,
+          "D2_05": 3,
+          "D3_06": 2,
+          "D4_05": 4,
+          "D5_06": 3,
+          "D6_05": 4,
+          "D10_07": 4,
+          "D1_08": 2,
+          "D2_07": 3,
+          "D3_08": 3,
+          "D4_07": 4,
+          "D5_08": 2,
+          "D6_07": 4,
+          "D7_08": 3,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 4,
+          "D2_08": 3,
+          "D3_07": 4,
+          "D4_08": 2,
+          "D5_07": 4,
+          "D6_08": 3,
+          "D7_07": 4,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "A",
+          "S02": "C",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 1
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.25,
+        "agreement": 0.9375,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 4
+      }
+    },
+    "green-liberal": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "green-liberal",
+      "scores": [
+        71.88,
+        31.25,
+        84.38,
+        78.12,
+        68.75,
+        84.38,
+        68.75,
+        62.5,
+        75,
+        75
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 11.859068681814774,
+        "gap": 1.2515190243103778,
+        "supporting": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 71.88,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 75,
+            "target": 100,
+            "difference": 25
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 3,
+      "targetDistance": 13.694433540676298,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 11.859068681814774
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 13.110587706125152
+        },
+        {
+          "id": "green-liberal",
+          "name": "绿色自由主义",
+          "distance": 13.694433540676298
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 2,
+          "D5_01": 4,
+          "D6_02": 2,
+          "D7_01": 5,
+          "D8_02": 3,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 2,
+          "D2_01": 2,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 3,
+          "D6_01": 5,
+          "D7_02": 2,
+          "D8_01": 4,
+          "D9_02": 2,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 2,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 2,
+          "D10_03": 4,
+          "D1_04": 3,
+          "D2_03": 3,
+          "D3_04": 2,
+          "D4_04": 3,
+          "D5_03": 4,
+          "D6_04": 2,
+          "D7_03": 4,
+          "D8_04": 3,
+          "D9_03": 4,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 3,
+          "D9_05": 4,
+          "D10_06": 2,
+          "D1_05": 4,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 2,
+          "D7_06": 3,
+          "D8_05": 4,
+          "D9_06": 2,
+          "D10_05": 4,
+          "D1_06": 3,
+          "D2_05": 3,
+          "D3_06": 2,
+          "D4_05": 4,
+          "D5_06": 3,
+          "D6_05": 5,
+          "D10_07": 4,
+          "D1_08": 2,
+          "D2_07": 3,
+          "D3_08": 3,
+          "D4_07": 4,
+          "D5_08": 2,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 4,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 4,
+          "D6_08": 3,
+          "D7_07": 4,
+          "D8_08": 3,
+          "D9_07": 4,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "A",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 1
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 0.4,
+        "agreement": 0.9,
+        "n": 5
+      }
+    },
+    "libertarian-socialist": {
+      "model": "gpt-5.6-luna",
+      "role": "libertarian-socialist",
+      "scores": [
+        93.75,
+        71.88,
+        90.62,
+        100,
+        81.25,
+        87.5,
+        96.88,
+        90.62,
+        96.88,
+        90.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "libertarian-socialist",
+        "name": "自由意志社会主义",
+        "description": "重视经济平等和共同管理，同时强烈反对权力集中，希望普通人直接参与决定。",
+        "family": "社会主义与公共保障",
+        "limitation": "这里的共同管理不等于中央政府控制；问卷尚不能充分区分合作社、地方自治和无政府主义等路线。",
+        "distance": 15.500101289991623,
+        "gap": 1.4440168635152162,
+        "supporting": [
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 100,
+            "target": 100,
+            "difference": 0
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 71.88,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 90.62,
+            "target": 100,
+            "difference": 9.379999999999995
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          },
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "libertarian-socialist",
+      "targetRank": 1,
+      "targetDistance": 15.500101289991623,
+      "top3": [
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 15.500101289991623
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 16.94411815350684
+        },
+        {
+          "id": "eco-socialist",
+          "name": "生态社会主义",
+          "distance": 17.842453306650405
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 2,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 5,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 2,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 1,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 1,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 1,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 1,
+          "D8_05": 5,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 2,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 5,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 2,
+          "D6_07": 5,
+          "D7_08": 2,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 2,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 1,
+          "D9_07": 5,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1.2,
+        "agreement": 0.7,
+        "n": 5
+      }
+    },
+    "developmentalist": {
+      "model": "gemini-3.5-flash-lite",
+      "role": "developmentalist",
+      "scores": [
+        68.75,
+        50,
+        62.5,
+        43.75,
+        37.5,
+        43.75,
+        43.75,
+        34.38,
+        56.25,
+        56.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "clarificationRequired": true,
+        "clarification": {
+          "completed": 10,
+          "middle": 8,
+          "mixedDimensions": [
+            {
+              "id": "D2",
+              "name": "经济管理"
+            },
+            {
+              "id": "D10",
+              "name": "环境与发展"
+            }
+          ],
+          "conditionalDimensions": [],
+          "counts": {
+            "first": 6,
+            "second": 1,
+            "compromise": 3,
+            "conditional": 0,
+            "unsure": 0,
+            "unrepresented": 0
+          }
+        },
+        "caveats": [
+          "初步比较覆盖24种预设参考画像；接近中间参考点本身不能证明主张折中。参考点尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。",
+          "澄清题只辅助区分折中、混合和不确定，不改变十维分数；这些判断阈值尚未实证校准。"
+        ],
+        "status": "undetermined",
+        "id": null,
+        "name": "暂不能确定最贴近的意识形态",
+        "reasonCodes": [
+          "direction_not_confirmed",
+          "compromise_not_confirmed"
+        ],
+        "description": "原分数分布或明确单向选择不支持整体折中的概括；明确支持折中的澄清答案不足6道。保留十维结果，不自动改判为其他思想传统。"
+      },
+      "preliminary": "centrist",
+      "targetRank": 7,
+      "targetDistance": 20.180087710413947,
+      "top3": [
+        {
+          "id": "centrist",
+          "name": "中间主义",
+          "distance": 10.504091583759157
+        },
+        {
+          "id": "communitarian-conservative",
+          "name": "社群保守主义",
+          "distance": 11.224345860672683
+        },
+        {
+          "id": "conservative-social-democratic",
+          "name": "保守社会民主取向",
+          "distance": 15.34066295829486
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 10,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 4,
+          "D3_01": 4,
+          "D4_02": 4,
+          "D5_01": 2,
+          "D6_02": 4,
+          "D7_01": 3,
+          "D8_02": 5,
+          "D9_01": 4,
+          "D10_02": 4,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 3,
+          "D4_01": 3,
+          "D5_02": 4,
+          "D6_01": 3,
+          "D7_02": 3,
+          "D8_01": 3,
+          "D9_02": 3,
+          "D10_01": 3,
+          "D4_03": 3,
+          "D5_04": 4,
+          "D6_03": 3,
+          "D7_04": 4,
+          "D8_03": 3,
+          "D9_04": 3,
+          "D10_03": 4,
+          "D1_04": 3,
+          "D2_03": 5,
+          "D3_04": 3,
+          "D4_04": 5,
+          "D5_03": 3,
+          "D6_04": 4,
+          "D7_03": 4,
+          "D8_04": 3,
+          "D9_03": 3,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 3,
+          "D3_03": 4,
+          "D7_05": 3,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 4,
+          "D1_05": 4,
+          "D2_06": 3,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 3,
+          "D6_06": 3,
+          "D7_06": 4,
+          "D8_05": 2,
+          "D9_06": 3,
+          "D10_05": 3,
+          "D1_06": 4,
+          "D2_05": 2,
+          "D3_06": 3,
+          "D4_05": 3,
+          "D5_06": 4,
+          "D6_05": 3,
+          "D10_07": 4,
+          "D1_08": 2,
+          "D2_07": 3,
+          "D3_08": 4,
+          "D4_07": 3,
+          "D5_08": 3,
+          "D6_07": 4,
+          "D7_08": 4,
+          "D8_07": 3,
+          "D9_08": 3,
+          "D10_08": 2,
+          "D1_07": 4,
+          "D2_08": 4,
+          "D3_07": 4,
+          "D4_08": 3,
+          "D5_07": 3,
+          "D6_08": 4,
+          "D7_07": 3,
+          "D8_08": 4,
+          "D9_07": 3,
+          "S01": "B",
+          "S02": "C",
+          "S03": "A",
+          "S04": "C",
+          "S05": "A",
+          "S06": "C",
+          "S07": "A",
+          "S08": "A",
+          "S09": "C",
+          "S10": "B",
+          "S11": "C",
+          "S12": "A",
+          "F01": 2,
+          "F02": 5,
+          "F03": 2,
+          "F04": 2
+        },
+        "clarifications": {
+          "C_D1": "compromise",
+          "C_D2": "second",
+          "C_D3": "first",
+          "C_D4": "first",
+          "C_D5": "first",
+          "C_D6": "compromise",
+          "C_D7": "first",
+          "C_D8": "first",
+          "C_D9": "compromise",
+          "C_D10": "first"
+        }
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 4
+      }
+    },
+    "eco-socialist": {
+      "model": "gpt-5.6-luna",
+      "role": "eco-socialist",
+      "scores": [
+        90.62,
+        93.75,
+        87.5,
+        93.75,
+        68.75,
+        87.5,
+        96.88,
+        93.75,
+        100,
+        96.88
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "eco-socialist",
+        "name": "生态社会主义",
+        "description": "把生态保护与经济平等结合起来，倾向通过公共安排改变生产和分配，同时重视民主参与。",
+        "family": "生态政治",
+        "limitation": "比一般绿色政治更强调经济结构变革；问卷没有直接检验是否支持超越资本主义，因此只能作参考。",
+        "distance": 15.14992805263444,
+        "gap": 2.8297916337232962,
+        "supporting": [
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 96.88,
+            "target": 100,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 93.75,
+            "target": 100,
+            "difference": 6.25
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 68.75,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 100,
+            "target": 75,
+            "difference": 25
+          },
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 96.88,
+            "target": 75,
+            "difference": 21.879999999999995
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "eco-socialist",
+      "targetRank": 1,
+      "targetDistance": 15.14992805263444,
+      "top3": [
+        {
+          "id": "eco-socialist",
+          "name": "生态社会主义",
+          "distance": 15.14992805263444
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 17.979719686357736
+        },
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 19.641036632520187
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 1,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 5,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 1,
+          "D1_03": 5,
+          "D2_04": 3,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 1,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 1,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 1,
+          "D8_05": 5,
+          "D9_06": 1,
+          "D10_05": 5,
+          "D1_06": 3,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 1,
+          "D2_07": 5,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 3,
+          "D6_07": 5,
+          "D7_08": 2,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 1,
+          "D1_07": 5,
+          "D2_08": 1,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 1,
+          "D9_07": 5,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "A",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.2,
+        "agreement": 0.95,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 5
+      }
+    },
+    "national-liberal": {
+      "model": "gpt-5.6-luna",
+      "role": "national-liberal",
+      "scores": [
+        53.12,
+        21.88,
+        84.38,
+        87.5,
+        43.75,
+        71.88,
+        59.38,
+        37.5,
+        65.62,
+        65.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "social-liberal",
+        "name": "社会自由主义",
+        "description": "重视个人自由与多元社会，在市场经济的基础上接受公共保障和机会平等。",
+        "family": "自由主义与个人自主",
+        "limitation": "社会自由主义内部对税收、福利和市场监管的主张差别很大，本画像只代表其中一种组合。",
+        "distance": 15.654722290733876,
+        "gap": 0.4921142415407971,
+        "supporting": [
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 53.12,
+            "target": 50,
+            "difference": 3.1199999999999974
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 21.88,
+            "target": 25,
+            "difference": 3.120000000000001
+          },
+          {
+            "id": "D6",
+            "name": "传统与生活",
+            "score": 71.88,
+            "target": 75,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 37.5,
+            "target": 75,
+            "difference": 37.5
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。",
+          "3 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "social-liberal",
+      "targetRank": 9,
+      "targetDistance": 21.89681095502265,
+      "top3": [
+        {
+          "id": "social-liberal",
+          "name": "社会自由主义",
+          "distance": 15.654722290733876
+        },
+        {
+          "id": "classical-liberal",
+          "name": "古典自由主义",
+          "distance": 16.146836532274673
+        },
+        {
+          "id": "libertarian",
+          "name": "自由意志主义",
+          "distance": 17.97693883841184
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 3,
+          "D6_02": 4,
+          "D7_01": 4,
+          "D8_02": 5,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 4,
+          "D2_01": 3,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 4,
+          "D6_01": 5,
+          "D7_02": 3,
+          "D8_01": 3,
+          "D9_02": 4,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 4,
+          "D7_04": 4,
+          "D8_03": 3,
+          "D9_04": 2,
+          "D10_03": 5,
+          "D1_04": 4,
+          "D2_03": 3,
+          "D3_04": 1,
+          "D4_04": 3,
+          "D5_03": 4,
+          "D6_04": 2,
+          "D7_03": 5,
+          "D8_04": 4,
+          "D9_03": 4,
+          "D10_04": 3,
+          "D1_03": 4,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 3,
+          "D1_05": 4,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 3,
+          "D7_06": 3,
+          "D8_05": 4,
+          "D9_06": 3,
+          "D10_05": 4,
+          "D1_06": 4,
+          "D2_05": 2,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 4,
+          "D1_08": 3,
+          "D2_07": 3,
+          "D3_08": 4,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 3,
+          "D9_08": 2,
+          "D10_08": 4,
+          "D1_07": 4,
+          "D2_08": 5,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 3,
+          "D6_08": 3,
+          "D7_07": 4,
+          "D8_08": 4,
+          "D9_07": 4,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "B",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.25,
+        "agreement": 0.9375,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 4
+      }
+    },
+    "paleoconservative": {
+      "model": "gpt-5.6-luna",
+      "role": "paleoconservative",
+      "scores": [
+        34.38,
+        12.5,
+        81.25,
+        90.62,
+        34.38,
+        50,
+        53.12,
+        31.25,
+        78.12,
+        56.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "classical-liberal",
+        "name": "古典自由主义",
+        "description": "重视市场配置、个人权利和有限政府，较倾向代表授权而非持续的直接参与。",
+        "family": "自由主义与个人自主",
+        "limitation": "古典自由主义内部对福利与参与制度存在分歧，这不是所有支持者的统一立场。",
+        "distance": 13.440087425310894,
+        "gap": 4.484363751782366,
+        "supporting": [
+          {
+            "id": "D6",
+            "name": "传统与生活",
+            "score": 50,
+            "target": 50,
+            "difference": 0
+          },
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 53.12,
+            "target": 50,
+            "difference": 3.1199999999999974
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D9",
+            "name": "对外安全",
+            "score": 78.12,
+            "target": 50,
+            "difference": 28.120000000000005
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "3 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "classical-liberal",
+      "targetRank": 15,
+      "targetDistance": 28.657214623895328,
+      "top3": [
+        {
+          "id": "classical-liberal",
+          "name": "古典自由主义",
+          "distance": 13.440087425310894
+        },
+        {
+          "id": "libertarian",
+          "name": "自由意志主义",
+          "distance": 17.92445117709326
+        },
+        {
+          "id": "national-liberal",
+          "name": "民族自由主义",
+          "distance": 21.123114117004626
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 2,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 2,
+          "D6_02": 4,
+          "D7_01": 4,
+          "D8_02": 4,
+          "D9_01": 4,
+          "D10_02": 3,
+          "D1_02": 4,
+          "D2_01": 2,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 4,
+          "D6_01": 5,
+          "D7_02": 4,
+          "D8_01": 2,
+          "D9_02": 2,
+          "D10_01": 3,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 3,
+          "D7_04": 4,
+          "D8_03": 3,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 4,
+          "D2_03": 2,
+          "D3_04": 2,
+          "D4_04": 2,
+          "D5_03": 3,
+          "D6_04": 4,
+          "D7_03": 5,
+          "D8_04": 4,
+          "D9_03": 5,
+          "D10_04": 3,
+          "D1_03": 3,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 4,
+          "D9_05": 4,
+          "D10_06": 4,
+          "D1_05": 2,
+          "D2_06": 5,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 3,
+          "D6_06": 4,
+          "D7_06": 4,
+          "D8_05": 2,
+          "D9_06": 3,
+          "D10_05": 4,
+          "D1_06": 4,
+          "D2_05": 2,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 4,
+          "D10_07": 4,
+          "D1_08": 4,
+          "D2_07": 2,
+          "D3_08": 4,
+          "D4_07": 4,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 3,
+          "D9_08": 2,
+          "D10_08": 4,
+          "D1_07": 4,
+          "D2_08": 5,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 3,
+          "D6_08": 4,
+          "D7_07": 4,
+          "D8_08": 4,
+          "D9_07": 4,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 3,
+          "F04": 2,
+          "D6_09": 4,
+          "D6_10": 5,
+          "D6_11": 4,
+          "D6_12": 4
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.5,
+        "agreement": 0.875,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1.5,
+        "agreement": 0.625,
+        "n": 4
+      }
+    },
+    "market-socialist": {
+      "model": "gpt-5.6-luna",
+      "role": "market-socialist",
+      "scores": [
+        93.75,
+        60.42,
+        87.5,
+        93.75,
+        71.88,
+        87.5,
+        93.75,
+        87.5,
+        93.75,
+        90.62
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 14.426694701143433,
+        "gap": 0.8745967476199699,
+        "supporting": [
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 71.88,
+            "target": 75,
+            "difference": 3.1200000000000045
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 90.62,
+            "target": 100,
+            "difference": 9.379999999999995
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 60.42,
+            "target": 50,
+            "difference": 10.420000000000002
+          }
+        ],
+        "contrasts": [],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 8,
+      "targetDistance": 28.316594428002812,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 14.426694701143433
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 15.301291448763402
+        },
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 16.762443735923473
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 3,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 1,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 1,
+          "D8_05": 5,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 2,
+          "D2_05": 5,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 5,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 3,
+          "D6_07": 5,
+          "D7_08": 3,
+          "D8_07": 5,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 5,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2,
+          "D2_09": 4,
+          "D2_10": 2,
+          "D2_11": 4,
+          "D2_12": 4
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.4,
+        "agreement": 0.9,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 5
+      }
+    },
+    "conservative-social-democratic": {
+      "model": "gpt-5.6-luna",
+      "role": "conservative-social-democratic",
+      "scores": [
+        84.38,
+        56.25,
+        84.38,
+        93.75,
+        50,
+        46.88,
+        81.25,
+        81.25,
+        87.5,
+        81.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "democratic-socialist",
+        "name": "民主社会主义",
+        "description": "倾向以公共或社会控制的经济安排促进平等，并强调民主参与和公民权利。",
+        "family": "社会主义与公共保障",
+        "limitation": "民主社会主义还涉及生产资料所有权与社会组织形式，本问卷没有充分覆盖这些分歧。",
+        "distance": 16.025809495934986,
+        "gap": 0,
+        "supporting": [
+          {
+            "id": "D7",
+            "name": "文化与身份",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          },
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          },
+          {
+            "id": "D10",
+            "name": "环境与发展",
+            "score": 81.25,
+            "target": 75,
+            "difference": 6.25
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D6",
+            "name": "传统与生活",
+            "score": 46.88,
+            "target": 75,
+            "difference": 28.119999999999997
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 50,
+            "target": 75,
+            "difference": 25
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。",
+          "3 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "democratic-socialist",
+      "targetRank": 6,
+      "targetDistance": 21.08024122252874,
+      "top3": [
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 16.025809495934986
+        },
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 16.025809495934986
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 16.972818563809607
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 3,
+          "D6_02": 4,
+          "D7_01": 5,
+          "D8_02": 2,
+          "D9_01": 5,
+          "D10_02": 2,
+          "D1_02": 1,
+          "D2_01": 5,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 3,
+          "D7_02": 2,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 3,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 4,
+          "D6_04": 2,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 2,
+          "D9_05": 4,
+          "D10_06": 4,
+          "D1_05": 5,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 4,
+          "D7_06": 2,
+          "D8_05": 4,
+          "D9_06": 3,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 5,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 4,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 5,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 4,
+          "D6_07": 4,
+          "D7_08": 3,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 4,
+          "D6_08": 5,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2,
+          "D2_09": 4,
+          "D2_10": 4,
+          "D2_11": 4,
+          "D2_12": 4
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.3333333333333333,
+        "agreement": 0.9166666666666666,
+        "n": 3
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 3
+      }
+    },
+    "participatory-democracy": {
+      "model": "gpt-5.6-luna",
+      "role": "participatory-democracy",
+      "scores": [
+        87.5,
+        46.88,
+        90.62,
+        100,
+        100,
+        87.5,
+        90.62,
+        100,
+        96.88,
+        96.88
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "libertarian-socialist",
+        "name": "自由意志社会主义",
+        "description": "重视经济平等和共同管理，同时强烈反对权力集中，希望普通人直接参与决定。",
+        "family": "社会主义与公共保障",
+        "limitation": "这里的共同管理不等于中央政府控制；问卷尚不能充分区分合作社、地方自治和无政府主义等路线。",
+        "distance": 17.37144783833518,
+        "gap": 0.44335499526362554,
+        "supporting": [
+          {
+            "id": "D4",
+            "name": "权力监督",
+            "score": 100,
+            "target": 100,
+            "difference": 0
+          },
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 100,
+            "target": 100,
+            "difference": 0
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 90.62,
+            "target": 100,
+            "difference": 9.379999999999995
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 46.88,
+            "target": 75,
+            "difference": 28.119999999999997
+          },
+          {
+            "id": "D8",
+            "name": "国家与世界",
+            "score": 100,
+            "target": 75,
+            "difference": 25
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "libertarian-socialist",
+      "targetRank": 10,
+      "targetDistance": 34.98095481830077,
+      "top3": [
+        {
+          "id": "libertarian-socialist",
+          "name": "自由意志社会主义",
+          "distance": 17.37144783833518
+        },
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 17.814802833598804
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 21.03252719004542
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 5,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 1,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 4,
+          "D3_02": 1,
+          "D4_01": 5,
+          "D5_02": 1,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 5,
+          "D4_03": 5,
+          "D5_04": 1,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 1,
+          "D5_03": 5,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 1,
+          "D9_03": 5,
+          "D10_04": 1,
+          "D1_03": 5,
+          "D2_04": 5,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 1,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 1,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 1,
+          "D8_05": 5,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 4,
+          "D3_06": 1,
+          "D4_05": 5,
+          "D5_06": 1,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 1,
+          "D2_07": 4,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 1,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 1,
+          "D1_07": 5,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 5,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 1,
+          "D9_07": 5,
+          "S01": "B",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "B",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 1,
+        "agreement": 0.75,
+        "n": 4
+      }
+    },
+    "cosmopolitan-liberal": {
+      "model": "gpt-5.6-luna",
+      "role": "cosmopolitan-liberal",
+      "scores": [
+        84.38,
+        46.88,
+        84.38,
+        93.75,
+        56.25,
+        87.5,
+        90.62,
+        93.75,
+        93.75,
+        84.38
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 14.953835628359702,
+        "gap": 1.9611636326512176,
+        "supporting": [
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 46.88,
+            "target": 50,
+            "difference": 3.1199999999999974
+          },
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 84.38,
+            "target": 75,
+            "difference": 9.379999999999995
+          },
+          {
+            "id": "D3",
+            "name": "个人权利",
+            "score": 84.38,
+            "target": 75,
+            "difference": 9.379999999999995
+          }
+        ],
+        "contrasts": [],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "本次已回答4/4道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 5,
+      "targetDistance": 20.27849106812437,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 14.953835628359702
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 16.91499926101092
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 18.248758861906197
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 4,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 5,
+          "D2_02": 5,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 4,
+          "D6_02": 1,
+          "D7_01": 5,
+          "D8_02": 1,
+          "D9_01": 5,
+          "D10_02": 1,
+          "D1_02": 1,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 2,
+          "D6_01": 5,
+          "D7_02": 1,
+          "D8_01": 5,
+          "D9_02": 1,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 1,
+          "D8_03": 5,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 4,
+          "D6_04": 1,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 3,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 5,
+          "D8_06": 2,
+          "D9_05": 5,
+          "D10_06": 2,
+          "D1_05": 5,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 5,
+          "D6_06": 4,
+          "D7_06": 1,
+          "D8_05": 5,
+          "D9_06": 3,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 4,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 5,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 4,
+          "D3_08": 4,
+          "D4_07": 5,
+          "D5_08": 4,
+          "D6_07": 5,
+          "D7_08": 4,
+          "D8_07": 5,
+          "D9_08": 1,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 1,
+          "D5_07": 4,
+          "D6_08": 2,
+          "D7_07": 5,
+          "D8_08": 1,
+          "D9_07": 5,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "B",
+          "S06": "C",
+          "S07": "B",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2,
+          "D5_09": 5,
+          "D5_10": 4,
+          "D5_11": 4,
+          "D5_12": 4
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 4
+      },
+      "baselineFit": {
+        "mae": 0.25,
+        "agreement": 0.9375,
+        "n": 4
+      }
+    },
+    "centrist": {
+      "model": "gpt-5.6-luna",
+      "role": "centrist",
+      "scores": [
+        75,
+        50,
+        84.38,
+        87.5,
+        50,
+        78.12,
+        81.25,
+        71.88,
+        81.25,
+        81.25
+      ],
+      "actual": {
+        "version": "nearest-tradition-2.2",
+        "status": "matched",
+        "id": "green",
+        "name": "绿色政治",
+        "description": "将生态与代际责任置于重要位置，同时倾向参与式治理、社会平等和跨国合作。",
+        "family": "生态政治",
+        "limitation": "这里保留原有偏平等、参与和国际合作的绿色画像；其他绿色取向另列，不代表绿色政治只有一种。",
+        "distance": 11.482119577847985,
+        "gap": 0,
+        "supporting": [
+          {
+            "id": "D1",
+            "name": "经济分配",
+            "score": 75,
+            "target": 75,
+            "difference": 0
+          },
+          {
+            "id": "D2",
+            "name": "经济管理",
+            "score": 50,
+            "target": 50,
+            "difference": 0
+          },
+          {
+            "id": "D6",
+            "name": "传统与生活",
+            "score": 78.12,
+            "target": 75,
+            "difference": 3.1200000000000045
+          }
+        ],
+        "contrasts": [
+          {
+            "id": "D5",
+            "name": "公众参与",
+            "score": 50,
+            "target": 75,
+            "difference": 25
+          }
+        ],
+        "caveats": [
+          "这是在24种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。",
+          "与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。"
+        ],
+        "clarificationRequired": false
+      },
+      "preliminary": "green",
+      "targetRank": 14,
+      "targetDistance": 27.225706051450715,
+      "top3": [
+        {
+          "id": "green",
+          "name": "绿色政治",
+          "distance": 11.482119577847985
+        },
+        {
+          "id": "social-democratic",
+          "name": "社会民主主义",
+          "distance": 11.482119577847985
+        },
+        {
+          "id": "democratic-socialist",
+          "name": "民主社会主义",
+          "distance": 12.770633108816492
+        }
+      ],
+      "effectiveBase": 80,
+      "supplemental": 0,
+      "clarificationCount": 0,
+      "answers": {
+        "format": "political-values-answers",
+        "version": "2.1.0-exploratory",
+        "answers": {
+          "D1_01": 4,
+          "D2_02": 4,
+          "D3_01": 5,
+          "D4_02": 1,
+          "D5_01": 3,
+          "D6_02": 2,
+          "D7_01": 5,
+          "D8_02": 3,
+          "D9_01": 4,
+          "D10_02": 2,
+          "D1_02": 2,
+          "D2_01": 4,
+          "D3_02": 2,
+          "D4_01": 5,
+          "D5_02": 4,
+          "D6_01": 5,
+          "D7_02": 2,
+          "D8_01": 4,
+          "D9_02": 2,
+          "D10_01": 4,
+          "D4_03": 5,
+          "D5_04": 4,
+          "D6_03": 5,
+          "D7_04": 2,
+          "D8_03": 4,
+          "D9_04": 1,
+          "D10_03": 5,
+          "D1_04": 2,
+          "D2_03": 4,
+          "D3_04": 1,
+          "D4_04": 2,
+          "D5_03": 4,
+          "D6_04": 2,
+          "D7_03": 5,
+          "D8_04": 2,
+          "D9_03": 5,
+          "D10_04": 2,
+          "D1_03": 5,
+          "D2_04": 4,
+          "D3_03": 5,
+          "D7_05": 4,
+          "D8_06": 2,
+          "D9_05": 4,
+          "D10_06": 3,
+          "D1_05": 4,
+          "D2_06": 4,
+          "D3_05": 5,
+          "D4_06": 2,
+          "D5_05": 4,
+          "D6_06": 4,
+          "D7_06": 2,
+          "D8_05": 4,
+          "D9_06": 2,
+          "D10_05": 5,
+          "D1_06": 4,
+          "D2_05": 4,
+          "D3_06": 2,
+          "D4_05": 5,
+          "D5_06": 4,
+          "D6_05": 5,
+          "D10_07": 5,
+          "D1_08": 2,
+          "D2_07": 4,
+          "D3_08": 4,
+          "D4_07": 4,
+          "D5_08": 3,
+          "D6_07": 5,
+          "D7_08": 3,
+          "D8_07": 4,
+          "D9_08": 2,
+          "D10_08": 2,
+          "D1_07": 5,
+          "D2_08": 4,
+          "D3_07": 5,
+          "D4_08": 2,
+          "D5_07": 4,
+          "D6_08": 3,
+          "D7_07": 5,
+          "D8_08": 2,
+          "D9_07": 4,
+          "S01": "C",
+          "S02": "B",
+          "S03": "A",
+          "S04": "C",
+          "S05": "C",
+          "S06": "A",
+          "S07": "C",
+          "S08": "A",
+          "S09": "A",
+          "S10": "C",
+          "S11": "B",
+          "S12": "C",
+          "F01": 2,
+          "F02": 5,
+          "F03": 4,
+          "F04": 2
+        },
+        "clarifications": {}
+      },
+      "pilotFit": {
+        "mae": 0.8,
+        "agreement": 0.8,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 1.2,
+        "agreement": 0.7,
+        "n": 5
+      }
+    },
+    "communitarian-conservative": {
+      "model": "grok-4.7-build-fast",
+      "role": "communitarian-conservative",
+      "error": "基础题未返回有效完整答案",
+      "pilotFit": {
+        "mae": 0,
+        "agreement": 1,
+        "n": 3
+      },
+      "baselineFit": {
+        "mae": 1.6666666666666667,
+        "agreement": 0.5833333333333333,
+        "n": 3
+      }
+    },
+    "authoritarian-market": {
+      "model": "grok-4.7-build-fast",
+      "role": "authoritarian-market",
+      "error": "基础题未返回有效完整答案",
+      "pilotFit": {
+        "mae": 0.4,
+        "agreement": 0.9,
+        "n": 5
+      },
+      "baselineFit": {
+        "mae": 2.8,
+        "agreement": 0.30000000000000004,
+        "n": 5
+      }
+    }
+  },
+  "finished": "2026-11-18T00:19:33.731Z"
+}

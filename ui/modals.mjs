@@ -69,20 +69,33 @@ export function openProfilesModal(){
 
 export function openImport(ctx){
   const modal=$('#modal');
-  showModal('导入已有答案',`<p>选择本网站新版导出的JSON。v2.0答案可以直接导入，澄清题留空。v1旧版答案请到<a href="legacy/v1/">旧版问卷</a>使用；新版改写了题目，不会直接套用旧答案。导入后会<strong>替换本页现有答案</strong>；文件仅在浏览器中读取，不会上传。</p>
+  showModal('导入已有答案',`<p>仅接受 v2.2 导出的答案 JSON。旧版题意不同，不支持迁移；请保留原文件。导入后会<strong>替换本页现有答案</strong>；文件仅在浏览器中读取，不会上传。</p>
     <label for="answer-file">选择答案文件</label><br><input id="answer-file" type="file" accept=".json,application/json">
     <p><label for="answer-text">或粘贴答案 JSON</label></p>
     <textarea id="answer-text" placeholder='粘贴包含 format、version 和 answers 的新版答案文件' spellcheck="false"></textarea>
     <p id="import-error" class="error" role="alert"></p>
     <button type="button" class="button" id="confirm-import">导入并替换当前答案</button>`);
-  $('#answer-file').onchange=async e=>{
-    const file=e.target.files[0];if(!file)return;
-    try{if(file.size>100000)throw new Error('文件过大，请选择原始答案JSON。');$('#answer-text').value=await file.text();$('#import-error').textContent='';}
-    catch(err){$('#import-error').textContent=err.message;}
+  const fileInput=$('#answer-file'),text=$('#answer-text'),error=$('#import-error'),confirm=$('#confirm-import');
+  let revision=0;
+  confirm.disabled=true;
+  text.oninput=()=>{
+    revision++;fileInput.value='';error.textContent='';confirm.disabled=!text.value.trim();
   };
-  $('#confirm-import').onclick=()=>{
+  fileInput.onchange=async()=>{
+    const token=++revision,file=fileInput.files[0];
+    text.value='';confirm.disabled=true;error.textContent='';
+    if(!file)return;
     try{
-      const imported=parseAnswers($('#answer-text').value,ctx.bank);
+      if(file.size>100000)throw new Error('文件过大，请选择原始答案 JSON 或粘贴答案。');
+      const value=await file.text();
+      if(token!==revision||!text.isConnected)return;
+      if(!value.trim())throw new Error('文件为空，请重新选择或粘贴答案。');
+      text.value=value;confirm.disabled=false;
+    }catch(err){if(token===revision)error.textContent=err.message;}
+  };
+  confirm.onclick=()=>{
+    try{
+      const imported=parseAnswers(text.value,ctx.bank);
       ctx.answers=Object.fromEntries(Object.entries(imported).filter(([,v])=>v!==null));
       ctx.page=0;ctx.radarCompareId=null;ctx.selectedDimIndex=null;ctx.syncPages();modal.close();ctx.go('quiz',0);
       toast(`已导入 ${ctx.count()} 道题的答案。`);
@@ -92,7 +105,7 @@ export function openImport(ctx){
 
 export function confirmReset(ctx){
   const modal=$('#modal');
-  showModal('清除本次答案',`<p>这会清除当前页面的答案及此网站在本浏览器保存的进度。已经下载的文件不会被删除。清除后无法从本页恢复。</p>
+  showModal('清除本次答案',`<p>${ctx.preserveDisk?'这只会清空本页答案，不会删除或替换本地存档。':'这会清除当前页面的答案及本浏览器中同一问卷版本的进度，不会清除其他版本。'}已经下载的文件不会被删除。清除后无法从本页恢复。</p>
     <div class="actions"><button type="button" class="button secondary" id="backup">先导出答案</button><button type="button" class="button danger" id="confirm-reset">确认清除并重新开始</button></div>`);
   $('#backup').onclick=ctx.exportAnswers;
   $('#confirm-reset').onclick=async()=>{
@@ -110,11 +123,12 @@ export function openAbout(ctx){
     <p><strong>答案不上传。</strong>本网站没有后端、账号、广告、统计追踪或外部字体。计分在本地完成。只有主动勾选后，答案才保存在此浏览器的网站存储中；可以取消保存或清除答案。导出文件由你保管。GitHub Pages作为托管服务仍可能记录访问请求的IP等常规日志，答案不会包含在请求或网址中。</p>
     <p>HTTP与HTTPS、不同域名和不同浏览器的本地存储彼此独立。跨设备继续请自行导出并导入。不要在共用设备保存敏感答案。</p>
     <ul>
+      <li><a href="docs/题目修订记录.html" target="_blank" rel="noopener">查看 v2.2 题目修订记录</a></li>
       <li><a href="docs/计分与解释规范.html" target="_blank" rel="noopener">计分与思想传统规则</a></li>
       <li><a href="docs/最贴近意识形态规则.html" target="_blank" rel="noopener">查看${IDEOLOGIES.length}种参考画像与归纳方法</a></li>
       <li><a href="docs/覆盖矩阵与内容审查.html" target="_blank" rel="noopener">题目覆盖与已知问题</a></li>
       <li><a href="docs/真人试测与校准方案.html" target="_blank" rel="noopener">真人试测与校准方案</a></li>
-      <li><a href="questionnaire-v2.zip" download>下载新版问卷及完整文档</a></li>
+      <li><a href="questionnaire-v2.zip" download>下载 ${ctx.versionLabel} 问卷及完整文档</a></li>
     </ul>
     <p class="fine">问卷版本：${esc(ctx.bank.version)}。先按十维距离寻找参考画像，再核实中间主义所需证据，从${IDEOLOGIES.length}种参考画像中比较，归纳版本${CLASSIFIER_VERSION}；思想传统提示不代表唯一身份。</p>`);
 }

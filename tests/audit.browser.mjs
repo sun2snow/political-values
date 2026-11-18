@@ -8,12 +8,12 @@ import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 import {resolve, extname, sep} from 'node:path';
+import {PROGRESS_KEY as KEY} from '../ui/storage.mjs';
 
 const {chromium}=await import(process.env.AUDIT_PLAYWRIGHT_MODULE
   ? pathToFileURL(process.env.AUDIT_PLAYWRIGHT_MODULE).href : 'playwright');
 const root=resolve(process.env.SITE_ROOT||fileURLToPath(new URL('../',import.meta.url)));
 const bank=JSON.parse(await readFile(new URL('../data.json',import.meta.url),'utf8'));
-const KEY='political-values-v2-local';
 const targets=[25,25,75,75,50,75,75,50,75,25];
 const fullAnswers=Object.fromEntries(bank.items.filter(i=>i.status==='core').map(i=>[
   i.id,3+(targets[Number(i.dimension.slice(1))-1]-50)/25*i.direction
@@ -98,6 +98,70 @@ await test('Browser security regression suite',async t=>{
     return {safe:disk.D2_02===4,savedAnswers:disk};
   },{answers:{D1_01:4}}));
 
+  const unloadProtected=page=>page.evaluate(()=>{const e=new Event('beforeunload',{cancelable:true});window.dispatchEvent(e);return e.defaultPrevented;});
+
+  await finding('SAVE-16 opting back in cannot report a stale snapshot as saved',()=>withPage(async(page,context)=>{
+    const other=await context.newPage();await other.goto(base+'/#quiz/base-0');await other.waitForSelector('#questions');
+    await page.goto(base+'/#quiz/base-0');await page.locator('input[name=D1_01][value="4"]').check();
+    await other.waitForFunction(()=>document.querySelector('#save-status').textContent.includes('另一标签页'));
+    await other.click('#remember');await other.waitForFunction(()=>!document.querySelector('#remember').checked);
+    const disk=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)).answers.D1_01,KEY);
+    return {safe:disk===4&&await other.locator('input[name=D1_01]:checked').inputValue()==='3'&&await unloadProtected(other),disk};
+  },{answers:{D1_01:3}}));
+
+  await finding('SAVE-17 failure to save the last cleared answer protects an empty draft',()=>withPage(async page=>{
+    await page.click('#start');await page.evaluate(()=>{Storage.prototype.setItem=()=>{throw new Error('quota');};});
+    await page.click('[data-clear=D1_01]');await page.waitForFunction(()=>document.querySelector('#save-status').textContent.includes('旧答案可能仍在本机'));
+    return {safe:await unloadProtected(page)&&await page.locator('input[name=D1_01]:checked').count()===0};
+  },{answers:{D1_01:3}}));
+
+  await finding('SAVE-18 reset protects unload until disk deletion completes',()=>withPage(async page=>{
+    await page.evaluate(k=>new Promise(ready=>{navigator.locks.request(k+'-writer',()=>new Promise(done=>{window.releaseAuditLock=done;ready();}));}),KEY);
+    try{
+      await page.click('#reset');await page.click('#confirm-reset');await page.waitForSelector('#start');
+      const pending=await unloadProtected(page)&&await page.locator('#remember').isDisabled()&&(await page.textContent('#save-status')).includes('正在删除');
+      await page.evaluate(()=>window.releaseAuditLock());await page.waitForFunction(k=>localStorage.getItem(k)===null&&!document.querySelector('#remember').disabled,KEY);
+      return {safe:pending&&!await unloadProtected(page),pending};
+    }finally{await page.evaluate(()=>window.releaseAuditLock());}
+  },{answers:{D1_01:3},hash:'#report'}));
+
+  await finding('IMPORT-19 replacing a file or pasting invalidates previous and in-flight imports',()=>withPage(async page=>{
+    const envelope=n=>JSON.stringify({format:'political-values-answers',version:bank.version,answers:{D1_01:n}});
+    const file=(name,buffer)=>({name,mimeType:'application/json',buffer});
+    await page.click('#import-home');const input=page.locator('#answer-file'),confirm=page.locator('#confirm-import');
+    await input.setInputFiles(file('a.json',Buffer.from(envelope(3))));await page.waitForFunction(()=>!document.querySelector('#confirm-import').disabled);
+    await input.setInputFiles(file('large.json',Buffer.alloc(100001)));const rejected=await confirm.isDisabled()&&await page.inputValue('#answer-text')==='';
+    await page.evaluate(()=>{const original=File.prototype.text;File.prototype.text=async function(){await new Promise(r=>window.finishRead=r);return original.call(this);};});
+    await input.setInputFiles(file('slow.json',Buffer.from(envelope(4))));await page.waitForFunction(()=>!!window.finishRead);const pending=await confirm.isDisabled();
+    await page.fill('#answer-text',envelope(2));await page.evaluate(()=>window.finishRead());await confirm.click();
+    return {safe:rejected&&pending&&await page.locator('input[name=D1_01]:checked').inputValue()==='2',rejected,pending};
+  }));
+
+  await finding('SAVE-20 rejected record survives ordinary use, reset and cancelled replacement',()=>withPage(async page=>{
+    const raw=' { "version": "2.1.0-exploratory", "answers": {"D1_01":2,"D2_05":5} }\n';
+    await page.evaluate(([k,v])=>localStorage.setItem(k,v),[KEY,raw]);await page.reload();
+    await page.waitForSelector('#backup-raw');assert.ok(await page.locator('#remember').isDisabled());
+    const file=page.waitForEvent('download');await page.click('#backup-raw');assert.equal(await readFile(await (await file).path(),'utf8'),raw);
+    await page.click('#replace-raw');await page.click('#cancel-replace');await page.goto(base+'/#report');
+    await page.click('#reset');await page.click('#confirm-reset');await page.waitForSelector('#start');assert.equal(await page.evaluate(k=>localStorage.getItem(k),KEY),raw);
+    await page.click('#start');await page.check('input[name=D1_01][value="4"]');assert.equal(await page.evaluate(k=>localStorage.getItem(k),KEY),raw);
+    await page.click('#replace-raw');await page.click('#confirm-replace');await page.waitForFunction(()=>document.querySelector('#remember').checked);
+    const record=await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),KEY);
+    return {safe:record.version===bank.version&&JSON.stringify(record.answers)==='{"D1_01":4}'};
+  }));
+
+  await finding('NAV-21 cold start and reload at the main anchor render and focus the home page',()=>withPage(async(page,context)=>{
+    const cold=await context.newPage();await cold.goto(base+'/#main');await cold.waitForSelector('#start');assert.equal(await cold.evaluate(()=>document.activeElement.id),'main');
+    await cold.reload();await cold.waitForSelector('#start');return {safe:await cold.evaluate(()=>document.activeElement.id==='main')};
+  }));
+
+  await finding('KEY-24 explicit jumps focus the target before accepting a number',()=>withPage(async page=>{
+    await page.click('#start');const dot=page.locator('.page-dot').nth(3),id=await dot.getAttribute('data-jump-q');await dot.focus();await page.keyboard.press('Enter');
+    assert.equal(await page.evaluate(()=>document.activeElement.dataset.qid),id);await page.keyboard.press('4');assert.equal(await page.inputValue(`input[name=${id}]:checked`),'4');
+    await page.focus('#jump-unanswered');await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>document.activeElement.dataset.qid),'D1_01');
+    await page.keyboard.press('2');return {safe:await page.inputValue('input[name=D1_01]:checked')==='2'};
+  }));
+
   await finding('AUDIT-04 skip-to-main must not replace quiz with homepage',()=>withPage(async page=>{
     await page.click('#start');
     await page.locator('fieldset input[value="4"]').first().check();
@@ -140,6 +204,52 @@ await test('Browser security regression suite',async t=>{
     const focused=await page.evaluate(()=>({tag:document.activeElement.tagName,mode:document.activeElement.dataset.radarMode||null}));
     return {safe:focused.mode==='autonomy',focused};
   },{answers:fullAnswers,hash:'#report'}));
+
+  const tiePoint=[0,25,75,75,50,75,75,75,50,50];
+  const tieAnswers=Object.fromEntries(bank.items.filter(i=>i.status==='core').map(i=>[
+    i.id,3+(tiePoint[Number(i.dimension.slice(1))-1]-50)/25*i.direction
+  ]));
+  await finding('REPORT-13 a close result shows candidates without automatically selecting the tie-break winner',()=>withPage(async page=>{
+    await page.setViewportSize({width:390,height:844});
+    const heading=await page.textContent('#ideology-heading');
+    const initial=await page.locator('#radar-compare').inputValue();
+    const names=await page.locator('.candidate-card h3').allTextContents();
+    const rows=await page.locator('.candidate-table tbody tr').count();
+    const other=page.getByRole('button',{name:'在雷达图对照社会自由主义'});
+    await other.click();
+    const selected=await page.locator('#radar-compare').inputValue();
+    const pressed=await other.getAttribute('aria-pressed');
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth);
+    await page.emulateMedia({media:'print'});
+    const printable=await page.locator('.candidate-card h3:visible').count();
+    return {safe:heading.includes('暂不归为单一标签')&&initial==='none'&&names.length===3&&rows===3&&selected==='social-liberal'&&pressed==='true'&&!overflow&&printable===3,heading,initial,names,rows,selected,pressed,overflow,printable};
+  },{answers:tieAnswers,hash:'#report'}));
+
+  await finding('VERSION-14 revised items never reuse the old questionnaire save',()=>withPage(async page=>{
+    const old='{"version":"2.1.0-exploratory","answers":{"D2_05":4}}';
+    await page.evaluate(v=>localStorage.setItem('political-values-v2-local',v),old);
+    await page.reload();
+    await page.waitForSelector('#start');
+    const currentEmpty=await page.locator('.resume-card').count()===0;
+    await page.click('#import-home');
+    await page.fill('#answer-text',JSON.stringify({format:'political-values-answers',version:'2.1.0-exploratory',answers:{D2_05:4}}));
+    await page.click('#confirm-import');
+    const versionError=await page.textContent('#import-error');
+    await page.locator('#modal button.secondary').click();
+    let bankRequests=0;page.on('request',r=>{if(r.url().endsWith('/data.json'))bankRequests++;});
+    await page.goto(base+'/?version=2.1');
+    await page.getByRole('heading',{name:'旧版问卷已停用'}).waitFor();
+    const preserved=await page.evaluate(()=>localStorage.getItem('political-values-v2-local'))===old;
+    return {safe:currentEmpty&&versionError.includes('版本不符')&&preserved&&bankRequests===0,currentEmpty,versionError,preserved,bankRequests};
+  }));
+
+  await finding('VERSION-15 mismatched bank fails before any progress access',()=>withPage(async page=>{
+    await page.addInitScript(()=>{window.storageReads=0;Storage.prototype.getItem=()=>{window.storageReads++;return null;};});
+    await page.route('**/data.json',route=>route.fulfill({json:{...bank,version:'2.1.0-exploratory'}}));
+    await page.reload();await page.getByText(/题库版本与本页不符/).waitFor();
+    const reads=await page.evaluate(()=>window.storageReads);
+    return {safe:reads===0&&await page.locator('#start').count()===0,reads};
+  }));
 
   await finding('CONTROL-09 unknown dimension scores must remain insufficient (negative control)',()=>withPage(async page=>{
     // Exercise the exported classifier separately without changing its source.

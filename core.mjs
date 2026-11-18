@@ -27,16 +27,18 @@ export function exportAnswers(answers,bank){
   validateAnswers(answers,bank);
   return {format:'political-values-answers',version:bank.version,answers:Object.fromEntries(Object.entries(answers).filter(([id])=>!id.startsWith('C_'))),clarifications:Object.fromEntries(Object.entries(answers).filter(([id])=>id.startsWith('C_')))};
 }
+export const BANK_VERSION='2.2.0-exploratory';
+export function compatibleAnswerVersion(version,bank){return version===bank.version;}
 export function parseAnswers(text, bank) {
   if(typeof text!=='string' || text.length>100000)throw new Error('答案文件过大。');
   const parsed=JSON.parse(text);
-  if(!parsed || parsed.format!=='political-values-answers' || ![bank.version,'2.0.0-exploratory'].includes(parsed.version) || !parsed.answers)
-    throw new Error('这不是当前新版的答案文件。旧版答案请到“旧版问卷”入口继续使用，不要直接套用到新版题目。');
+  if(!parsed || parsed.format!=='political-values-answers' || !compatibleAnswerVersion(parsed.version,bank) || !parsed.answers)
+    throw new Error('答案文件与当前题库版本不符。旧版答案不能套用到当前题库，请保留原文件。');
   // All accepted nested data is a flat answer map, so global duplicate-key rejection is safe.
   const keys=[...text.matchAll(/"((?:\\.|[^"\\])*)"\s*:/g)].map(m=>JSON.parse(`"${m[1]}"`));
   if(new Set(keys).size!==keys.length)throw new Error('答案包含重复编号。');
   if(typeof parsed.answers!=='object' || Array.isArray(parsed.answers) || Object.keys(parsed.answers).some(id=>id.startsWith('C_')))throw new Error('基础答案字段格式无效。');
-  const clarification=parsed.version==='2.0.0-exploratory'?{}:(parsed.clarifications??{});
+  const clarification=parsed.clarifications??{};
   if(!clarification || typeof clarification!=='object' || Array.isArray(clarification) || Object.keys(clarification).some(id=>!CLARIFICATIONS.some(q=>q.id===id)))throw new Error('澄清答案字段格式无效。');
   return validateAnswers({...parsed.answers,...clarification},bank);
 }

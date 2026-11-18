@@ -4,16 +4,29 @@ import {CLARIFICATIONS,CLARIFICATION_OPTIONS} from './clarification.mjs';
 // Coordinate order: D1 redistribution, D2 planning, D3 liberty, D4 checks,
 // D5 participation, D6 cultural change, D7 pluralism, D8 global cooperation,
 // D9 military restraint, D10 ecology. Every coordinate has equal weight.
-export const CLASSIFIER_VERSION = 'nearest-tradition-2.2';
+export const CLASSIFIER_VERSION = 'nearest-tradition-2.3';
+const CLOSE_GAP = 3;
+const FAR_DISTANCE = 25;
+const orderedDimensions=result=>Array.from({length:10},(_,i)=>result.dimensions.find(d=>d.id===`D${i+1}`));
+const missingDimensions=dimensions=>dimensions.filter(d=>!d || !Number.isFinite(d.score) || (d.base_answered??d.answered)<6);
+// Scores have two decimal places. Rank exact integer squared distances before
+// taking square roots, so a mathematical tie reaches the documented ID rule.
+const rankDimensions=dimensions=>IDEOLOGIES.map(p=>({p,squared:dimensions.reduce((sum,d,i)=>sum+(Math.round(d.score*100)-100*p.point[i])**2,0)}))
+  .sort((a,b)=>a.squared-b.squared || a.p.id.localeCompare(b.p.id,'en'))
+  .map(({p,squared})=>({...p,distance:Math.sqrt(squared/10)/100}));
+
+export function rankedIdeologies(result){
+  const dimensions=orderedDimensions(result);
+  return missingDimensions(dimensions).length?[]:rankDimensions(dimensions);
+}
 export {IDEOLOGIES} from './ideology-profiles.mjs';
 
 export function preliminaryIdeology(result) {
-  const dimensions=Array.from({length:10},(_,i)=>result.dimensions.find(d=>d.id===`D${i+1}`));
-  const missing=dimensions.filter(d=>!d || !Number.isFinite(d.score) || (d.base_answered??d.answered)<6);
+  const dimensions=orderedDimensions(result);
+  const missing=missingDimensions(dimensions);
   if(missing.length) return {version:CLASSIFIER_VERSION,status:'insufficient',name:null,missing:missing.length,
     explanation:`还有 ${missing.length} 个维度信息不足。每个方面至少需要6道有效基础答案，补充后才能总结最贴近的意识形态。`};
-  const candidates=IDEOLOGIES.map(p=>({...p,distance:Math.sqrt(dimensions.reduce((sum,d,i)=>sum+(d.score-p.point[i])**2,0)/10)}))
-    .sort((a,b)=>a.distance-b.distance || a.id.localeCompare(b.id,'en'));
+  const candidates=rankDimensions(dimensions);
   const best=candidates[0], gap=candidates[1].distance-best.distance;
   const comparisons=dimensions.map((d,i)=>({id:d.id,name:d.name,score:d.score,target:best.point[i],difference:Math.abs(d.score-best.point[i])}));
   const supporting=[...comparisons].sort((a,b)=>a.difference-b.difference).slice(0,3);
@@ -23,8 +36,8 @@ export function preliminaryIdeology(result) {
   const mixedCount=dimensions.filter(d=>d.counts.left>=2&&d.counts.right>=2).length;
   const caveats=[`这是在${IDEOLOGIES.length}种预设参考画像中按十维距离选出的最近一项，不是身份认定或匹配概率；参考点由设计者设定，尚未实证校准。`];
   if(result.supplemental_offered)caveats.push(`本次已回答${result.supplemental_answers}/${result.supplemental_offered}道补充题，总结使用包含有效补充答案的分数；补充题不是准确性的保证。`);
-  if(gap<3)caveats.push('与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。');
-  if(best.distance>=25)caveats.push('即使是最近的一项，也与你的整体画像有明显距离，应优先参考逐维结果。');
+  if(gap<CLOSE_GAP)caveats.push('与其他参考画像的距离很接近，这个单一总结不稳定；小幅改答就可能改变标签。');
+  if(best.distance>=FAR_DISTANCE)caveats.push('即使是最近的一项，也与你的整体画像有明显距离，应优先参考逐维结果。');
   if(neutralCount>=total/2)caveats.push('至少一半有效答案为中立，当前总结可能反映尚未形成明确判断，不宜直接认作稳定的中间立场。');
   if(mixedCount>=3)caveats.push(`${mixedCount} 个维度包含明显双向选择；均值可能掩盖混合立场，接近中间位置不一定意味着主张折中。`);
   return {version:CLASSIFIER_VERSION,status:'matched',id:best.id,name:best.name,description:best.description,
@@ -66,8 +79,40 @@ export function clarificationSummary(result,c=closestIdeology(result)){
     ...CLARIFICATIONS.map(q=>`${q.name}：${CLARIFICATION_OPTIONS[result.clarifications?.[q.id]]??'未作答'}`)];
 }
 
+// Display guidance only. The underlying result, tie-breaker and quiz flow stay unchanged.
+export function ideologyPresentation(result){
+  const conclusion=closestIdeology(result);
+  const ranked=rankedIdeologies(result);
+  const base={conclusion,ranked,candidates:[],additional:[],differences:[]};
+  if(conclusion.status!=='matched')return {...base,kind:conclusion.status};
+  const distant=conclusion.distance>=FAR_DISTANCE;
+  if(!distant&&conclusion.gap>=CLOSE_GAP)return {...base,kind:'matched'};
+  const close=ranked.filter(p=>p.distance-conclusion.distance<CLOSE_GAP);
+  const candidates=(distant?ranked:close).slice(0,3);
+  const differences=orderedDimensions(result).map((d,i)=>{
+    const points=candidates.map(p=>p.point[i]);
+    return {id:d.id,name:d.name,score:d.score,points,spread:Math.max(...points)-Math.min(...points)};
+  }).filter(d=>d.spread>0).sort((a,b)=>b.spread-a.spread).slice(0,3);
+  return {...base,kind:distant?'distant':'close',candidates,differences,additional:distant?[]:close.slice(3),
+    heading:distant?'没有足够接近的参考画像':'多个参考画像接近，暂不归为单一标签',
+    explanation:distant?`最近的参考画像仍与你相距 ${conclusion.distance.toFixed(2)} 分，达到 ${FAR_DISTANCE} 分的提示线。下面只作对照，建议先看十维分数。`:`下列候选与最近一项的距离差均小于 ${CLOSE_GAP} 分。小幅改答就可能改变排序，不宜用其中一个名称概括你的立场。`,
+  };
+}
+
 export function closestMarkdown(result) {
-  const c=closestIdeology(result);
+  const display=ideologyPresentation(result), c=display.conclusion;
+  if(display.heading){
+    const names=display.candidates.map(p=>p.name);
+    return ['## 最贴近的意识形态','',`**${display.heading}**`,'',display.explanation,'',
+      ...display.candidates.map(p=>`- **${p.name}**：距离 ${p.distance.toFixed(2)}。${p.description} 解释边界：${p.limitation}`),
+      ...display.additional.map(p=>`- ${p.name}：距离 ${p.distance.toFixed(2)}。`),'',
+      '### 候选画像主要分歧（参考坐标）','',
+      `| 维度 | 你的分数 | ${names.join(' | ')} |`,
+      `|---|---:|${names.map(()=> '---:').join('|')}|`,
+      ...display.differences.map(d=>`| ${d.name} | ${d.score.toFixed(1)} | ${d.points.join(' | ')} |`),'',
+      ...c.caveats.filter((_,i)=>i!==0).map(t=>'- '+t),...clarificationSummary(result,c).map(t=>'- '+t),
+      '',`归纳规则版本：${c.version}。候选距离不是匹配概率。`,''];
+  }
   if(c.status==='insufficient')return ['## 最贴近的意识形态','','暂不能总结：'+c.explanation,''];
   if(c.status!=='matched')return ['## 最贴近的意识形态','',`**${c.name}**`,'',c.description,'',...c.caveats.map(t=>'- '+t),'',...clarificationSummary(result,c).map(t=>'- '+t),'',`归纳规则版本：${c.version}。`,''];
   return ['## 最贴近的意识形态','',`**${c.name}（参考性总结）**`, '',c.description,'',`参考类别：${c.family}。`,`解释边界：${c.limitation}`,'',

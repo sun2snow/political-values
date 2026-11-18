@@ -119,10 +119,3 @@ export function radarCardMarkup(r, compareProfile, radarCompareId, radarMode){
     <div class="radar-readout" id="radar-readout">${esc(cfg.readoutHint)}</div>
     ${compareProfile?`<details class="compare-table-details"><summary>查看十维数值对比表（与「${esc(compareProfile.name)}」）</summary><table class="compare-table"><thead><tr><th>维度</th><th>你的得分</th><th>参考点</th><th>差值</th></tr></thead><tbody>${r.dimensions.map((d,i)=>{const ref=compareProfile.point[i];const diff=d.score===null?'—':(d.score-ref>0?'+':'')+(d.score-ref).toFixed(1);return `<tr><td>${esc(d.name)}</td><td>${d.score===null?'信息不足':d.score.toFixed(1)}</td><td>${ref}</td><td>${diff}</td></tr>`;}).join('')}</tbody></table></details>`:''}`;
 }
-
-export function rankedIdeologies(result){
-  const dims=Array.from({length:10},(_,i)=>result.dimensions.find(d=>d.id===`D${i+1}`));
-  if(dims.some(d=>!d || d.score===null || (d.base_answered??d.answered)<6))return [];
-  return IDEOLOGIES.map(p=>({...p,distance:Math.sqrt(dims.reduce((sum,d,i)=>sum+(d.score-p.point[i])**2,0)/10)}))
-    .sort((a,b)=>a.distance-b.distance || a.id.localeCompare(b.id,'en'));
-}

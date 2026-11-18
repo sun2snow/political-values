@@ -1,0 +1,1839 @@
+{
+  "pilot": {
+    "social-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "social-democratic": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 3,
+          "experts": 2,
+          "local": 3,
+          "compromise": 5,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "democratic-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "state-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 1,
+          "ownership": 5,
+          "civil": 3,
+          "checks": 3,
+          "direct": 4,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 5,
+          "experts": 3,
+          "local": 1,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 1,
+          "ownership": 5,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 1,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 1,
+          "ownership": 5,
+          "civil": 2,
+          "checks": 1,
+          "direct": 2,
+          "tradition": 3,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 1,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "classical-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 3,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "libertarian": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 2,
+          "ecology": 2,
+          "experts": 3,
+          "local": 4,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 4,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 1,
+          "global": 2,
+          "ecology": 2,
+          "experts": 2,
+          "local": 2,
+          "compromise": 2,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "liberal-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 4,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "communitarian-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.6666666666666666,
+          "agreement": 0.8333333333333334,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 5,
+          "experts": 4,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.6666666666666666,
+          "agreement": 0.8333333333333334,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 3
+        }
+      }
+    },
+    "national-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 4,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.6666666666666666,
+          "agreement": 0.8333333333333334,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 1.3333333333333333,
+          "agreement": 0.6666666666666667,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 1,
+          "agreement": 0.75,
+          "n": 3
+        }
+      }
+    },
+    "technocratic": {
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      },
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 2,
+          "global": 5,
+          "ecology": 5,
+          "experts": 5,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.75,
+          "agreement": 0.8125,
+          "n": 4
+        }
+      }
+    },
+    "green": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 2,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 3,
+          "local": 5,
+          "compromise": 5,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "market-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 4,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 3,
+          "ecology": 3,
+          "experts": 2,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.6,
+          "agreement": 0.85,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 5,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 4,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      }
+    },
+    "libertarian-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 1,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 3,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 1,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 1
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      }
+    },
+    "eco-socialist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 3,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 2,
+          "ownership": 5,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 5,
+          "compromise": 2,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      }
+    },
+    "conservative-social-democratic": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 5,
+          "market": 3,
+          "ownership": 4,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 4,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 4,
+          "ecology": 4,
+          "experts": 3,
+          "local": 4,
+          "compromise": 3,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 5,
+          "market": 4,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 3,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.3333333333333333,
+          "agreement": 0.9166666666666666,
+          "n": 3
+        }
+      }
+    },
+    "paleoconservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 2,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 4,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 4,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 2,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      }
+    },
+    "national-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 3,
+          "experts": 3,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 4,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.5,
+          "agreement": 0.875,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 3,
+          "global": 2,
+          "ecology": 3,
+          "experts": 2,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "green-conservative": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 3,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 3,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 4,
+          "direct": 3,
+          "tradition": 4,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 5,
+          "ownership": 2,
+          "civil": 4,
+          "checks": 5,
+          "direct": 2,
+          "tradition": 5,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 3,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "green-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 3,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 1,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 3,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.4,
+          "agreement": 0.9,
+          "n": 5
+        }
+      }
+    },
+    "developmentalist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 3,
+          "tradition": 3,
+          "global": 3,
+          "ecology": 2,
+          "experts": 4,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 3,
+          "checks": 3,
+          "direct": 2,
+          "tradition": 3,
+          "global": 3,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 3,
+          "global": 2,
+          "ecology": 2,
+          "experts": 5,
+          "local": 1,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 3,
+          "industry": 5
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "authoritarian-market": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 3,
+          "restraint": 2,
+          "pluralism": 2,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 1,
+          "market": 5,
+          "ownership": 1,
+          "civil": 1,
+          "checks": 1,
+          "direct": 1,
+          "tradition": 5,
+          "global": 2,
+          "ecology": 4,
+          "experts": 5,
+          "local": 1,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 2,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.2,
+          "agreement": 0.95,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 2,
+          "market": 5,
+          "ownership": 1,
+          "civil": 2,
+          "checks": 2,
+          "direct": 2,
+          "tradition": 4,
+          "global": 2,
+          "ecology": 3,
+          "experts": 4,
+          "local": 2,
+          "compromise": 3,
+          "restraint": 3,
+          "pluralism": 2,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.6,
+          "agreement": 0.85,
+          "n": 5
+        }
+      }
+    },
+    "participatory-democracy": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 3,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 4,
+          "experts": 1,
+          "local": 5,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 1,
+          "global": 4,
+          "ecology": 4,
+          "experts": 1,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 3,
+          "market": 3,
+          "ownership": 3,
+          "civil": 5,
+          "checks": 5,
+          "direct": 5,
+          "tradition": 2,
+          "global": 3,
+          "ecology": 3,
+          "experts": 1,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 3,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      }
+    },
+    "cosmopolitan-liberal": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 3,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0,
+          "agreement": 1,
+          "n": 4
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 3
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 3,
+          "tradition": 1,
+          "global": 5,
+          "ecology": 4,
+          "experts": 2,
+          "local": 3,
+          "compromise": 4,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 2
+        },
+        "fit": {
+          "mae": 0.25,
+          "agreement": 0.9375,
+          "n": 4
+        }
+      }
+    },
+    "centrist": {
+      "gemini-3.5-flash-lite": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 2,
+          "local": 4,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "gpt-5.6-luna": {
+        "answers": {
+          "redistribution": 4,
+          "market": 4,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 5,
+          "experts": 4,
+          "local": 4,
+          "compromise": 5,
+          "restraint": 5,
+          "pluralism": 5,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 0.8,
+          "agreement": 0.8,
+          "n": 5
+        }
+      },
+      "grok-4.7-build-fast": {
+        "answers": {
+          "redistribution": 4,
+          "market": 5,
+          "ownership": 2,
+          "civil": 5,
+          "checks": 5,
+          "direct": 4,
+          "tradition": 2,
+          "global": 4,
+          "ecology": 2,
+          "experts": 4,
+          "local": 2,
+          "compromise": 5,
+          "restraint": 4,
+          "pluralism": 4,
+          "industry": 4
+        },
+        "fit": {
+          "mae": 1,
+          "agreement": 0.75,
+          "n": 5
+        }
+      }
+    }
+  },
+  "baselines": {
+    "gemini-3.5-flash-lite": {
+      "probe": {
+        "redistribution": 4,
+        "market": 4,
+        "ownership": 2,
+        "civil": 4,
+        "checks": 4,
+        "direct": 3,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 4,
+        "experts": 4,
+        "local": 3,
+        "compromise": 4,
+        "restraint": 4,
+        "pluralism": 4,
+        "industry": 3
+      }
+    },
+    "gpt-5.6-luna": {
+      "probe": {
+        "redistribution": 4,
+        "market": 4,
+        "ownership": 2,
+        "civil": 5,
+        "checks": 5,
+        "direct": 4,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 5,
+        "experts": 4,
+        "local": 4,
+        "compromise": 4,
+        "restraint": 5,
+        "pluralism": 5,
+        "industry": 3
+      }
+    },
+    "grok-4.7-build-fast": {
+      "probe": {
+        "redistribution": 4,
+        "market": 4,
+        "ownership": 2,
+        "civil": 5,
+        "checks": 5,
+        "direct": 3,
+        "tradition": 2,
+        "global": 4,
+        "ecology": 4,
+        "experts": 2,
+        "local": 3,
+        "compromise": 4,
+        "restraint": 5,
+        "pluralism": 4,
+        "industry": 4
+      }
+    }
+  }
+}

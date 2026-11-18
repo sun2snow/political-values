@@ -6,6 +6,7 @@ import {score,parseAnswers,validateAnswers,exportAnswers,markdownReport} from '.
 import {adaptivePlan,activeQuestionIds,createPages} from '../adaptive.mjs';
 import {closestIdeology,IDEOLOGIES} from '../ideology.mjs';
 const bank=JSON.parse(readFileSync(new URL('../data.json',import.meta.url),'utf8'));
+const archivedBank=JSON.parse(readFileSync(new URL('../legacy/v2.1/data.json',import.meta.url),'utf8'));
 const base=bank.items.filter(i=>i.status==='core');
 const uniform=z=>Object.fromEntries(base.map(i=>[i.id,3+z*i.direction]));
 function scattered(dimension='D1',values=[-2,2,-2,2,-2,2,-2,2]){
@@ -77,7 +78,7 @@ test('versioned export/import preserves all answers including inactive extras; v
   assert.deepEqual(parseAnswers(JSON.stringify(exportAnswers(ans,bank)),bank),ans);
   assert.throws(()=>parseAnswers(JSON.stringify(ans),bank),/旧版/);
   assert.throws(()=>parseAnswers(JSON.stringify({...exportAnswers(ans,bank),version:'1.0.0-exploratory'}),bank),/旧版/);
-  assert.throws(()=>parseAnswers('{"format":"political-values-answers","version":"2.0.0-exploratory","answers":{"D1_01":3,"D1_01":5}}',bank),/重复/);
+  assert.throws(()=>parseAnswers('{"format":"political-values-answers","version":"2.2.0-exploratory","answers":{"D1_01":3,"D1_01":5}}',bank),/重复/);
 });
 test('invalid values and unknown question IDs are rejected',()=>{
   for(const ans of [[],null,{D1_01:true},{D1_09:6},{D1_13:3},{S01:3},{F01:'U'},{D1_01:'3'}])assert.throws(()=>validateAnswers(ans,bank));
@@ -97,6 +98,20 @@ test('HTML methods and questionnaire are rendered; UI does not link to raw Markd
   for(const q of bank.items)assert.ok(question.includes(q.text),q.id);
   assert.ok(existsSync(new URL('../legacy/v1/index.html',import.meta.url)));
   assert.doesNotMatch(question,/C不是默认最佳答案/);
+});
+
+test('exact squared-distance tie follows ID order and triggers clarification in real quiz flow',async()=>{
+  const {rankedIdeologies,preliminaryIdeology}=await import('../ideology.mjs');
+  const {questionnairePages}=await import('../flow.mjs');
+  const sums=[5,-2,-4,7,-4,-3,-5,-3,-4,6];
+  const answers=Object.fromEntries(base.map(q=>{
+    const sum=sums[Number(q.dimension.slice(1))-1],n=Number(q.id.split('_')[1]);
+    return [q.id,3+(n<=Math.abs(sum)?Math.sign(sum):0)*q.direction];
+  }));
+  const r=score(answers,bank),[a,b]=rankedIdeologies(r);
+  assert.deepEqual([a.id,b.id],['centrist','communitarian-conservative']);assert.equal(a.distance,b.distance);
+  assert.equal(preliminaryIdeology(r).gap,0);assert.equal(closestIdeology(r).status,'undetermined');
+  assert.equal(questionnairePages(answers,bank).filter(p=>p.type==='clarification').flatMap(p=>p.ids).length,10);
 });
 
 test('centrist clarification separates identical averages without changing political scores',()=>{
@@ -136,10 +151,13 @@ test('clarification threshold boundaries and uncertainty do not become compromis
 test('version 2 import and separate clarification export roundtrip',()=>{
   const answers={...uniform(0),C_D1:'compromise',C_D2:'conditional',C_D3:null};
   const envelope=exportAnswers(answers,bank);
-  assert.equal(envelope.version,'2.1.0-exploratory');assert.equal(envelope.answers.C_D1,undefined);
+  assert.equal(envelope.version,'2.2.0-exploratory');assert.equal(envelope.answers.C_D1,undefined);
   assert.deepEqual(envelope.clarifications,{C_D1:'compromise',C_D2:'conditional',C_D3:null});
   assert.deepEqual(parseAnswers(JSON.stringify(envelope),bank),answers);
-  assert.deepEqual(parseAnswers(JSON.stringify({format:envelope.format,version:'2.0.0-exploratory',answers:uniform(0)}),bank),uniform(0));
+  const oldText=JSON.stringify({format:envelope.format,version:'2.0.0-exploratory',answers:uniform(0)});
+  assert.throws(()=>parseAnswers(oldText,bank),/版本不符/);
+  assert.throws(()=>parseAnswers(JSON.stringify({...envelope,version:archivedBank.version}),bank),/版本不符/);
+  assert.throws(()=>parseAnswers(JSON.stringify(envelope),archivedBank),/版本不符/);
   for(const value of [3,'U','Q',true,{},['compromise'],'__proto__'])assert.throws(()=>validateAnswers({C_D1:value},bank));
   assert.throws(()=>validateAnswers({C_D11:'compromise'},bank));
   for(const clarifications of [[],false,{D1_01:3},{C_D11:'compromise'}])assert.throws(()=>parseAnswers(JSON.stringify({...envelope,clarifications}),bank));
@@ -172,7 +190,7 @@ test('expanded catalog has distinct, complete profiles and synchronized readable
     const answers=Object.fromEntries(base.map(i=>[i.id,3+(p.point[Number(i.dimension.slice(1))-1]-50)/25*i.direction]));
     for(let n=1;n<=10;n++)answers[`C_D${n}`]='compromise';
     const r=score(answers,bank),c=closestIdeology(r);
-    assert.equal(c.id,p.id);assert.equal(c.limitation,p.limitation);assert.match(c.version,/2\.2$/);
+    assert.equal(c.id,p.id);assert.equal(c.limitation,p.limitation);assert.equal(c.version,'nearest-tradition-2.3');
     assert.ok(markdownReport(r).includes(p.limitation));assert.match(c.caveats.join(''),/24种/);
   }
   assert.doesNotMatch(doc,/12种预设|下表12种|下面12种/);
